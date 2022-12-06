@@ -494,7 +494,11 @@ ol {
 
 .header__cart {
 	text-align: right;
+<<<<<<< HEAD
 	padding: 24px 0;
+=======
+	padding: 30px 0;
+>>>>>>> 1c31068d18a86595a27af42d358e8b04e9c7d72f
 }
 
 .header__cart ul {
@@ -3411,7 +3415,11 @@ ol {
 	}
 	.header__cart {
 		text-align: center;
+<<<<<<< HEAD
 		padding: 10px 0 24px;
+=======
+		padding: 5px 0 10px;
+>>>>>>> 1c31068d18a86595a27af42d358e8b04e9c7d72f
 	}
 	.over_hid {
 		overflow: hidden;

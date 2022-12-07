@@ -1,1 +1,0 @@
-# hands-up-frontend

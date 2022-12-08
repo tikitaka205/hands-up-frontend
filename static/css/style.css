@@ -620,10 +620,29 @@ ol {
   padding-left: 40px;
   padding-top: 10px;
   padding-bottom: 12px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .hero__categories ul li {
   list-style: none;
+
+  padding: 0px 2px 0 2px;
+  margin-right: 10px;
+  border: 2px solid gainsboro;
+  border-radius: 0.5em;
+}
+.hero__categories ul li:hover {
+  list-style: none;
+
+  padding: 0px 2px 0 2px;
+  margin-right: 10px;
+  border: 2px solid gray;
+  border-radius: 0.5em;
 }
 
 .hero__categories ul li a {

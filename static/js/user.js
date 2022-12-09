@@ -10,7 +10,7 @@ async function handleLogin() {
         },
         method: 'POST',
         body: JSON.stringify({
-            "phone": phone,
+            "username": username,
             "password": password
         })
     })
@@ -39,8 +39,6 @@ async function handleLogin() {
     } else {
         console.log(response)
     }
-
-
 
 }
 

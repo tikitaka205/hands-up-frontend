@@ -124,9 +124,6 @@ async function goodsInfoView() {
     document.getElementById('goods-info-wrap').innerHTML = temp
     $("time.timeago").timeago();
     
-    // 타이머 시작 전 => 시작 일시 보여주기
-    // 시작중 => 타이머 보여주기
-    // 종료 => 경매 종료 표시
     await goodsStatusView(data)
 
     

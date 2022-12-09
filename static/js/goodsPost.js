@@ -2,6 +2,9 @@
 $(document).ready(function(){
     console.log('이미지 준비되는 실행되는 함수')
     $('#image').on("change", addFiles)
+    let today = new Date()
+let max_date = today.getDate() + 3
+console.log(max_date)
 })
 
 let fileTemArr =[]
@@ -38,7 +41,7 @@ function addFiles(e){
     for(let i =0; i<filesArrlen; i++){
         fileTemArr.push(fileArr[i])
         // $("#fileList").append("<div>" + fileArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + (fileTemArrlen+i)+ ");\"></div>");
-        $("#fileList").append(`<div id=image_${i}>` +fileArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + i+ ");\"></div>");
+        $("#fileList").append(`<div id=image_${i}>` +fileArr[i].name + "<img class = 'deletebnt' src=\"/static/images/delete.png\" onclick=\"deleteFile(event, " + i+ ");\"></div>");
     }
 }
 
@@ -113,5 +116,9 @@ function posthandle(){
 
 // date value 현재 날짜
 document.getElementById('start').value = new Date().toISOString().substring(0,10);
+let today = new Date()
+let max_date = today.getDate() + 3
+console.log(max_date)
+document.getElementById('start').max = max_date
 //현재 시간
 document.getElementById('starttime').value = new Date().toISOString().slice(11,16);

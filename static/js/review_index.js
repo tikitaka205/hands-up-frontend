@@ -1,5 +1,7 @@
 window.onload = function(){
     review_list()
+    $("time.timeago").timeago();
+
 }
 
 function review_list() {
@@ -37,7 +39,7 @@ function review_list() {
                                 <div class="toast-header">
                                     <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px;">
                                     <strong class="me-auto" style="margin-left: 10px;">${author}</strong>
-                                    <small class="text-muted" style="margin-left: 10px;">${created_at}</small>
+                                    <small class="text-muted" style="margin-left: 10px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
                                 <div class="toast-body">
                                     ${content}
@@ -57,6 +59,8 @@ function review_list() {
                 $('#excellent_score').text(`${excellent_review_count}`)
                 $('#username').text(`${username}`)
                 $('#profile_image').text(`${profile_image}`)
+                $("time.timeago").timeago();
+
             }
             }
 

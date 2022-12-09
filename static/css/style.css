@@ -2940,6 +2940,9 @@ ol {
 /* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+	#whole-auction-wrap{
+		margin-bottom: 20px;
+	}
 	.hero__categories {
 		margin-bottom: 30px;
 	}
@@ -3153,7 +3156,7 @@ ol {
 	}
 	.header__cart {
 		text-align: center;
-		padding: 10px 0 24px;
+		padding: 0 0 10px;
 	}
 	.over_hid {
 		overflow: hidden;
@@ -3163,6 +3166,9 @@ ol {
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+	#whole-auction-wrap{
+		margin-bottom: 20px;
+	}
 	.hero__categories {
 		margin-bottom: 30px;
 	}

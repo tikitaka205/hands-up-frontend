@@ -2959,6 +2959,9 @@ ol {
 /* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  #whole-auction-wrap{
+		margin-bottom: 20px;
+	}
   .hero__categories {
     margin-bottom: 30px;
   }
@@ -3182,6 +3185,9 @@ ol {
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+  #whole-auction-wrap{
+		margin-bottom: 20px;
+	}
   .hero__categories {
     margin-bottom: 30px;
   }

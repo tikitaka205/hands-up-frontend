@@ -22,13 +22,14 @@ function get_auction_list() {
         data: {},
         async: false,
         success: function (response) {
-            // console.log(response)
+            console.log(response)
             let auction_list = response
             temp_response = auction_list
 
             for (let i = 0; i < auction_list.length; i++) {
                 let price
                 let auction_status = auction_list[i]['status']
+                console.log(auction_list)
                 if (auction_status == null) {
                     auction_status = "wait-auction";
                     price = `
@@ -95,7 +96,7 @@ function get_auction_list() {
 async function remaindTime() {
 
     for (let i = 0; i < data_auction_list.length; i++) {
-        // console.log(data_auction_list)
+        console.log(data_auction_list)
         let start_date = data_auction_list[i]["start_date"]
         let start_time = data_auction_list[i]["start_time"]
         let id = data_auction_list[i]["id"]

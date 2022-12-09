@@ -40,8 +40,6 @@ async function handleLogin() {
         console.log(response)
     }
 
-
-
 }
 
 async function handleLogout() {

@@ -21,7 +21,10 @@ chatSocket.onmessage = function (e) {
     let message = data['message'];
     let sender = data['sender_name']
     console.log("onmessage: ", data)
+    // 
     document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
+    //
+    $('#chatLog').value +=
     const top = $('#chatLog').prop('scrollHeight');
     $('#chatLog').scrollTop(top);
 };
@@ -76,7 +79,7 @@ function get_chat_log() {
                 let message = response['data'][i]['content'];
                 let sender = response['data'][i]['author'];
                 console.log(message, sender)
-
+// 
                 document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
                 const top = $('#chatLog').prop('scrollHeight');
                 $('#chatLog').scrollTop(top);

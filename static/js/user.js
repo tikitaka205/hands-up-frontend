@@ -10,7 +10,7 @@ async function handleLogin() {
         },
         method: 'POST',
         body: JSON.stringify({
-            "phone": phone,
+            "username": username,
             "password": password
         })
     })

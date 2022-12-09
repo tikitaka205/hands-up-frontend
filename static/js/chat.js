@@ -21,10 +21,22 @@ chatSocket.onmessage = function (e) {
     let message = data['message'];
     let sender = data['sender_name']
     console.log("onmessage: ", data)
-    // 
-    document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
-    //
-    $('#chatLog').value +=
+    let temp_html
+    if (sender == payload["username"]) {
+        temp_html = `
+            <div class="chat_message" style="float: right; bottom: 0px; float: right;" >
+            <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
+            </div>
+        `
+    } else {
+        temp_html = `
+            <div class="chat_message" style="background-color: rgb(183, 183, 183);">
+            <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
+            </div>
+        `
+    }
+    $('#chatLog').append(temp_html)
+    // document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
     const top = $('#chatLog').prop('scrollHeight');
     $('#chatLog').scrollTop(top);
 };
@@ -79,8 +91,23 @@ function get_chat_log() {
                 let message = response['data'][i]['content'];
                 let sender = response['data'][i]['author'];
                 console.log(message, sender)
-// 
-                document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
+                let temp_html
+                if (response['data'][i]['author'] == payload["username"]) {
+                    temp_html = `
+                        <div class="chat_message" style="float: right; bottom: 0px; float: right;" >
+                        <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
+                        </div>
+                    `
+                } else {
+                    temp_html = `
+                        <div class="chat_message" style="background-color: rgb(183, 183, 183);">
+                        <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
+                        </div>
+                    `
+                }
+
+                $('#chatLog').append(temp_html)
+                // document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
                 const top = $('#chatLog').prop('scrollHeight');
                 $('#chatLog').scrollTop(top);
             }

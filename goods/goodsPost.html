@@ -42,13 +42,30 @@
                 height:70%;
                 margin:auto;
                 margin-top: 30px;
-                border: 1px solid gray;
+                /* border: 1px solid gray; */
                 border-radius: 10px;
             }
             .post-box{
                 width: 90%;
                 margin: auto;
                 margin-top: 20px;
+            }
+
+            .post-title{
+                font-size: 30px;
+                margin-top: 20px;
+                display : flex;
+                justify-content : center;
+                align-items : center;
+            }
+            .postsubmit{
+                margin: auto;
+            }
+            .inputdate{
+                width: 150px;
+            }
+            .inputtime{
+                width:150px;
             }
         </style>
           
@@ -168,7 +185,7 @@
         <!-- Header Section End -->
 
         <!-- post Section -->
-    <div> 경매등록 페이지</div>
+    <div class="post-title"> 경매등록 페이지</div>
        <div class="post_wrap" >
         
             <div class="post-box">
@@ -211,9 +228,9 @@
                         <input type="text" class="form-control" id="start_price" placeholder="시작가격">
                     </div>
                     <!-- 경매 날짜 -->
-                    <input type ="date" id ="start" value = "2022-12-01" min="2022-12-05" max="2022-12-08" />
+                    <input class="inputdate" type ="date" id ="start" />
                     <!-- 경매 시간 -->
-                    <input type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;">
+                    <input class="inputtime" id="starttime" type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;">
                     <br>
                     <!-- 게시글  -->
                     
@@ -224,8 +241,8 @@
             </div>
        </div>
        <!-- 작성완료 버튼 -->
-        <div style="margin-top:20px;" >
-            <button type="button" class="btn btn-dark" onclick="posthandle()">작성완료</button>
+        <div style="margin-top:20px; text-align: center;">
+            <button type="button" class="btn btn-dark postsubmit" onclick="posthandle()">작성완료</button>
         </div>
 
     

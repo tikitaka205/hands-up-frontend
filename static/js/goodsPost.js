@@ -19,40 +19,42 @@ function addFiles(e){
     if (filesArrlen > 0){
         for (let i=0; i < filesArrlen; i++){
             let reader = new FileReader()
-            reader.onload = function(data){
-                //이미지 태그 만들기
-                let imgTag = document.createElement('img')
+            // reader.onload = function(data){
+            //     //이미지 태그 만들기
+            //     let imgTag = document.createElement('img')
 
-                imgTag.setAttribute('src', data.target.result)
-                imgTag.setAttribute('width', '250')
-                imgTag.setAttribute('height','150')
+            //     imgTag.setAttribute('src', data.target.result)
+            //     imgTag.setAttribute('width', '250')
+            //     imgTag.setAttribute('height','150')
 
-                fileList.appendChild(imgTag)
-            }
+            //     fileList.appendChild(imgTag)
+            // }
             reader.readAsDataURL(fileArr[i])
         }
         //for end
     }else{
         fileList.innerHtml=""
     }
-
-
     for(let i =0; i<filesArrlen; i++){
         fileTemArr.push(fileArr[i])
         // $("#fileList").append("<div>" + fileArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + (fileTemArrlen+i)+ ");\"></div>");
-        $("#fileList").append("<div>" +"http://127.0.0.1:5501/"+fileArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + (fileTemArrlen+i)+ ");\"></div>");
+        $("#fileList").append(`<div id=image_${i}>` +fileArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + i+ ");\"></div>");
     }
 }
 
 function deleteFile(eventParam, orderParam){
     console.log('이미지를 삭제하는 함수')
+
     fileTemArr.splice(orderParam, 1);
     let innerHtmlTemp =""
     let filesArrlen = fileTemArr.length
     for(let i =0 ; i<filesArrlen; i++){
-        innerHtmlTemp += "<div>" + fileTemArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + i + ");\"></div>" 
+        innerHtmlTemp += `<div id=image_${i}>` + fileTemArr[i].name + "<img class = 'deletebnt' src=\"/static/image/delete.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"  
     }
-    $("#fileList").html(innerHtmlTemp);
+    $(`#image_${orderParam}`).remove()
+   
+       
+    //지우는 함수 실행시 모든 이미지가 삭제되는 문제
 }
 
 
@@ -109,3 +111,7 @@ function posthandle(){
 }
 
 
+// date value 현재 날짜
+document.getElementById('start').value = new Date().toISOString().substring(0,10);
+//현재 시간
+document.getElementById('starttime').value = new Date().toISOString().slice(11,16);

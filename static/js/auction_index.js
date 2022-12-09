@@ -51,6 +51,12 @@ function get_auction_list() {
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="static/images/stady_bear_face.png"
                             style="background-image: url(&quot;http://127.0.0.1:5500/static/images/stady_bear_face.png&quot;);">
+                            <div style="position: absolute; right: 0px;">
+                                <div class="btn btn-outline-danger" id="post-like" style="width: 80px; margin: 0 auto; padding: 3px; cursor: pointer; ">
+                                    <i id="heart" class="far fa-heart"></i>
+                                    <span id="like-num"></span>
+                                </div>
+                            </div>
                             <ul class="featured__item__pic__hover">
                                 <p class="time-title-${auction_list[i]['id']}" style="background-color: aliceblue;"></p>
                                 <div class="time-${auction_list[i]['id']} font40" style="background-color: aliceblue;">    
@@ -168,3 +174,31 @@ async function remaindTime() {
     }
 }
 setInterval(remaindTime, 1000);
+
+
+function goodsLike(goods_id) {
+    $.ajax({
+        type: 'GET',
+
+        data: {},
+        headers: {
+            // "Authorization": "Bearer " + localStorage.getItem("access"),
+            "Authorization": "Bearer " + accessToken,
+        },
+
+        url: `${hostUrl}/goods/${goods_id}/like/`,
+
+        success: function (result) {
+            if ($('#heart').hasClass('fas')) {
+                $('#heart').attr('class', 'far fa-heart')
+                var num = $('#like-num').text()
+                $('#like-num').text(Number(num) - 1)
+            } else {
+                $('#heart').attr('class', 'fas fa-heart')
+                var num = $('#like-num').text()
+                $('#like-num').text(Number(num) + 1)
+
+            }
+        },
+    });
+}

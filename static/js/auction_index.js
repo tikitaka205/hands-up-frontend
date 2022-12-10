@@ -1,6 +1,11 @@
 'use strict';
-const hostUrl = 'http://127.0.0.1:8000'
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxNzUwMjc4LCJpYXQiOjE2Njk5NTAyNzgsImp0aSI6Ijc3NWZhYWJmNTAwMDQzNzc5YmJiMjQ4Zjg5ODJiMmNlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IiwicGhvbmUiOiIwMTAxMjM0NTY3OCJ9.XhCjA_1O53IB3tZentC9KvBnPAyNc1aW8REsxUgZZDw'
+// const hostUrl = 'http://127.0.0.1:8000'
+// const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxNzUwMjc4LCJpYXQiOjE2Njk5NTAyNzgsImp0aSI6Ijc3NWZhYWJmNTAwMDQzNzc5YmJiMjQ4Zjg5ODJiMmNlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IiwicGhvbmUiOiIwMTAxMjM0NTY3OCJ9.XhCjA_1O53IB3tZentC9KvBnPAyNc1aW8REsxUgZZDw'
+
+var backUrl = '127.0.0.1:8000'
+var backEndUrl = 'http://127.0.0.1:8000'
+var token = localStorage.getItem('access')
+
 
 let data_auction_list
 $(document).ready(function () {
@@ -14,22 +19,22 @@ function get_auction_list() {
     let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/`,
+        url: `${backEndUrl}/goods/`,
         headers: {
             // "Authorization": "Bearer " + localStorage.getItem("access"),
-            "Authorization": "Bearer " + accessToken,
+            // "Authorization": "Bearer " + accessToken,
+            "Authorization": "Bearer " + token,
         },
         data: {},
         async: false,
         success: function (response) {
-            console.log(response)
+            // console.log(response)
             let auction_list = response
             temp_response = auction_list
 
             for (let i = 0; i < auction_list.length; i++) {
                 let price
                 let auction_status = auction_list[i]['status']
-                console.log(auction_list)
                 if (auction_status == null) {
                     auction_status = "wait-auction";
                     price = `
@@ -75,7 +80,7 @@ function get_auction_list() {
                         </div>
                         <div class="featured__item__text">
                             <h6><a href="#">${auction_list[i]['title']}</a></h6>
-                            <h6>판매자: ${auction_list[i]["seller"]}</h6>
+                            <h6>판매자: ${auction_list[i]["seller"]["username"]}</h6>
                             ${price}
                             
                             
@@ -96,7 +101,7 @@ function get_auction_list() {
 async function remaindTime() {
 
     for (let i = 0; i < data_auction_list.length; i++) {
-        console.log(data_auction_list)
+        // console.log(data_auction_list)
         let start_date = data_auction_list[i]["start_date"]
         let start_time = data_auction_list[i]["start_time"]
         let id = data_auction_list[i]["id"]
@@ -184,10 +189,11 @@ function goodsLike(goods_id) {
         data: {},
         headers: {
             // "Authorization": "Bearer " + localStorage.getItem("access"),
-            "Authorization": "Bearer " + accessToken,
+            // "Authorization": "Bearer " + accessToken,
+            "Authorization": "Bearer " + token,
         },
 
-        url: `${hostUrl}/goods/${goods_id}/like/`,
+        url: `${backEndUrl}/goods/${goods_id}/like/`,
 
         success: function (result) {
             if ($('#heart').hasClass('fas')) {

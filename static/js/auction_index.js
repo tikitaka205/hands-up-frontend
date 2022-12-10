@@ -8,13 +8,33 @@ $(document).ready(function () {
     data_auction_list = get_auction_list()
 });
 
+var nowPage = 1
 
+const listEnd = document.getElementById('endList');
+const option = {
+    root: null,
+    rootMargin: "0px 0px 0px 0px",
+    thredhold: 0,
+}
+const onIntersect = (entries, observer) => { 
+    console.log(entries, observer)
+    // entries는 IntersectionObserverEntry 객체의 리스트로 배열 형식을 반환합니다.
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            get_auction_list()
+            console.log('ddd')
+        }
+    });
+};
 
-function get_auction_list() {
+const observer = new IntersectionObserver(onIntersect, option);
+observer.observe(listEnd);
+
+function get_auction_list(category='',status='',search='') {
     let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/`,
+        url: `${hostUrl}/goods/?page=${nowPage}&category=${category}&status=${status}&search=${search}`,
         headers: {
             // "Authorization": "Bearer " + localStorage.getItem("access"),
             "Authorization": "Bearer " + accessToken,
@@ -29,8 +49,8 @@ function get_auction_list() {
             for (let i = 0; i < auction_list.length; i++) {
                 let price
                 let auction_status = auction_list[i]['status']
-                let image = auction_list[i]['images']['image']
-                console.log(auction_list)
+                let image = auction_list[i]['images']?.image
+                // console.log(auction_list)
                 if (auction_status == null) {
                     auction_status = "wait-auction";
                     price = `
@@ -49,8 +69,8 @@ function get_auction_list() {
                 };
 
                 let temp_html = `
-                <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}">
-                    <div class="featured__item">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status} mb-3">
+                    <div class="featured__item" style="background-color : white;">
                         <div id="img" class="featured__item__pic set-bg"
                             style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px;">
                             <div style="position: absolute; right: 0px;">
@@ -67,9 +87,9 @@ function get_auction_list() {
                                     <span>초 남음</span>
                                 </div>
                         </div>
-                        <div class="featured__item__text">
+                        <div class="featured__item__text" style="padding : 15px">
                             <h6><a href="#">${auction_list[i]['title']}</a></h6>
-                            <h6>판매자: ${auction_list[i]["seller"]}</h6>
+                            <h6>판매자: ${auction_list[i]["seller"]['username']}</h6>
                             ${price}
                             
                             
@@ -83,6 +103,10 @@ function get_auction_list() {
                 // remaindTime()
 
             }
+            nowPage += 1
+        },
+        error : function(error){
+            $('#endList').html('<h4>끝났어용</h4>')
         }
     })
     return temp_response
@@ -169,7 +193,7 @@ async function remaindTime() {
         }
     }
 }
-setInterval(remaindTime, 1000);
+// setInterval(remaindTime, 1000);
 
 
 function goodsLike(goods_id) {

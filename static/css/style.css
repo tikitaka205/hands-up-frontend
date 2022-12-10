@@ -869,7 +869,7 @@ ol {
 }
 
 .featured__item {
-  margin-bottom: 50px;
+  /* margin-bottom: 25px; */
 }
 
 .featured__item:hover .featured__item__pic .featured__item__pic__hover {

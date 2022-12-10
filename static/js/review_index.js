@@ -55,7 +55,26 @@ function review_list() {
                     $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`)
                 }
                 console.log("끝")
-                $('#bad_score').text(`${bad_review_count}`)
+                if(bad_review_count==0){
+                    $('#bad_score').hide()
+                }else{
+                    $('#bad_score').text(`${bad_review_count}`)
+                }
+                if(soso_review_count==0){
+                    $('#soso_score').hide()
+                }else{
+                    $('#soso_score').text(`${soso_review_count}`)
+                }
+                if(good_review_count==0){
+                    $('#good_score').hide()
+                }else{
+                    $('#good_score').text(`${good_review_count}`)
+                }
+                if(excellent_review_count==0){
+                    $('#excellent_score').hide()
+                }else{
+                    $('#excellent_score').text(`${excellent_review_count}`)
+                }
                 $('#soso_score').text(`${soso_review_count}`)
                 $('#good_score').text(`${good_review_count}`)
                 $('#excellent_score').text(`${excellent_review_count}`)

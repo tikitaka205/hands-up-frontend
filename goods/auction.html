@@ -17,21 +17,17 @@
 
     <title>👋 핸즈업</title>
 
-    <!-- Google Font -->
-    <link href="/static/css/css2" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/css/elegant-icons.css">
+    <!-- <link rel="stylesheet" href="/static/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="/static/css/elegant-icons.css"> -->
     <link rel="stylesheet" href="/static/css/nice-select.css">
     <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/slicknav.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <link rel="stylesheet" href="/static/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/static/css/all.min.css"> -->
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- timeago -->
@@ -290,7 +286,7 @@
                     <div id="high-price">
             
                     </div>
-                    <input class="form-control mb-2" id="chat-money-input" type="text" placeholder="입찰가를 입력해 주세요!" />
+                    <input class="form-control mb-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="chat-money-input" type="text" placeholder="입찰가를 입력해 주세요!" />
                     <input class="btn btn-warning form-control" style="box-shadow: 0 1px 2px 0px;" id="chat-message-submit"
                         type="button" onclick="sendMoney()" value="입찰" />
                 </div>
@@ -319,6 +315,7 @@
     <button onclick="auctionView(3)"></button> -->
 
     <script src="/static/js/auction.js"></script>
+    <script src="/static/js/main.js"></script>
     <script>
         // function auctionView(goodsId){
         //     HANDSUP['goods_id'] = goodsId

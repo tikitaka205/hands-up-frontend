@@ -14,7 +14,7 @@ function get_auction_list() {
     let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/`,
+        url: `${hostUrl}/goods/user/2`,
         headers: {
             // "Authorization": "Bearer " + localStorage.getItem("access"),
             "Authorization": "Bearer " + accessToken,
@@ -82,6 +82,9 @@ function get_auction_list() {
                 // remaindTime(auction_list[i]['id'], auction_list[i]['start_date'], auction_list[i]['start_time'])
                 // remaindTime()
 
+            }
+            if(profile_image){
+                $('#img').attr("src", `http://127.0.0.1:8000${profile_image}`)
             }
         }
     })

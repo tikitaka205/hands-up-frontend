@@ -1,12 +1,39 @@
 const payload = JSON.parse(localStorage.getItem('payload', ''))
+
+
+// function join_chat(goods_id) {
+//     localStorage.setItem('goods_id',goods_id)
+//     location.href='chat/index.html/'
+//     } 받아와서 아래에서 사용
+
+
+let goods_id=localStorage.getItem('goods_id')
 console.log("start_chat", "user_id: ", payload["user_id"]);
 
+
+// 로컬스토리지에서 goods id
+// 그걸알아야하는데 경매창이나 내정보
 // const roomName = JSON.parse(document.getElementById('roomName').textContent);
+// 굿즈아이디를 담아서 보내주는데 그건 페이지 들어가서고
+// 여기서는 페이지만 잘들어가게 해주면 된다 근데 그게 조건문
+// 굿즈에서 받을때부터 구매자 판매자 누군지 저장해두자 그리고 여기서 들고오자 ajax이용말고
+
+
+function review() {
+    let user_id=localStorage.getItem('user_id')
+    let seller_id=localStorage.getItem('seller_id')
+    if(user_id==seller_id){
+        location.href='review/seller.html'
+    }else{
+        location.href='review/buyer.html'
+    }
+    }
+
 
 hostUrl = '127.0.0.1:8000'
 var chatSocket = new WebSocket(
     'ws://' + hostUrl +
-    '/chat/' + "1" + '/');
+    '/chat/' + `${goods_id}` + '/');
 
 console.log(chatSocket)
 
@@ -64,7 +91,7 @@ chatMessageSend.onclick = function (e) {
 
     chatSocket.send(JSON.stringify({
         'user_id': payload['user_id'],
-        'goods_id': 1,
+        'goods_id': `${goods_id}`,
         'message': message
     }));
     // 메세진 전송후 입력창에 빈값 넣어주기
@@ -75,7 +102,7 @@ function get_chat_log() {
     let result
     $.ajax({
         type: 'GET',
-        url: `http://${hostUrl}/chat/1`,
+        url: `http://${hostUrl}/chat/${goods_id}`,
         data: {},
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),

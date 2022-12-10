@@ -6,7 +6,7 @@ console.log("start_chat", "user_id: ", payload["user_id"]);
 hostUrl = '127.0.0.1:8000'
 var chatSocket = new WebSocket(
     'ws://' + hostUrl +
-    '/chat/' + "2" + '/');
+    '/chat/' + "1" + '/');
 
 console.log(chatSocket)
 
@@ -24,7 +24,7 @@ chatSocket.onmessage = function (e) {
     // 
     document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
     //
-    $('#chatLog').value +=
+    // $('#chatLog').value +=
     const top = $('#chatLog').prop('scrollHeight');
     $('#chatLog').scrollTop(top);
 };
@@ -52,7 +52,7 @@ chatMessageSend.onclick = function (e) {
 
     chatSocket.send(JSON.stringify({
         'user_id': payload['user_id'],
-        'goods_id': 2,
+        'goods_id': 1,
         'message': message
     }));
     // 메세진 전송후 입력창에 빈값 넣어주기
@@ -63,7 +63,7 @@ function get_chat_log() {
     let result
     $.ajax({
         type: 'GET',
-        url: `http://${hostUrl}/chat/2`,
+        url: `http://${hostUrl}/chat/1`,
         data: {},
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),

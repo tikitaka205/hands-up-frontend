@@ -30,6 +30,8 @@ function get_auction_list() {
                 let price
                 let auction_status = auction_list[i]['status']
                 let image = auction_list[i]['images']['image']
+                let goods_id = auction_list[i]['id']
+                let is_like = auction_list[i]['is_like']
                 console.log(auction_list)
                 if (auction_status == null) {
                     auction_status = "wait-auction";
@@ -47,15 +49,15 @@ function get_auction_list() {
                     <h5 id="high_price-${auction_list[i]['id']}">현재가 ${auction_list[i]["high_price"]}원</h5>
                     `
                 };
-
-                let temp_html = `
+                
+                let temp_html_is_like = `
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}">
                     <div class="featured__item">
                         <div id="img" class="featured__item__pic set-bg"
-                            style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px;">
+                            style="background-image: url(http://127.0.0.1:8000${image}); ">
                             <div style="position: absolute; right: 0px;">
-                                <div class="btn btn-outline-danger" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer; ">
-                                    <i id="heart" class="far fa-heart"></i>
+                                <div onclick="goodsLike(${goods_id})" class="btn btn-outline-danger" id="post-like" style="width: 30px; height:30px; margin: 0 auto; padding: 3px; cursor: pointer; ">
+                                    <i id="heart-${goods_id}" class="fas fa-heart"></i>
                                     <span id="like-num"></span>
                                 </div>
                             </div style="display:flex; justify-content: center;">
@@ -78,13 +80,44 @@ function get_auction_list() {
                     </div>
                 </div>
                 `
+                let temp_html = `
+                <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}">
+                    <div class="featured__item">
+                        <div id="img" class="featured__item__pic set-bg"
+                            style="background-image: url(http://127.0.0.1:8000${image});">
+                            <div style="position: absolute; right: 0px;">
+                                <div onclick="goodsLike(${goods_id})" class="btn btn-outline-danger" id="post-like" style="width: 30px; height:30px; margin: 0 auto; padding: 3px; cursor: pointer; ">
+                                    <i id="heart-${goods_id}" class="far fa-heart"></i>
+                                    <span id="like-num"></span>
+                                </div>
+                            </div style="display:flex; justify-content: center;">
+                                <p class="time-title-${auction_list[i]['id']}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
+                                <div class="time-${auction_list[i]['id']} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
+                                    <span class="minutes-${auction_list[i]['id']}"></span>
+                                    <span>분</span>
+                                    <span class="seconds-${auction_list[i]['id']}"></span>
+                                    <span>초 남음</span>
+                                </div>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">${auction_list[i]['title']}</a></h6>
+                            <h6>판매자: ${auction_list[i]["seller"]}</h6>
+                            ${price}
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                `
+                if(is_like){
+                $('#auction_list').append(temp_html_is_like)
+                }else{
                 $('#auction_list').append(temp_html)
+                }
                 // remaindTime(auction_list[i]['id'], auction_list[i]['start_date'], auction_list[i]['start_time'])
                 // remaindTime()
 
-            }
-            if(profile_image){
-                $('#img').attr("src", `http://127.0.0.1:8000${profile_image}`)
             }
         }
     })
@@ -185,17 +218,14 @@ function goodsLike(goods_id) {
             "Authorization": "Bearer " + accessToken,
         },
 
-        url: `${hostUrl}/goods/${goods_id}/like/`,
+        url: `${hostUrl}/goods/like/${goods_id}/`,
+// document
+        success: function () {
+            if ($(`#heart-${goods_id}`).hasClass('fas')) {
+                $(`#heart-${goods_id}`).attr('class', 'far fa-heart')
 
-        success: function (result) {
-            if ($('#heart').hasClass('fas')) {
-                $('#heart').attr('class', 'far fa-heart')
-                var num = $('#like-num').text()
-                $('#like-num').text(Number(num) - 1)
             } else {
-                $('#heart').attr('class', 'fas fa-heart')
-                var num = $('#like-num').text()
-                $('#like-num').text(Number(num) + 1)
+                $(`#heart-${goods_id}`).attr('class', 'fas fa-heart')
 
             }
         },

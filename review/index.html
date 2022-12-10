@@ -42,6 +42,28 @@
             .header__menu > ul >li{
                 margin: 0 10px;
             }
+            .progress {
+
+            position: relative;
+            height: 15px;
+            border-radius: 7.5px;
+            }
+
+            .progress::after {
+            content: '\A';
+            position: absolute;
+            border-radius: 0 15px 15px 0;
+            /* background-color: var(--c); */
+            background: linear-gradient(to right, var(--c1), var(--c2));
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: var(--w);
+            /* Specify the width.. */
+            -webkit-animation: filler 1.5s ease-in-out;
+            -moz-animation: filler 1.5s ease-in-out;
+            animation: filler 1.5s ease-in-out;
+            }
         </style>
     </head>
     
@@ -192,9 +214,8 @@
 
                 
                       </div>
-                      <div>
-                        <b>매너온도</b>
-                        <br>
+                      <div id="temp">
+
                       </div>
                     </div>
                   </div>

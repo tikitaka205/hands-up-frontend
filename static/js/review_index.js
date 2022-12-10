@@ -25,7 +25,10 @@ function review_list() {
             let good_review_count =response['good_review_count']
             let excellent_review_count =response['excellent_review_count']
             let username =response['receiver']['username']
-
+            let temperature=response['receiver']['rating_score']
+            let id=response['receiver']['id']
+            let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
+            console.log(temperature)
             if (response['results'].length > 0) {
                 for (let i = 0; i < response['results'].length; i++) {
                     let author = response['results'][i]['author']
@@ -75,11 +78,21 @@ function review_list() {
                 }else{
                     $('#excellent_score').text(`${excellent_review_count}`)
                 }
+                let temper=`
+                <div>
+                <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                <span class='text-secondary small'>매너점수</span> ${temperature}
+                </div>
+                <div onclick="">판매상품 보러가기</div>
+                `
                 $('#soso_score').text(`${soso_review_count}`)
                 $('#good_score').text(`${good_review_count}`)
                 $('#excellent_score').text(`${excellent_review_count}`)
                 $('#username').text(`${username}`)
                 $('#profile_image').text(`${profile_image}`)
+                $('#temp').append(temper)
+                    
+
                 $("time.timeago").timeago();
 
             }

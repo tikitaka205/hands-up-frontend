@@ -1,8 +1,9 @@
 window.onload = function(){
     review_list()
     $("time.timeago").timeago();
-
 }
+let user_id=localStorage.getItem('user_id')
+
 
 function review_list() {
     console.log('정보 불러오기 성공')
@@ -40,7 +41,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px;">
+                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:15px;">
                                     <strong class="me-auto" style="margin-left: 10px;">${author}</strong>
                                     <small class="text-muted" style="margin-left: 10px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
@@ -83,7 +84,10 @@ function review_list() {
                 <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                 <span class='text-secondary small'>매너점수</span> ${temperature}
                 </div>
-                <div onclick="">판매상품 보러가기</div>
+                <br>
+                <div style="display:felx;">
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                </div>
                 `
                 $('#soso_score').text(`${soso_review_count}`)
                 $('#good_score').text(`${good_review_count}`)
@@ -98,3 +102,8 @@ function review_list() {
             }
             });
     }
+
+
+function review(){
+    location.href='goods_list.html'
+}

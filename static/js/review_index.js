@@ -6,7 +6,7 @@ let user_id=localStorage.getItem('user_id')
 
 function review_list() {
     console.log('정보 불러오기 성공')
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyMzk3MTU3LCJpYXQiOjE2NzA1OTcxNTcsImp0aSI6IjU4N2ZmYTU0NGIzZDQ3M2JiY2M4MDIwMjZiODY1OGRmIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.dSfcKBzQEvUSv-ATCaX6dfAvy3LutOJqsw4qZPfNmaI'
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTMxNjExLCJpYXQiOjE2NzA3MzE2MTEsImp0aSI6ImU2YzgzMTRlODQ2ZTQwOGJhMGNiMmJhMDMwY2M1NGRiIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiIxMjMxMjMxMjMxMjMiLCJwaG9uZSI6IjAxMDUifQ.nK5Y54RGrDGKSs9Bk45GDJ2rqp6m_L1DHOY1Ox45WgA'
     $.ajax({
         type: 'GET',
 
@@ -27,6 +27,7 @@ function review_list() {
             let username =response['receiver']['username']
             let temperature=response['receiver']['rating_score']
             let id=response['receiver']['id']
+            let is_active=response['receiver']['is_active']
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
             console.log(temperature)
             if (response['results'].length > 0) {
@@ -57,6 +58,40 @@ function review_list() {
                 if(profile_image){
                     $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`)
                 }
+                let temper=`
+                <div>
+                <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                <span class='text-secondary small'>매너점수</span> ${temperature}
+                </div>
+                <br>
+                <div style="display:felx;">
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                </div>
+                `
+                let temper_bad_user=`
+                <div>
+                <div class="progress" max=100 style="--w:0%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                <span class='text-secondary small'>매너점수</span> 0
+                </div>
+                <br>
+                <div style="display:felx;">
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                </div>
+                `
+                let bad_user = `
+                <div style="background-color:#c00000; height:70px; display: flex; justify-content: center; align-items: center; font-weight: bolder;">
+                    <div >
+                        현재 비매너 사유로 이용정지 중입니다.
+                    </div>
+                </div>
+                `
+                if(is_active==true){
+                    $('#temp').append(temper)
+
+                }else{
+                    $('#bad_user').append(bad_user)
+                    $('#temp').append(temper_bad_user)
+                }
                 console.log("끝")
                 if(bad_review_count==0){
                     $('#bad_score').hide()
@@ -78,22 +113,12 @@ function review_list() {
                 }else{
                     $('#excellent_score').text(`${excellent_review_count}`)
                 }
-                let temper=`
-                <div>
-                <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
-                <span class='text-secondary small'>매너점수</span> ${temperature}
-                </div>
-                <br>
-                <div style="display:felx;">
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
-                </div>
-                `
+
                 $('#soso_score').text(`${soso_review_count}`)
                 $('#good_score').text(`${good_review_count}`)
                 $('#excellent_score').text(`${excellent_review_count}`)
                 $('#username').text(`${username}`)
                 $('#profile_image').text(`${profile_image}`)
-                $('#temp').append(temper)
                 $("time.timeago").timeago();
 
             }

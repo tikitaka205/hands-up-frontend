@@ -11,7 +11,11 @@ var token = localStorage.getItem('access')
 
 var chatSocket = new WebSocket(
     'ws://' + backUrl +
-    '/chat/' + "2" + '/');
+    '/chat/' + "2" + '/?token=' + token);
+
+// var chatSocket = new WebSocket(
+//     'ws://' + backUrl +
+//     '/chat/' + "2" + '/');
 
 console.log(chatSocket)
 
@@ -24,19 +28,28 @@ chatSocket.onmessage = function (e) {
     let data = JSON.parse(e.data);
     let message = data['message'];
     let sender = data['sender_name']
-    // console.log("onmessage: ", data)
+    let sender_image = data['sender_image']
+    console.log("onmessage: ", sender_image)
     let temp_html
     if (sender == payload["username"]) {
         temp_html = `
-            <div class="chat_message" style="float: right; bottom: 0px; float: right;" >
+        <div class="chat_message_wrap" style="align-items: flex-end;">
+            <div class="chat_message" style="float: right; bottom: 0px;" >
             <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
             </div>
+        </div>
         `
     } else {
         temp_html = `
+        <div class="chat_message_wrap" style="align-items: flex-start;">
+            <div style="display: flex; flex-direction: row;">    
+                <img src="http://127.0.0.1:8000/media/default.jpeg" style="width:30px; height:30;">
+                <span style="margin-left: 5px;">${sender}</span>
+            </div>
             <div class="chat_message" style="background-color: rgb(183, 183, 183);">
             <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
             </div>
+        </div>
         `
     }
     $('#chatLog').append(temp_html)
@@ -78,7 +91,7 @@ chatMessageSend.onclick = function (e) {
 function get_chat_log() {
     $.ajax({
         type: 'GET',
-        url: `${backEndUrl}/chat/2`,
+        url: `${backEndUrl}/chat/2/?token=${token}`,
         data: {},
         headers: {
             "Authorization": "Bearer " + token,
@@ -91,20 +104,30 @@ function get_chat_log() {
 
             for (let i = 0; i < response['data'].length; i++) {
                 let message = response['data'][i]['content'];
-                let sender = response['data'][i]['author'];
+                let sender = response['data'][i]['author']['username'];
+                let profile_image = response['data'][i]['author']['profile_image'];
+                console.log(profile_image)
                 // console.log(message, sender)
                 let temp_html
-                if (response['data'][i]['author'] == payload["username"]) {
+                if (sender == payload["username"]) {
                     temp_html = `
-                        <div class="chat_message" style="float: right; bottom: 0px; float: right;" >
+                    <div class="chat_message_wrap" style="align-items: flex-end;">
+                        <div class="chat_message" style="float: right; bottom: 0px;" >
                         <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
                         </div>
+                    </div>
                     `
                 } else {
                     temp_html = `
+                    <div class="chat_message_wrap" style="align-items: flex-start;">
+                        <div style="display: flex; flex-direction: row;">    
+                            <img src="${backEndUrl}${profile_image}" style="width:30px; height:30;">
+                            <span style="margin-left: 5px;">${sender}</span>
+                        </div>
                         <div class="chat_message" style="background-color: rgb(183, 183, 183);">
                         <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
                         </div>
+                    </div>
                     `
                 }
 

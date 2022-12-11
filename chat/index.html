@@ -17,16 +17,24 @@
             height: 300px;
         }
 
+        .chat_message_wrap {
+            display: flex;
+            flex-direction: column;
+            /* bottom: 0px;
+            justify-content: center; */
+        }
+
         .chat_message {
             background-color: rgb(58, 232, 58);
             border-radius: 15px;
             text-align: left;
-            width: 300px;
+            max-width: 300px;
             min-height: 40px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             margin-bottom: 10px;
             bottom: 0px;
+
         }
     </style>
 </head>
@@ -67,8 +75,8 @@
             <div class="mb-2" style="display: flex; justify-content: center; margin-top: 20px; width: 600px;">
 
                 <label for="chatLog"></label>
-                <div id="chatLog" style="overflow-y:auto; height: 500px; width: 600px; border-radius: 15px;"></div>
-                <!-- <textarea class="form-control" style="height: 500px; width: 600px; border-radius: 15px;" id="chatLog" readonly> 여기가 벨류 </textarea> -->
+                <div id="chatLog"
+                    style="overflow-y:auto; height: 500px; width: 600px; border-radius: 15px; padding: 15px;"></div>
             </div>
             <div class="mb-2" style="display: flex; justify-content: center; width: 600px;">
 

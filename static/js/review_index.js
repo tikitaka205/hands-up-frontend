@@ -58,19 +58,9 @@ function review_list() {
                 if(profile_image){
                     $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`)
                 }
-                let temper=`
-                <div>
-                <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
-                <span class='text-secondary small'>매너점수</span> ${temperature}
-                </div>
-                <br>
-                <div style="display:felx;">
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
-                </div>
-                `
                 let temper_bad_user=`
                 <div>
-                <div class="progress" max=100 style="--w:0%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                <div class="progress" max=100 "></div>
                 <span class='text-secondary small'>매너점수</span> 0
                 </div>
                 <br>
@@ -86,8 +76,19 @@ function review_list() {
                 </div>
                 `
                 if(is_active==true && temperature > 0 ){
-                    $('#temp').append(temper)
-                }else if(is_active==true && temperature < 0){
+                $('#temp').append(
+                `
+                <div>
+                <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                <span class='text-secondary small'>매너점수</span> ${temperature}
+                </div>
+                <br>
+                <div style="display:felx;">
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                </div>
+                `
+                        )
+                }else if(is_active==true && temperature <= 0){
                     $('#temp').append(temper_bad_user)
                 }else if(is_active==false){
                     $('#bad_user').append(bad_user)

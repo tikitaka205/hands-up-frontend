@@ -239,7 +239,7 @@ function selectScore(score_1){
 
 // 댓글
 function reviewCreate() {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyMzUxMzUxLCJpYXQiOjE2NzA1NTEzNTEsImp0aSI6IjAxMjM0YTkxYjFiZTQwNWM4MzMyMGJlZWQyYmJkMThhIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEifQ.SR-l_ePuwgYxeSmlRx_-segvGNJ2FUyn2Df1WdtEVPk'
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTMzMzUwLCJpYXQiOjE2NzA3MzMzNTAsImp0aSI6IjMxZWJhN2I4ZWY2YjQ2OTM4ODcxNWI4NWQ3N2NjMjYxIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.fUj3wH0KWszPaI6p9FTukoJAKBEXCZRqbVSOdOQUx_E'
 
    let content = $("#content").val()
    let score= $("input[type=checkbox]:checked").val()
@@ -252,7 +252,7 @@ function reviewCreate() {
    $.ajax({
        
        type: "POST",
-       url: `http://127.0.0.1:8000/review/5/`,
+       url: `http://127.0.0.1:8000/review/2/`,
        processData: false,
        contentType: false,
        data: formData,
@@ -264,13 +264,15 @@ function reviewCreate() {
        success: function () {
            location.reload()
        },
-       error : function(){
+       error : function(response){
+        console.log(response)
        if(score==undefined){
        alert("상대방과 거래가 어땠는지 선택해주세요");
        }else if(content==''){
        alert("내용을 입력해주세요. 최대 50자");
-
-       }
+       }else if(response.status == 409){
+        alert("이미 평가 했습니다.");
+        }
    
        }
 

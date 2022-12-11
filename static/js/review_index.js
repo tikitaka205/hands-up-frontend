@@ -6,7 +6,7 @@ let user_id=localStorage.getItem('user_id')
 
 function review_list() {
     console.log('정보 불러오기 성공')
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTMxNjExLCJpYXQiOjE2NzA3MzE2MTEsImp0aSI6ImU2YzgzMTRlODQ2ZTQwOGJhMGNiMmJhMDMwY2M1NGRiIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiIxMjMxMjMxMjMxMjMiLCJwaG9uZSI6IjAxMDUifQ.nK5Y54RGrDGKSs9Bk45GDJ2rqp6m_L1DHOY1Ox45WgA'
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTQ0NDE0LCJpYXQiOjE2NzA3NDQ0MTQsImp0aSI6ImYxODk0YThlYTQ0MjQzNGQ5ZWYwZTZkMTIxOWZkZmI0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.JiEzU46-7FlrgdldrCwvGdj9lZ2-VKmDIOUsNELdNps'
     $.ajax({
         type: 'GET',
 
@@ -85,10 +85,11 @@ function review_list() {
                     </div>
                 </div>
                 `
-                if(is_active==true){
+                if(is_active==true && temperature > 0 ){
                     $('#temp').append(temper)
-
-                }else{
+                }else if(is_active==true && temperature < 0){
+                    $('#temp').append(temper_bad_user)
+                }else if(is_active==false){
                     $('#bad_user').append(bad_user)
                     $('#temp').append(temper_bad_user)
                 }

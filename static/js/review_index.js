@@ -1,6 +1,5 @@
 window.onload = function(){
     review_list()
-    $("time.timeago").timeago();
 }
 let user_id=localStorage.getItem('user_id')
 
@@ -95,8 +94,6 @@ function review_list() {
                 $('#username').text(`${username}`)
                 $('#profile_image').text(`${profile_image}`)
                 $('#temp').append(temper)
-                    
-
                 $("time.timeago").timeago();
 
             }

@@ -1,21 +1,23 @@
 const payload = JSON.parse(localStorage.getItem('payload', ''))
+
+
+// function join_chat(goods_id) {
+//     localStorage.setItem('goods_id',goods_id)
+//     location.href='chat/index.html/'
+//     } 받아와서 아래에서 사용
+
+
+let goods_id = localStorage.getItem('goods_id')
 console.log("start_chat", "user_id: ", payload["user_id"]);
 
+
+// 로컬스토리지에서 goods id
+// 그걸알아야하는데 경매창이나 내정보
 // const roomName = JSON.parse(document.getElementById('roomName').textContent);
-// hostUrl = '127.0.0.1:8000'
-
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
-var token = localStorage.getItem('access')
-
 
 var chatSocket = new WebSocket(
-    'ws://' + backUrl +
-    '/chat/' + "2" + '/?token=' + token);
-
-// var chatSocket = new WebSocket(
-//     'ws://' + backUrl +
-//     '/chat/' + "2" + '/');
+    'ws://' + hostUrl +
+    '/chat/' + "2" + '/');
 
 console.log(chatSocket)
 
@@ -81,7 +83,7 @@ chatMessageSend.onclick = function (e) {
 
     chatSocket.send(JSON.stringify({
         'user_id': payload['user_id'],
-        'goods_id': 2,
+        'goods_id': `${goods_id}`,
         'message': message
     }));
     // 메세진 전송후 입력창에 빈값 넣어주기
@@ -91,7 +93,7 @@ chatMessageSend.onclick = function (e) {
 function get_chat_log() {
     $.ajax({
         type: 'GET',
-        url: `${backEndUrl}/chat/2/?token=${token}`,
+        url: `http://${hostUrl}/chat/2`,
         data: {},
         headers: {
             "Authorization": "Bearer " + token,

@@ -237,7 +237,6 @@ function selectScore(score_1){
 // }
 
 
-// 댓글
 function reviewCreate() {
     const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyMzUxMzUxLCJpYXQiOjE2NzA1NTEzNTEsImp0aSI6IjAxMjM0YTkxYjFiZTQwNWM4MzMyMGJlZWQyYmJkMThhIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiIxMjMiLCJwaG9uZSI6IjEifQ.SR-l_ePuwgYxeSmlRx_-segvGNJ2FUyn2Df1WdtEVPk'
 
@@ -269,8 +268,10 @@ function reviewCreate() {
        alert("상대방과 거래가 어땠는지 선택해주세요");
        }else if(content==''){
        alert("내용을 입력해주세요. 최대 50자");
-
        }
+        else if(response.status == 409){
+        alert("이미 평가 했습니다.");
+        }
    
        }
 

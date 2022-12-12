@@ -50,7 +50,7 @@ async function goodsInfoView() {
     });
     // 사용자 정보 섹션
     var temp = `
-        <div class = "p-3 card mb-3" style= "background-color : #2c2c2c; border-radius : 10px; color : white;">
+        <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black;">
             <div class = "row" onclick="console.log('프로필로이동하장')">
                 <div class = "col-2">
                     <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
@@ -69,7 +69,7 @@ async function goodsInfoView() {
     document.getElementById('seller-info-wrap').innerHTML = temp
     // 판매자 예상 가치 섹션
     var temp = `
-        <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
+        <div class = "p-3 card mb-3" style="background-color : white; color:black; border-radius:10px;">
             <div class ="row">
                 <span class="col-6" style="font-weight : 600;">
                     판매자 예상 가치 :                        
@@ -85,8 +85,8 @@ async function goodsInfoView() {
     // 물건 정보 섹션
     var time = data["created_at"].slice(undefined,-7)
     var temp = `
-        <div class = "p-3 card mb-3" style="background-color : #2c2c2c; color:white; border-radius:10px;">
-            <h3 style="color:white; font-weight:600;">${data['title']}</h3>
+        <div class = "p-3 card mb-3" style="background-color : white; color:black; border-radius:10px;">
+            <h3 style="font-weight:600;">${data['title']}</h3>
                             
             <div class="small">카테고리 : ${data['category']}, <span style="font-size:14px"><time class="timeago" datetime="${time}"></time></span></div>
             <div class="card-body" style="font-weight:600">${data['content']}</div>
@@ -306,7 +306,7 @@ chatSocket.onmessage = async function (e) {
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']} (판매자)</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #ffcfcf; padding : 5px; margin-bottom : 10px;">
                     ${data['message']}
                 </div>
             </div>
@@ -316,9 +316,9 @@ chatSocket.onmessage = async function (e) {
             <div>
                 <div>
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
-                    <b style = "font-size : 20px">${data['sender_name']} </b> (현재 최고가 입찰자) <span style="font-color : gray; font-size:small;">${data['time']}</span>
+                    <b style = "font-size : 20px">${data['sender_name']} </b> (현재 오너) <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #dfcfff; padding : 5px; margin-bottom : 10px;">
                     ${data['message']}
                 </div>
             </div>

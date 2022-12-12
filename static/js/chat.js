@@ -7,7 +7,8 @@ const payload = JSON.parse(localStorage.getItem('payload', ''))
 //     } 받아와서 아래에서 사용
 
 
-let goods_id = localStorage.getItem('goods_id')
+// let goods_id = localStorage.getItem('goods_id')
+let goods_id = 2;
 console.log("start_chat", "user_id: ", payload["user_id"]);
 
 
@@ -15,13 +16,19 @@ console.log("start_chat", "user_id: ", payload["user_id"]);
 // 그걸알아야하는데 경매창이나 내정보
 // const roomName = JSON.parse(document.getElementById('roomName').textContent);
 
+var backUrl = '127.0.0.1:8000'
+var backEndUrl = 'http://127.0.0.1:8000'
+var token = localStorage.getItem('access')
+
+
 var chatSocket = new WebSocket(
-    'ws://' + hostUrl +
-    '/chat/' + "2" + '/');
+    'ws://' + backUrl +
+    '/chat/' + goods_id + '/?token=' + token);
 
 console.log(chatSocket)
 
 chatSocket.onopen = function (e) {
+    get_chat_other_user()
     get_chat_log()
 }
 
@@ -46,7 +53,7 @@ chatSocket.onmessage = function (e) {
         <div class="chat_message_wrap" style="align-items: flex-start;">
             <div style="display: flex; flex-direction: row;">    
                 <img src="http://127.0.0.1:8000/media/default.jpeg" style="width:30px; height:30;">
-                <span style="margin-left: 5px;">${sender}</span>
+                <span style="margin-left: 5px; font-weight: bolder;">${sender}</span>
             </div>
             <div class="chat_message" style="background-color: rgb(183, 183, 183);">
             <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
@@ -93,7 +100,7 @@ chatMessageSend.onclick = function (e) {
 function get_chat_log() {
     $.ajax({
         type: 'GET',
-        url: `http://${hostUrl}/chat/2`,
+        url: `${backEndUrl}/chat/${goods_id}/?token=${token}`,
         data: {},
         headers: {
             "Authorization": "Bearer " + token,
@@ -124,7 +131,7 @@ function get_chat_log() {
                     <div class="chat_message_wrap" style="align-items: flex-start;">
                         <div style="display: flex; flex-direction: row;">    
                             <img src="${backEndUrl}${profile_image}" style="width:30px; height:30;">
-                            <span style="margin-left: 5px;">${sender}</span>
+                            <span style="margin-left: 5px; font-weight: bolder;">${sender}</span>
                         </div>
                         <div class="chat_message" style="background-color: rgb(183, 183, 183);">
                         <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
@@ -138,6 +145,37 @@ function get_chat_log() {
                 const top = $('#chatLog').prop('scrollHeight');
                 $('#chatLog').scrollTop(top);
             }
+        }
+    });
+}
+
+function get_chat_other_user() {
+    $.ajax({
+        type: 'GET',
+        url: `${backEndUrl}/goods/${goods_id}/?token=${token}`,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            console.log(response)
+            let seller = response["seller"]["username"]
+            let buyer = response["buyer"]["username"]
+            if (payload["username"] == buyer) {
+                $('#chat-other-user').text(`${seller} 님과의 대화`)
+                temp_html = `
+                    <button class="btn btn-success" id="review" onclick="location.href='/review/seller.html'" 
+                    style="background-color: rgb(65, 166, 209); border-radius: 15px;">거래후기 작성</button>
+                `
+            } else if (payload["username"] == seller) {
+                $('#chat-other-user').text(`${buyer} 님과의 대화`)
+                temp_html = `
+                    
+                    <button class="btn btn-success" id="review" onclick="location.href='/review/buyer.html'" 
+                    style="background-color: rgb(65, 166, 209); border-radius: 15px;">거래후기 작성</button>
+                `
+            }
+            $('#review-btn').html(temp_html)
         }
     });
 }

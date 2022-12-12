@@ -1,10 +1,8 @@
 'use strict';
-// const hostUrl = 'http://127.0.0.1:8000'
-// const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxNzUwMjc4LCJpYXQiOjE2Njk5NTAyNzgsImp0aSI6Ijc3NWZhYWJmNTAwMDQzNzc5YmJiMjQ4Zjg5ODJiMmNlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IiwicGhvbmUiOiIwMTAxMjM0NTY3OCJ9.XhCjA_1O53IB3tZentC9KvBnPAyNc1aW8REsxUgZZDw'
 
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
-var token = localStorage.getItem('access')
+const backUrl = '127.0.0.1:8000'
+const backEndUrl = 'http://127.0.0.1:8000'
+const token = localStorage.getItem('access')
 
 
 let data_auction_list
@@ -33,26 +31,27 @@ function get_auction_list() {
             temp_response = auction_list
 
             for (let i = 0; i < auction_list.length; i++) {
+                // console.log(auction_list)
                 let price
                 let auction_status = auction_list[i]['status']
-                let image = auction_list[i]['images']['image']
+                let image = auction_list[i]['images']
                 let goods_id = auction_list[i]['id']
                 let is_like = auction_list[i]['is_like']
-                console.log(auction_list)
+
                 if (auction_status == null) {
                     auction_status = "wait-auction";
                     price = `
-                    <h5 id="start_price-${auction_list[i]['id']}">시작가 ${auction_list[i]["start_price"]}원</h5>
+                    <h5 id="start_price-${goods_id}">시작가 ${auction_list[i]["start_price"]}원</h5>
                     `
                 } else if (auction_status == true) {
                     auction_status = "started-auction";
                     price = `
-                    <h5 id="high_price-${auction_list[i]['id']}">현재가 ${auction_list[i]["high_price"]}원</h5>
+                    <h5 id="high_price-${goods_id}">현재가 ${auction_list[i]["high_price"]}원</h5>
                     `
                 } else {
                     auction_status = "end-auction";
                     price = `
-                    <h5 id="high_price-${auction_list[i]['id']}">현재가 ${auction_list[i]["high_price"]}원</h5>
+                    <h5 id="high_price-${goods_id}">현재가 ${auction_list[i]["high_price"]}원</h5>
                     `
                 };
 
@@ -67,11 +66,11 @@ function get_auction_list() {
                                     <span id="like-num"></span>
                                 </div>
                             </div style="display:flex; justify-content: center;">
-                                <p class="time-title-${auction_list[i]['id']}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
-                                <div class="time-${auction_list[i]['id']} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
-                                    <span class="minutes-${auction_list[i]['id']}"></span>
+                                <p class="time-title-${goods_id}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
+                                <div class="time-${goods_id} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
+                                    <span class="minutes-${goods_id}"></span>
                                     <span>분</span>
-                                    <span class="seconds-${auction_list[i]['id']}"></span>
+                                    <span class="seconds-${goods_id}"></span>
                                     <span>초 남음</span>
                                 </div>
                         </div>
@@ -97,11 +96,11 @@ function get_auction_list() {
                                     <span id="like-num"></span>
                                 </div>
                             </div style="display:flex; justify-content: center;">
-                                <p class="time-title-${auction_list[i]['id']}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
-                                <div class="time-${auction_list[i]['id']} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
-                                    <span class="minutes-${auction_list[i]['id']}"></span>
+                                <p class="time-title-${goods_id}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
+                                <div class="time-${goods_id} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
+                                    <span class="minutes-${goods_id}"></span>
                                     <span>분</span>
-                                    <span class="seconds-${auction_list[i]['id']}"></span>
+                                    <span class="seconds-${goods_id}"></span>
                                     <span>초 남음</span>
                                 </div>
                         </div>

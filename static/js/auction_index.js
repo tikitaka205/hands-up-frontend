@@ -169,8 +169,8 @@ function get_auction_list() {
         error : function(error){
             var temp = `
             <div class="text-center">
-                <span style="font-size:25px; color:white;">원하시는 경매는 이게 전부에요 x(</span>
-                <button class="btn btn-primary">내가 경매 올리기</button>
+                <span style="font-size:25px; color:white;">원하시는 경매는 이게 전부에요 &#128517;</span>
+                <button class="btn btn-primary m-3">내가 경매 올리기</button>
             </div>
             `
             $('#endList').html(temp)

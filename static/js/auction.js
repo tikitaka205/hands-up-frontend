@@ -112,7 +112,6 @@ async function goodsInfoApi() {
     })
     response_json = await response.json()
     if (response.status == 200) {
-<<<<<<< HEAD
 
         if (!goods){
             localStorage.setItem('goods', JSON.stringify({}))
@@ -126,12 +125,6 @@ async function goodsInfoApi() {
         }
         localStorage.setItem('goods', JSON.stringify(goods))
 
-=======
-        HANDSUP['high_price'] = response_json['high_price'] === 0 ? response_json['start_price'] : response_json['high_price']
-        HANDSUP['seller_id'] = response_json['seller']['id']
-        HANDSUP['buyer_id'] = response_json['buyer']?.id
-        localStorage.setItem('handsup', JSON.stringify(HANDSUP))
->>>>>>> develop
         return response_json
     }
     else if (response.status == 400) {

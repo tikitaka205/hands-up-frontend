@@ -1,6 +1,5 @@
 let data_auction_list
 $(document).ready(function () {
-    console.log("접속")
     data_auction_list = get_auction_list()
 });
 
@@ -28,6 +27,7 @@ observer.observe(listEnd);
 
 var nowPage = 1
 var category = ''
+const token = localStorage.getItem('access')
 var goodsStatus = ''
 var isNull = ''
 var search = url.searchParams.get('search')
@@ -40,21 +40,24 @@ function get_auction_list() {
         type: "GET",
         url: `${hostUrl}/goods/?page=${nowPage}&category=${category}&status=${goodsStatus}&search=${search}`,
         headers: {
-            // "Authorization": "Bearer " + localStorage.getItem("access"),
+            "Authorization": "Bearer " + token,
         },
         data: {},
         async: false,
         success: function (response) {
-            // console.log(response)
+
             let auction_list = response
             temp_response = auction_list
 
             for (let i = 0; i < auction_list.length; i++) {
-                // console.log(auction_list)
-                let price
+
+                let price 
                 let banner
                 let high_price
                 let participants
+                let heart
+                let goods_id = auction_list[i]['id']
+                let is_like = auction_list[i]['is_like']
                 let auction_status = auction_list[i]['status']
                 let image = auction_list[i]['images']?.image
                 let time = auction_list[i]['start_time'].slice(0,2) + '시' + ' ' +  auction_list[i]['start_time'].slice(3,)+'분'
@@ -125,44 +128,28 @@ function get_auction_list() {
                     `
                     
                 };
-
-                let temp_html_is_like = `
-                <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}">
-                    <div class="featured__item">
-                        <div id="img" class="featured__item__pic set-bg"
-                            style="background-image: url(http://127.0.0.1:8000${image}); ">
-                            <div style="position: absolute; right: 0px;">
-                                <div onclick="goodsLike(${goods_id})" class="btn btn-outline-danger" id="post-like" style="width: 30px; height:30px; margin: 0 auto; padding: 3px; cursor: pointer; ">
-                                    <i id="heart-${goods_id}" class="fas fa-heart"></i>
-                                    <span id="like-num"></span>
-                                </div>
-                            </div style="display:flex; justify-content: center;">
-                                <p class="time-title-${goods_id}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
-                                <div class="time-${goods_id} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
-                                    <span class="minutes-${goods_id}"></span>
-                                    <span>분</span>
-                                    <span class="seconds-${goods_id}"></span>
-                                    <span>초 남음</span>
-                                </div>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">${auction_list[i]['title']}</a></h6>
-                            <h6>판매자: ${auction_list[i]["seller"]["username"]}</h6>
-                            ${price}
-                        </div>
+                if(is_like){
+                    heart= `
+                    <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
+                        <i id="heart-${goods_id}" class="fas fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                     </div>
-                </div>
-                `
+                    `
+                }else{
+                    heart=`
+                    <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
+                        <i id="heart-${goods_id}" class="far fa-heart" style="color : #ffcaca; font-size : 25px"></i>
+                    </div>
+                    `
+                }
+
+
                 let temp_html = `
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}"  style="margin-bottom : 50px">
                     <div class="featured__item" style="">
                         <div id="img" class="featured__item__pic set-bg"
                             style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px 15px 0 0;">
                             <div style="position: absolute; right: 5px; bottom:5px;">
-                                <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="alert('직었다')">
-                                    <i id="heart" class="far fa-heart" style="color : #ffcaca; font-size : 25px"></i>
-                                    <span id="like-num"></span>
-                                </div>
+                                ${heart}
                             </div>
                             <div style="position: absolute; left: 5px; top:10px;">
                                 ${banner}
@@ -178,13 +165,7 @@ function get_auction_list() {
                     </div>
                 </div>
                 `
-                if (is_like) {
-                    $('#auction_list').append(temp_html_is_like)
-                } else {
-                    $('#auction_list').append(temp_html)
-                }
-                // remaindTime(auction_list[i]['id'], auction_list[i]['start_date'], auction_list[i]['start_time'])
-                // remaindTime()
+                $('#auction_list').append(temp_html)
 
             }
             console.log(search, '나 서치', !search)
@@ -327,8 +308,6 @@ function goodsLike(goods_id) {
 
         data: {},
         headers: {
-            // "Authorization": "Bearer " + localStorage.getItem("access"),
-            // "Authorization": "Bearer " + accessToken,
             "Authorization": "Bearer " + token,
         },
 

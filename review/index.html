@@ -1,297 +1,319 @@
 <!DOCTYPE html>
+<!-- saved from url=(0023)http://127.0.0.1:5503/# -->
 <html lang="ko">
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-        <meta name="description" content="Ogani Template">
-        <meta name="keywords" content="Ogani, unica, creative, html">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>👋 핸즈업</title>
-    
-        <!-- Google Font -->
-        <link href="/static/css/css2" rel="stylesheet">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <!-- js -->
-        <script src="/static/js/review_index.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>👋 핸즈업</title>
 
-    
-        <!-- Css Styles -->
-        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/js/review_index.js" >
-        <link rel="stylesheet" href="/static/css/font-awesome.min.css" >
-        <link rel="stylesheet" href="/static/css/elegant-icons.css" >
-        <link rel="stylesheet" href="/static/css/nice-select.css" >
-        <link rel="stylesheet" href="/static/css/jquery-ui.min.css" >
-        <link rel="stylesheet" href="/static/css/owl.carousel.min.css" >
-        <link rel="stylesheet" href="/static/css/slicknav.min.css" >
-        <link rel="stylesheet" href="/static/css/style.css" >
-    
-        <link rel="stylesheet" href="/static/css/all.min.css">
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <!-- timeago -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
-        <style>
-    
-            .header__menu > ul >li{
-                margin: 0 10px;
-            }
-        </style>
-    </head>
-    
-    <body style="
-        background-color: #fffef7;
-    " class="">
-        <!-- Page Preloder -->
-        <div id="preloder" style="display: none;">
-            <div class="loader" style="display: none;"></div>
-        </div>
-    
-        <!-- Humberger Begin -->
-        <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-        <div class="humberger__menu__wrapper" style="z-index: 999;">
-            <div class="humberger__menu__widget">
-                <div class="header__top__right__auth">
-                    <a href="#"><i class="fa fa-user"></i> Login</a>
-                </div>
+    <!-- Google Font -->
+    <link href="" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/elegant-icons.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/slicknav.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- <link rel="stylesheet" href="/static/css/all.min.css"> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <style>
+        .header__menu>ul>li {
+            margin: 0 10px;
+        }
+
+        .progress {
+
+            position: relative;
+            height: 15px;
+            border-radius: 7.5px;
+        }
+
+        .progress::after {
+            content: '\A';
+            position: absolute;
+            border-radius: 0 15px 15px 0;
+            /* background-color: var(--c); */
+            background: linear-gradient(to right, var(--c1), var(--c2));
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: var(--w);
+            /* Specify the width.. */
+            -webkit-animation: filler 1.5s ease-in-out;
+            -moz-animation: filler 1.5s ease-in-out;
+            animation: filler 1.5s ease-in-out;
+        }
+    </style>
+</head>
+
+
+<body style="
+    background-color: #fffef7;
+" class="">
+    <!-- Page Preloder -->
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay" style="z-index: 995;"></div>
+    <div class="humberger__menu__wrapper" style="z-index: 999;">
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
-            <div id="mobile-menu-wrap">
-                <div class="slicknav_menu">
-                    <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                        <ul>
-                            <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                            <li><a href="/goods/index.html">경매장</a></li>
-                            <!-- <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
+        </div>
+        <div id="mobile-menu-wrap">
+            <div class="slicknav_menu">
+                <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+                    <ul>
+                        <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
+                        <li><a href="/goods/index.html">경매장</a></li>
+                        <!-- <li><a href="#">Pages</a>
+                            <ul class="header__menu__dropdown">
+                                <li><a href="/shop-details.html">Shop Details</a></li>
+                                <li><a href="/shoping-cart.html">Shoping Cart</a></li>
+                                <li><a href="/checkout.html">Check Out</a></li>
+                                <li><a href="/blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li> -->
+                        <li><a href="/blog/blog.html">게시판</a></li>
+                        <li><a href="/contact.html">Contact & Feedback</a></li>
+                        <li class="p-2">
+                            <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
+                            <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li>Free Shipping for all Order of $99</li>
+            </ul>
+        </div> -->
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header" style="
+    background: linear-gradient(45deg, #ffd567, #c24aff) !important;
+    position: sticky;
+    z-index: 99;
+    width: 100%;
+    color: white;
+    top: 0;
+">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
+                    </div>
+                </div>
+                <div class="col-lg-8" style="padding: 0;">
+                    <nav class="header__menu">
+                        <ul style="color: white;">
+                            <li><a href="/goods/index.html">경매</a>
+                                <!-- <ul class="header__menu__dropdown">
                                     <li><a href="/shop-details.html">Shop Details</a></li>
                                     <li><a href="/shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="/checkout.html">Check Out</a></li>
                                     <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li> -->
+                                </ul> -->
+                            </li>
                             <li><a href="/blog/blog.html">게시판</a></li>
                             <li><a href="/contact.html">Contact & Feedback</a></li>
-                            <li class="p-2">
-                                    <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                                    <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                
+                            <li style="margin-right: 0;">
+                                <input type="text" class="form-control" placeholder="What do yo u need?">
+                            </li>
+                            <li style="margin: 0;" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
                             </li>
                         </ul>
                     </nav>
                 </div>
+                <div class="col-lg-2">
+
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-user"></i></a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
+                            <i class="fas fa-heart" style="color: black;"></i>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
             </div>
-            <div class="humberger__menu__contact">
-                <ul>
-                    <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                    <li>Free Shipping for all Order of $99</li>
-                </ul>
-            </div> -->
+
         </div>
-        <!-- Humberger End -->
-    
-        <!-- Header Section Begin -->
-        <header class="header" style="
-        background: linear-gradient(45deg, #8088ff, #c24aff) !important;
-        position: fixed;
-        z-index: 99;
-        width: 100%;
-        color: white;
-    ">
-    
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <div class="header__logo">
-                            <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
+        <div id="bad_user">
+
+        </div>
+
+    </header>
+    <!-- Header Section End -->
+
+
+    <!-- main start -->
+    <section class="featured spad">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="display: center; ">
+
+                    <!--  -->
+
+
+                    <div
+                        style="width:100%; display: flex; text-align: center; justify-content: center; margin-bottom: 30px; background-color: fffef7; border-radius: 20px;">
+                        <div style="padding: 20px 60px;">
+                            <div class="box" style="width: 175px; height: 175px;">
+
+                                <img class="profile" id="profile_image" style="border-radius: 500px;">
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-8" style="padding: 0;">
-                        <nav class="header__menu">
-                            <ul style="color: white;">
-                                <li><a href="/goods/index.html">경매</a>
-                                    <!-- <ul class="header__menu__dropdown">
-                                        <li><a href="/shop-details.html">Shop Details</a></li>
-                                        <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                        <li><a href="/checkout.html">Check Out</a></li>
-                                        <li><a href="/blog-details.html">Blog Details</a></li>
-                                    </ul> -->
-                                </li>
-                                <li><a href="/blog/blog.html">게시판</a></li>
-                                <li><a href="/contact.html">Contact & Feedback</a></li>
-                                <li style="margin-right: 0;">
-                                    <input type="text" class="form-control" placeholder="What do yo u need?">
-                                </li>
-                                <li style="margin: 0;" class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="col-lg-2">
-    
-                        <div class="header__cart">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user"></i></a></li>
-                                <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                                <i class="fas fa-heart" style="color: black;"></i>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="humberger__open">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </div>
-        </header>
-        <!-- Header Section End -->
+                        <div style="text-align: left; width: 300px;">
+                            <div style="display: flex; flex-direction: row; margin: 20px 0">
+                                <div style="font-size: 26px; margin-right: 40px" id="username">
 
 
-        <!-- main start -->
-<section class="featured spad">
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12" style="display: center; " >
-
-                <!--  -->
-                
-                <div style="display: flex; justify-content: start; width:500px">
-                    <div style="background-image: url(/static/images/back.png); background-size:contain; width: 23px; height: 23px; background-repeat: no-repeat;"></div>
-                </div>
-
-                <div style="display: flex; flex-direction: row;text-align: center; justify-content: center;margin-top: 60px; margin-bottom: 60px; background-color: fffef7; border-radius: 20px;">
-                    <div style="padding: 20px 60px">
-                      <div class="box" style="width: 175px; height: 175px;">
-                
-                        <img class="profile" id="profile_image" style="border-radius: 20px;">
-                
-                      </div>
-                    </div>
-                    <div style="text-align: left">
-                      <div style="display: flex; flex-direction: row; margin: 20px 0">
-                        <div style="font-size: 26px; margin-right: 40px" id="username">
-                          
-
-                        </div>
-
-                      </div>
-                
-                      <div style="margin-bottom: 20px">
-
-                
-                      </div>
-                      <div>
-                        <b>매너온도</b>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-
-
-
-
-
-                <!--  -->
-                <div style="background-color:fffef7; text-align: center; font-weight: bold; height: 40px;min-height: 10px; max-height: 50px; font-size: 30px; border-width: 3px; border-color: #ff0000;">판매상품</div>
-
-                
-                <!--  -->
-                <!--  -->
-                <div style="background-color:#fffef7; text-align: center; font-weight: bold; height: 40px;min-height: 10px; max-height: 50px; font-size: 30px; margin-bottom: 100px;">매너 평가</div>
-                <div class="col-lg-12" style="justify-content: center;">
-
-                    <div class="row featured__filter" id="MixItUp8F371C" style="justify-content: center;">
-
-
-                        <div class="col-lg-2 col-md-4 col-sm-6 mix vegetables fastfood" style="width: 150px; height: 150px;">
-
-                            <div class="featured__item">
-    
-                                <div class="" data-setbg="img/featured/feature-2.jpg" style="background-image: url(/static/images/bad.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
-                                    <div class="container" style="position: absolute; right: 5%;">
-                                        <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;"  id="bad_score"></span>
-                                   </div>
                                 </div>
-                                <div class="featured__item__text" style="text-align: center;">
-                                    <h5>화나요</h5>
-                                </div>
+
                             </div>
 
+
+                            <div id="temp">
+
+                            </div>
                         </div>
-    
-    
-                        <div class="col-lg-2 col-md-4 col-sm-6 mix vegetables fastfood" style="width: 150px; height: 150px;">
-                            <div class="featured__item">
-    
-    
-                                <div class="" data-setbg="img/featured/feature-2.jpg" style="background-image: url(/static/images/not\ bad.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
-                                    <div class="container" style="position: absolute; right: 5%;">
-                                        <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="soso_score"></span>
-                                       </div>
+                    </div>
+
+
+                    <!--  -->
+                    <div>
+                        <div
+                            style="background-color:#fffef7; text-align: center; font-weight: bold; height: 40px;min-height: 10px; max-height: 50px; font-size: 30px; margin-bottom: 50px; ">
+                            매너 평가</div>
+                        <div class="col-lg-12" style="justify-content: center; ">
+
+                            <div class="row featured__filter" id="MixItUp8F371C" style="justify-content: center; ">
+
+
+                                <div class="col-lg-2" style="width: 150px; height: 150px; display: flex;">
+
+                                    <div class="featured__item">
+
+                                        <div class="" data-setbg="img/featured/feature-2.jpg"
+                                            style="background-image: url(/static/images/bad.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
+                                            <div class="container" style="position: absolute; right: 18%;">
+                                                <span
+                                                    style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;"
+                                                    id="bad_score"></span>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="featured__item__text" style="text-align: center;">
+                                            <h5>화나요</h5>
+                                        </div>
                                     </div>
-                                    
-    
-                                <div class="featured__item__text">
-                                    <h5>그저 그래요</h5>
+
                                 </div>
-                            </div>
-                        </div>
-    
-    
-                        <div class="col-lg-2 col-md-4 col-sm-6 mix vegetables fastfood" style="width: 150px; height: 150px;">
-                            <div class="featured__item">
-    
-    
-                                <div class="" data-setbg="img/featured/feature-2.jpg" style="background-image: url(/static/images/soso.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
-                                    <div class="container" style="position: absolute; right: 5%;">
-                                        <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="good_score"></span>
-                                       </div>
+
+
+                                <div class="col-lg-2" style="width: 150px; height: 150px; display: flex;">
+                                    <div class="featured__item">
+
+
+                                        <div class="" data-setbg="img/featured/feature-2.jpg"
+                                            style="background-image: url(/static/images/not\ bad.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
+                                            <div class="container" style="position: absolute; right: 18%;">
+                                                <span
+                                                    style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;"
+                                                    id="soso_score"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="featured__item__text">
+                                            <h5>그저 그래요</h5>
+                                        </div>
                                     </div>
-    
-    
-                                <div class="featured__item__text">
-                                    <h5>좋아요</h5>
                                 </div>
-                            </div>
-                        </div>
-    
-    
-                        <div class="col-lg-2 col-md-4 col-sm-6 mix vegetables fastfood" style="width: 150px; height: 150px;">
-                            <div class="featured__item">
-    
-    
-    
-                                <div class="" data-setbg="img/featured/feature-2.jpg" style="background-image: url(/static/images/angel.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
-                                    <div class="container" style="position: absolute; right: 5%;">
-                                        <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="excellent_score"></span>
-                                       </div>
+
+
+                                <div class="col-lg-2" style="width: 150px; height: 150px; display: flex;">
+                                    <div class="featured__item">
+
+
+                                        <div class="" data-setbg="img/featured/feature-2.jpg"
+                                            style="background-image: url(/static/images/soso.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
+                                            <div class="container" style="position: absolute; right: 18%;">
+                                                <span
+                                                    style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;"
+                                                    id="good_score"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="featured__item__text">
+                                            <h5>좋아요</h5>
+                                        </div>
                                     </div>
-    
-    
-    
-                                <div class="featured__item__text">
-                                    <h5>최고에요</h5>
+                                </div>
+
+
+
+
+                                <div class="col-lg-2" style="width: 150px; height: 150px; display: flex;">
+                                    <div class="featured__item">
+
+
+
+                                        <div class="" data-setbg="img/featured/feature-2.jpg"
+                                            style="background-image: url(/static/images/angel.png); background-size: contain; width: 130px; height: 130px; background-repeat: no-repeat;">
+                                            <div class="container" style="position: absolute; right: 18%;">
+                                                <span
+                                                    style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 5px; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;"
+                                                    id="excellent_score"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="featured__item__text">
+                                            <h5>최고에요</h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-    
                     </div>
-                </div>
 
 
                 </div>
@@ -302,41 +324,46 @@
 
 
             <!--  -->
-            <div class="col-lg-12" style="display: center;" >
-                <div style="background-color:fffef7; text-align: center; font-weight: bold; height: 40px;min-height: 10px; max-height: 50px; font-size: 30px; margin-top: 100px;">거래 후기</div>
+            <div class="col-lg-12" style="display: center;">
+                <div
+                    style="background-color:fffef7; text-align: center; font-weight: bold; height: 40px;min-height: 10px; max-height: 50px; font-size: 30px; margin-top: 100px;">
+                    거래 후기</div>
 
 
                 <div class="col-lg-12 row" style="margin-top: 40px; justify-content: left;" id="review_list">
 
                 </div>
-                
+
 
             </div>
 
 
-            
-            
-                                <!-- 거래후기 -->
 
 
-                                <!-- 게시글 나중에 바꿀거 -->
+            <!-- 거래후기 -->
 
 
-            
+            <!-- 게시글 나중에 바꿀거 -->
+
+
+
         </div>
-    </div>
+        </div>
     </section>
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.nice-select.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
+    <script src="/static/js/jquery.slicknav.js"></script>
+    <script src="/static/js/mixitup.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/review_index.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 
 
 </body>

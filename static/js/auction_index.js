@@ -45,11 +45,12 @@ function get_auction_list() {
         data: {},
         async: false,
         success: function (response) {
-            console.log(response)
+            // console.log(response)
             let auction_list = response
             temp_response = auction_list
 
             for (let i = 0; i < auction_list.length; i++) {
+                // console.log(auction_list)
                 let price
                 let banner
                 let high_price
@@ -125,6 +126,33 @@ function get_auction_list() {
                     
                 };
 
+                let temp_html_is_like = `
+                <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}">
+                    <div class="featured__item">
+                        <div id="img" class="featured__item__pic set-bg"
+                            style="background-image: url(http://127.0.0.1:8000${image}); ">
+                            <div style="position: absolute; right: 0px;">
+                                <div onclick="goodsLike(${goods_id})" class="btn btn-outline-danger" id="post-like" style="width: 30px; height:30px; margin: 0 auto; padding: 3px; cursor: pointer; ">
+                                    <i id="heart-${goods_id}" class="fas fa-heart"></i>
+                                    <span id="like-num"></span>
+                                </div>
+                            </div style="display:flex; justify-content: center;">
+                                <p class="time-title-${goods_id}" style="margin-top:200px; background-color: skyblue; text-align: center; font-size: 20px; border-radius:10px;"></p>
+                                <div class="time-${goods_id} font40" style="background-color: skyblue; text-align: center; font-size: 20px; color:black; margin-top:200px; border-radius:10px;" id="min">    
+                                    <span class="minutes-${goods_id}"></span>
+                                    <span>분</span>
+                                    <span class="seconds-${goods_id}"></span>
+                                    <span>초 남음</span>
+                                </div>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">${auction_list[i]['title']}</a></h6>
+                            <h6>판매자: ${auction_list[i]["seller"]["username"]}</h6>
+                            ${price}
+                        </div>
+                    </div>
+                </div>
+                `
                 let temp_html = `
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}"  style="margin-bottom : 50px">
                     <div class="featured__item" style="">
@@ -150,7 +178,11 @@ function get_auction_list() {
                     </div>
                 </div>
                 `
-                $('#auction_list').append(temp_html)
+                if (is_like) {
+                    $('#auction_list').append(temp_html_is_like)
+                } else {
+                    $('#auction_list').append(temp_html)
+                }
                 // remaindTime(auction_list[i]['id'], auction_list[i]['start_date'], auction_list[i]['start_time'])
                 // remaindTime()
 
@@ -296,20 +328,18 @@ function goodsLike(goods_id) {
         data: {},
         headers: {
             // "Authorization": "Bearer " + localStorage.getItem("access"),
-            "Authorization": "Bearer " + accessToken,
+            // "Authorization": "Bearer " + accessToken,
+            "Authorization": "Bearer " + token,
         },
 
-        url: `${hostUrl}/goods/${goods_id}/like/`,
+        url: `${hostUrl}/goods/like/${goods_id}/`,
+        // document
+        success: function () {
+            if ($(`#heart-${goods_id}`).hasClass('fas')) {
+                $(`#heart-${goods_id}`).attr('class', 'far fa-heart')
 
-        success: function (result) {
-            if ($('#heart').hasClass('fas')) {
-                $('#heart').attr('class', 'far fa-heart')
-                var num = $('#like-num').text()
-                $('#like-num').text(Number(num) - 1)
             } else {
-                $('#heart').attr('class', 'fas fa-heart')
-                var num = $('#like-num').text()
-                $('#like-num').text(Number(num) + 1)
+                $(`#heart-${goods_id}`).attr('class', 'fas fa-heart')
 
             }
         },

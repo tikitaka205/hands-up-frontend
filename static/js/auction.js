@@ -83,7 +83,7 @@ async function goodsInfoView() {
     document.getElementById('predict-price-wrap').innerHTML = temp
 
     // 물건 정보 섹션
-    var time = data["created_at"].slice(undefined,-7)
+    var time = data["created_at"].slice(undefined, -7)
     var temp = `
         <div class = "p-3 card mb-3" style="background-color : white; color:black; border-radius:10px;">
             <h3 style="font-weight:600;">${data['title']}</h3>
@@ -94,10 +94,10 @@ async function goodsInfoView() {
     `
     document.getElementById('goods-info-wrap').innerHTML = temp
     $("time.timeago").timeago();
-    
+
     await goodsStatusView(data)
 
-    
+
 }
 
 
@@ -112,6 +112,7 @@ async function goodsInfoApi() {
     })
     response_json = await response.json()
     if (response.status == 200) {
+<<<<<<< HEAD
 
         if (!goods){
             localStorage.setItem('goods', JSON.stringify({}))
@@ -125,6 +126,12 @@ async function goodsInfoApi() {
         }
         localStorage.setItem('goods', JSON.stringify(goods))
 
+=======
+        HANDSUP['high_price'] = response_json['high_price'] === 0 ? response_json['start_price'] : response_json['high_price']
+        HANDSUP['seller_id'] = response_json['seller']['id']
+        HANDSUP['buyer_id'] = response_json['buyer']?.id
+        localStorage.setItem('handsup', JSON.stringify(HANDSUP))
+>>>>>>> develop
         return response_json
     }
     else if (response.status == 400) {
@@ -174,7 +181,7 @@ async function goodsStatusView(data) {
             `
         }
     } else if (status === false) { // 가림막 보이게 하고 낙찰자이름 가격 보이게 하기?
-        var buyer = data['buyer'] === null? '낙찰자가 없습니다.' : data['buyer']['username']
+        var buyer = data['buyer'] === null ? '낙찰자가 없습니다.' : data['buyer']['username']
         $('#auction-wrap').empty()
         var temp = `
         <div id="auction-before-message" class = "text-center">
@@ -248,7 +255,7 @@ chatSocket.onmessage = async function (e) {
     var element = document.getElementById('chat-wrap');
     var isEnd = element.scrollHeight <= element.scrollTop + element.clientHeight + 3;
 
-    if (responseType === 'alert'){
+    if (responseType === 'alert') {
         alert(data['message'])
         return
     }
@@ -311,7 +318,7 @@ chatSocket.onmessage = async function (e) {
                 </div>
             </div>
         `
-        } else if ( nowOner === data['sender']){
+        } else if (nowOner === data['sender']) {
             var temp = `
             <div>
                 <div>
@@ -323,7 +330,7 @@ chatSocket.onmessage = async function (e) {
                 </div>
             </div>
         `
-        }else{
+        } else {
             var temp = `
             <div>
                 <div>
@@ -336,7 +343,7 @@ chatSocket.onmessage = async function (e) {
             </div>
         `
         }
-        
+
         // beforeend afterbegin beforebegin afterend
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
     } else if( responseType === 'enter'){

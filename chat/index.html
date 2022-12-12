@@ -11,71 +11,97 @@
             height: 300px;
             background-color: #FFFFFF;
             resize: none;
+            /* overflow-y: auto;
+             */
+            overflow-y: hidden;
+            height: 500px;
+            width: 600px;
+            border-radius: 10px;
+            padding: 15px;
         }
 
         #onlineUsersSelector {
             height: 300px;
         }
 
+        .chat_message_wrap {
+            display: flex;
+            flex-direction: column;
+            /* bottom: 0px;
+            justify-content: center; */
+        }
+
         .chat_message {
             background-color: rgb(58, 232, 58);
             border-radius: 15px;
             text-align: left;
-            width: 300px;
+            max-width: 300px;
             min-height: 40px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             margin-bottom: 10px;
             bottom: 0px;
+
+        }
+
+        /* 아래의 모든 코드는 영역::코드로 사용 */
+
+        #chatLog::-webkit-scrollbar {
+            width: 10px;
+            /* 스크롤바의 너비 */
+        }
+
+        #chatLog::-webkit-scrollbar-thumb {
+            height: 30%;
+            /* 스크롤바의 길이 */
+            background: #217af4;
+            /* 스크롤바의 색상 */
+
+            border-radius: 10px;
+            /* visibility: hidden; */
+        }
+
+        #chatLog::-webkit-scrollbar-track {
+            background: rgba(33, 122, 244, .1);
+            border-radius: 10px;
+            /* visibility: hidden; */
+            /*스크롤바 뒷 배경 색상*/
+        }
+
+        #chatLog::-webkit-scrollbar-thumb:hover {
+            visibility: visible;
+            /*스크롤바 뒷 배경 색상*/
+        }
+
+        #chatLog:hover,
+        #chatLog:focus {
+            overflow-y: auto;
         }
     </style>
 </head>
 
-<body style="background-color: pink; width: 100%;">
-    <div style="display: flex; justify-content: center">
+<body style="background: linear-gradient(45deg, #ffd567, #c24aff) !important; width: 100%;">
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
 
         <div class="row" style="width: 940px; display: flex; justify-content: center">
-
-            <div class="col-12 col-md-8">
-                <div>
-                    <!--  -->
-                    <div style="background-color: rgb(58, 232, 58); border-radius: 15px; text-align: left; width: 300px; height: 40px; display:flex; align-items: center;" ">
-
-                            <div style=" margin-left: 20px;"> 여기서 말풍선 만들기</div>
-
-                </div>
-                <div style="background-color: rgb(183, 183, 183); border-radius: 15px; text-align: left; width: 300px; height: 40px; display:flex; align-items: center;" ">
-
-                            <div style=" margin-left: 20px;"> 여기서 말풍선 만들기</div>
-
-            </div>
-            <!--  -->
-            <div style="text-align: center; font-size: 40px; margin-top: 20px;">비둘기 님과의 대화</div>
-
-            <div style="display: flex; justify-content: start; width:500px">
-                <div
-                    style="background-image: url(/static/images/back.png); background-size:contain; width: 23px; height: 23px; background-repeat: no-repeat;">
-                </div>
-            </div>
+            <div id="chat-other-user" style="text-align: center; font-size: 40px; margin-top: 20px;"></div>
         </div>
 
         <div>
-            <div style="display: flex; justify-content: end">
-                <button class="btn btn-success" id="review" onclick="review()" style="background-color: rgb(65, 166, 209); border-radius: 15px;">거래후기 작성</button>
+            <div id="review-btn" style="display: flex; justify-content: end">
             </div>
             <div class="mb-2" style="display: flex; justify-content: center; margin-top: 20px; width: 600px;">
 
                 <label for="chatLog"></label>
-                <div id="chatLog" style="overflow-y:auto; height: 500px; width: 600px; border-radius: 15px;"></div>
-                <!-- <textarea class="form-control" style="height: 500px; width: 600px; border-radius: 15px;" id="chatLog" readonly> 여기가 벨류 </textarea> -->
+                <div id="chatLog"></div>
             </div>
             <div class="mb-2" style="display: flex; justify-content: center; width: 600px;">
 
-                <input type="text" class="form-control" id="chatMessageInput" placeholder="Enter your chat message"
-                    style="width: 540px; border-radius: 15px;">
+                <input type="text" class="form-control" id="chatMessageInput" placeholder="메시지를 입력하세요"
+                    style="width: 540px; border-radius: 10px; margin-right: 5px;">
                 <div class="input-group-append">
                     <button class="btn btn-success" id="chatMessageSend" type="button"
-                        style="background-color: rgb(65, 166, 209); border-radius: 15px;">Send</button>
+                        style="background-color: rgb(65, 166, 209); border-radius: 10px;">Send</button>
 
                 </div>
             </div>

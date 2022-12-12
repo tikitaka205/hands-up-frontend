@@ -11,33 +11,115 @@
             height: 300px;
             background-color: #FFFFFF;
             resize: none;
+            /* overflow-y: auto;
+             */
+            overflow-y: hidden;
+            height: 500px;
+            width: 600px;
+            border-radius: 10px;
+            padding: 15px;
         }
 
         #onlineUsersSelector {
             height: 300px;
         }
+
+        .chat_message_wrap {
+            display: flex;
+            flex-direction: column;
+            /* bottom: 0px;
+            justify-content: center; */
+        }
+
+        .chat_message {
+            background-color: rgb(58, 232, 58);
+            border-radius: 15px;
+            text-align: left;
+            max-width: 300px;
+            min-height: 40px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            bottom: 0px;
+
+        }
+
+        /* 아래의 모든 코드는 영역::코드로 사용 */
+
+        #chatLog::-webkit-scrollbar {
+            width: 10px;
+            /* 스크롤바의 너비 */
+        }
+
+        #chatLog::-webkit-scrollbar-thumb {
+            height: 30%;
+            /* 스크롤바의 길이 */
+            background: #217af4;
+            /* 스크롤바의 색상 */
+
+            border-radius: 10px;
+            /* visibility: hidden; */
+        }
+
+        #chatLog::-webkit-scrollbar-track {
+            background: rgba(33, 122, 244, .1);
+            border-radius: 10px;
+            /* visibility: hidden; */
+            /*스크롤바 뒷 배경 색상*/
+        }
+
+        #chatLog::-webkit-scrollbar-thumb:hover {
+            visibility: visible;
+            /*스크롤바 뒷 배경 색상*/
+        }
+
+        #chatLog:hover,
+        #chatLog:focus {
+            overflow-y: auto;
+        }
     </style>
 </head>
 
-<body>
-    <div class="container mt-3 p-5">
-        <h2>거래 채팅방</h2>
-        <div class="row">
-            <div class="col-12 col-md-8">
-                <div class="mb-2">
-                    <label for="chatLog"></label>
-                    <textarea class="form-control" id="chatLog" readonly></textarea>
-                </div>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="chatMessageInput" placeholder="Enter your chat message">
-                    <div class="input-group-append">
-                        <button class="btn btn-success" id="chatMessageSend" type="button">Send</button>
-                    </div>
+<body style="background: linear-gradient(45deg, #ffd567, #c24aff) !important; width: 100%;">
+    <div id="preloder" style="display: none;">
+        <div class="loader" style="display: none;"></div>
+    </div>
+    <div id="nav-header"></div>
+
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+
+        <div class="row" style="width: 940px; display: flex; justify-content: center">
+            <div id="chat-other-user" style="text-align: center; font-size: 40px; margin-top: 20px;"></div>
+        </div>
+
+        <div>
+            <div id="review-btn" style="display: flex; justify-content: end">
+            </div>
+            <div class="mb-2" style="display: flex; justify-content: center; margin-top: 20px; width: 600px;">
+
+                <label for="chatLog"></label>
+                <div id="chatLog"></div>
+            </div>
+            <div class="mb-2" style="display: flex; justify-content: center; width: 600px;">
+
+                <input type="text" class="form-control" id="chatMessageInput" placeholder="메시지를 입력하세요"
+                    style="width: 540px; border-radius: 10px; margin-right: 5px;">
+                <div class="input-group-append">
+                    <button class="btn btn-success" id="chatMessageSend" type="button"
+                        style="background-color: rgb(65, 166, 209); border-radius: 10px;">Send</button>
+
                 </div>
             </div>
         </div>
+
+
     </div>
+    </div>
+    </div>
+    <script src="/static/js/nav.js"></script>
     <script src="/static/js/chat.js"></script>
+
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 window.onload = function () {
     review_list()
 }
-let user_id = localStorage.getItem('user_id')
+let user_id = localStorage.getItem('profile_id')
 
 
 var backUrl = '127.0.0.1:8000'

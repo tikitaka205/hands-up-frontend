@@ -22,11 +22,14 @@ console.log("start_chat", "user_id: ", payload["user_id"]);
 function review() {
     let user_id=localStorage.getItem('user_id')
     let seller_id=localStorage.getItem('seller_id')
-    if(user_id==seller_id){
-        location.href='review/seller.html'
-    }else{
-        location.href='review/buyer.html'
-    }
+    console.log("여기")
+    window.location.href ='http://127.0.0.1:5501/review/seller.html'
+
+    // if(user_id==seller_id){
+    //     window.location.href ='http://127.0.0.1:5501/review/seller.html'
+    // }else{
+    //     window.location.href ='http://127.0.0.1:5501/review/buyer.html'
+    // }
     }
 
 

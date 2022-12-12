@@ -563,6 +563,9 @@ ol {
 .hero {
   padding-bottom: 50px;
 }
+.hero__categories ul {
+  background-color: white;
+}
 
 .hero.hero-normal {
   padding-bottom: 30px;
@@ -640,14 +643,14 @@ ol {
   list-style: none;
 
   padding: 0px 2px 0 2px;
-  margin-right: 10px;
-  border: 2px solid gray;
+  /* margin-right: 10px; */
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 0.5em;
 }
 
 .hero__categories ul li a {
   font-size: 16px;
-  color: #1c1c1c;
+  color: #000000;
   line-height: 39px;
   display: block;
 }
@@ -877,7 +880,7 @@ ol {
 }
 
 .featured__item__pic {
-  height: 270px;
+  height: 200px;
   position: relative;
   overflow: hidden;
   background-position: center center;

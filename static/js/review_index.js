@@ -5,15 +5,13 @@ let user_id=localStorage.getItem('user_id')
 
 
 function review_list() {
-    console.log('정보 불러오기 성공')
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTQ0NDE0LCJpYXQiOjE2NzA3NDQ0MTQsImp0aSI6ImYxODk0YThlYTQ0MjQzNGQ5ZWYwZTZkMTIxOWZkZmI0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.JiEzU46-7FlrgdldrCwvGdj9lZ2-VKmDIOUsNELdNps'
     $.ajax({
         type: 'GET',
 
         data: {},
         headers: {
-            "Authorization": "Bearer " + accessToken,
-            },
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+        },
 
         url: `http://127.0.0.1:8000/review/list/2/`,
 
@@ -93,8 +91,8 @@ function review_list() {
                 }else if(is_active==false){
                     $('#bad_user').append(bad_user)
                     $('#temp').append(temper_bad_user)
+
                 }
-                console.log("끝")
                 if(bad_review_count==0){
                     $('#bad_score').hide()
                 }else{
@@ -124,8 +122,9 @@ function review_list() {
                 $("time.timeago").timeago();
 
             }
-            });
+        });
     }
+
 
 
 function review(){

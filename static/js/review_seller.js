@@ -3,9 +3,7 @@ $(document).ready(function(){
 });
 
 function selectScore(score_1){
-   console.log(score_1)
    const score = score_1;
-   console.log(score)
 
    if(score==-20){
        let temp_bad = `

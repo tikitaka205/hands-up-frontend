@@ -22,24 +22,27 @@ $(document).ready(function(){
 })
 
 // 가격에 콤마를 찍는 함수
-jQuery(document).ready(function($){
-    $('#inputPrice').on('focus', function(){
-        let val = $('input#inputPrice').val()
-        console.log('실행이니??')
-        console.log(val)
-        if(!isEmpty(val)){
-            val = val.replace(/,/g,'')
-            $('input#inputPrice').val(val)
-        }
-    })
-    $('#inputPrice').on('blur', function(){
-        let val = $('#inputPrice').val()
-        if(!isEmpty(val) && isNumeric(val)){
-            val = currentFormatter(val)
-            $('#inputPrice').val(val)
-        }
-    })  
-})
+function getNumber(obj){
+    var num01;
+    var num02;
+    num01 = obj.value;
+    num02 = num01.replace(/\D/g,""); 
+    num01 = setComma(num02);
+    obj.value =  num01;
+
+    $('#test').text(num01);
+ }
+
+ function setComma(n) {
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    n += '';         
+    while (reg.test(n)) {
+       n = n.replace(reg, '$1' + ',' + '$2');
+    }         
+    return n;
+ }
+
+
 
 //document.getElementById("Date").setAttribute("max", today);
 

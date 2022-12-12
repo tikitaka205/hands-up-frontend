@@ -226,11 +226,11 @@
                 <!-- 예상가치 -->
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input id="inputPrice" type="text" class="form-control" placeholder="예상가격">
+                        <input id="inputPrice" type="text" class="form-control" placeholder="예상가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 시작가격 -->
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="시작가격">
+                        <input type="text" class="form-control" placeholder="시작가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 경매 날짜 -->
                     <div id = "date-time">
@@ -241,9 +241,7 @@
                     <br>
                     <!-- 게시글  -->
                     
-                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3">
-                        
-                    </textarea>
+                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3"></textarea>
                 </div>
             </div>
        </div>

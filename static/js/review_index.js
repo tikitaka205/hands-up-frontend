@@ -18,7 +18,7 @@ function review_list() {
         },
 
         url: `http://127.0.0.1:8000/review/list/2/`,
-
+        // 유저아이디 입력
         success: function (response) {
             console.log('성공:', response);
             let profile_image = response['receiver']['profile_image']
@@ -68,7 +68,7 @@ function review_list() {
                 </div>
                 <br>
                 <div style="display:felx;">
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
                 </div>
             `
             let bad_user = `
@@ -88,7 +88,7 @@ function review_list() {
                         </div>
                         <br>
                         <div style="display:felx;">
-                        <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                        <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
                         </div>
                     `
                 )

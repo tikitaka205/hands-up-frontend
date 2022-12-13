@@ -23,8 +23,8 @@ document.getElementById('nav-header').innerHTML = `
                         <li><a href="/blog/blog.html">게시판</a></li>
                         <li><a href="/contact.html">Contact & Feedback</a></li>
                         <li class="p-2">
-                            <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="keyword-input">
-                            <button style="width: 100%;" type="submit" class="btn btn-primary" onclick="search()">SEARCH</button>
+                            <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="search-input-2">
+                            <button style="width: 100%;" type="submit" class="btn btn-primary" onclick="searchAuction2()">SEARCH</button>
 
                         </li>
                     </ul>
@@ -50,7 +50,7 @@ document.getElementById('nav-header').innerHTML = `
         <!-- Header Section Begin -->
         <header class="header" style="
         background: linear-gradient(45deg, #ffd567, #c24aff) !important;
-        position: fixed;
+        position: sticky;
         z-index: 99;
         width: 100%;
         color: white;

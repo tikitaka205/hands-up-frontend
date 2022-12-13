@@ -100,7 +100,6 @@ function usernameChecker(){
 
 
 async function handleUpdate() {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNjE1NDA4LCJpYXQiOjE2NzA4MTU0MDgsImp0aSI6IjRmMDEyOWQ3OGNiZTQzNTViYWUzZjJkYTYxYjk2YTU2IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.F2pwJe9WR-zPBMMruSsv9gg2lsMHo0Iq2xcr0W4tXho'
     let username = $("#username").val()
     console.log(username)
     let formFile = $("#profile_image")[0];

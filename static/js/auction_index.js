@@ -73,12 +73,13 @@ function get_auction_list() {
 
                 if (auction_status == null) {
                     auction_status = "wait-auction";
+                    var sp = priceToString(auction_list[i]["start_price"])
                     banner = `<span style="padding : 4px; border-radius:10px; background-color:#78d7ff; color:black;">${startTime}<span>`
                     participants = ``
                     price = `
                     <div>
                         <span style="font-size : 20px; font-weight:700;">
-                            ${auction_list[i]["start_price"]} 원
+                            ${sp} 원
                         </span>
                         <span class="font-secondary" style="font-size:12px">
                             (시작가)
@@ -88,7 +89,9 @@ function get_auction_list() {
                     
                 } else if (auction_status == true) {
                     auction_status = "started-auction";
-                    high_price = auction_list[i]["high_price"] === 0? auction_list[i]['start_price'] +'원': auction_list[i]["high_price"] + '원';
+                    var hp = priceToString(auction_list[i]['high_price'])
+                    var sp = priceToString(auction_list[i]["start_price"])
+                    high_price = auction_list[i]["high_price"] === 0 || ! auction_list[i]["high_price"]? sp +'원': hp + '원';
                     banner = `<span style="padding : 4px; border-radius:10px;background-color:#ffd700; color:black;">경매 ${rt}분 남았어요!<span>`
                     participants = `
                     <div style="background-color:black; border-radius : 10px; padding:3px;">
@@ -113,7 +116,8 @@ function get_auction_list() {
                     `
                 } else {
                     auction_status = "end-auction";
-                    high_price = auction_list[i]["high_price"] === 0? '미낙찰' : auction_list[i]["high_price"] + '원';
+                    var hp = priceToString(auction_list[i]['high_price'])
+                    high_price = auction_list[i]["high_price"] === 0 || !auction_list[i]["high_price"] ? '미낙찰' : hp + '원';
                     banner = `<span style="padding : 4px; border-radius:10px;background-color:gray; color:white;">경매종료<span>`
                     participants = ``
                     price = `
@@ -180,10 +184,23 @@ function get_auction_list() {
             nowPage += 1
         },
         error : function(error){
+            if(error.status === 401){
+                if(!confirm('로그인이 만료 됐어요. 로그인하시겠어요?')){
+                    window.location.href = '/user/login.html'
+                }else{
+                    localStorage.removeItem("access")
+                    localStorage.removeItem("refresh")
+                    localStorage.removeItem("payload")
+                }
+            }
             var temp = `
             <div class="text-center">
                 <span style="font-size:25px; color:white;">원하시는 경매는 이게 전부에요 &#128517;</span>
-                <button class="btn btn-primary m-3">내가 경매 올리기</button>
+                <button class="btn m-3" onclick="window.location.href='/goods/goodsPost.html'" style="background-color : gold;">
+                    내가 경매 올리기
+                    <i class="fas fa-gavel" style="color: black; font-size: 20px;"></i>
+
+                </button>
             </div>
             `
             $('#endList').html(temp)

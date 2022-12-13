@@ -50,7 +50,7 @@ document.getElementById('nav-header').innerHTML = `
         <!-- Header Section Begin -->
         <header class="header" style="
         background: linear-gradient(45deg, #ffd567, #c24aff) !important;
-        position: fixed;
+        position: sticky;
         z-index: 99;
         width: 100%;
         color: white;

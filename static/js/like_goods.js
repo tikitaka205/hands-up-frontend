@@ -1,6 +1,6 @@
 window.onload = function (){
     console.log('userProfile 업로드시 실행되는 함수')
-    sellgoods()
+    likegoods()
 }
 
 
@@ -117,7 +117,7 @@ function buygoods(){
             console.log(response)
             console.log(response['buy_goods'].length)
             for(let i =0 ; i < response['buy_goods'].length; i++){
-                if (response['buy_goods'][i]['images'] > 0){
+                if (response['buy_goods'][i]['images'].length > 0){
                     let images = response['buy_goods'][i]['images'][0]
                     let title = response['buy_goods'][i]['title']
                     let predict_price = response['buy_goods'][i]['predict_price']
@@ -180,6 +180,7 @@ function likegoods(){
         data: {},
 
         success: function (response) {
+            console.log(response['like_goods'])
             console.log(response['user_data']['profile_image'])
             let user_image = response['user_data']['profile_image']
             console.log(response['user_data']['username'])
@@ -195,8 +196,8 @@ function likegoods(){
                             $('#userdata').append(temp_profile)
 
             console.log(response['like_goods'].length)
-            for(let i =0 ; i < response['like_goods']; i++){
-                if (response['like_goods'][i]['images'].length > 0){
+            for(let i =0 ; i < response['like_goods'].length; i++){
+                if (response['like_goods'][i]['images'] > 0){
                     let images = response['like_goods'][i]['images'][0]
                     let title = response['like_goods'][i]['title']
                     let predict_price = response['like_goods'][i]['predict_price']

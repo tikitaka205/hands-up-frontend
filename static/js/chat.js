@@ -7,8 +7,8 @@ const payload = JSON.parse(localStorage.getItem('payload', ''))
 //     } 받아와서 아래에서 사용
 
 
-// let goods_id = localStorage.getItem('goods_id')
-let goods_id = 2;
+let goods_id = localStorage.getItem('goods_id')
+// let goods_id = 2;
 console.log("start_chat", "user_id: ", payload["user_id"]);
 
 
@@ -45,6 +45,7 @@ console.log(chatSocket)
 chatSocket.onopen = function (e) {
     get_chat_other_user()
     get_chat_log()
+    select_chat_roome()
 }
 
 
@@ -193,4 +194,55 @@ function get_chat_other_user() {
             $('#review-btn').html(temp_html)
         }
     });
+}
+
+function select_chat_roome() {
+    $.ajax({
+        type: "GET",
+        url: `${backEndUrl}/chat/list/?token=${token}`,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            console.log(response)
+            let chat_list = response["room_list"]
+            for (let i = 0; i < chat_list.length; i++) {
+                let buyer = chat_list[i]['buyer']['username']
+                let seller = chat_list[i]['seller']['username']
+                let goods_id = chat_list[i]["id"]
+                if (payload['username'] == buyer) {
+                    let temp_html = `
+                        <div style="background-color: white">
+                        <a href="javascript:get_chatSocket(${goods_id})">판매자: ${seller}</a>
+                        </div>
+                    `
+                    $("#chat-list").append(temp_html)
+                } else if (payload['username'] == seller) {
+                    let temp_html = `
+                        <div style="background-color: green">
+                        <a href="javascript:get_chatSocket(${goods_id})">구매자: ${buyer}</a>
+                        </div>
+                    `
+                    $("#chat-list").append(temp_html)
+                }
+
+
+            }
+
+
+        },
+    });
+}
+
+function get_chatSocket(goods_id) {
+    console.log("들어왓니?")
+    let chatSocket = new WebSocket(
+        'ws://' + backUrl +
+        '/chat/' + goods_id + '/?token=' + token);
+    let test = localStorage.setItem('goods_id', goods_id);
+    console.log(goods_id)
+    console.log(test)
+    window.location.href = 'index.html'
+    return chatSocket
 }

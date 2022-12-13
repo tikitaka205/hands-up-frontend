@@ -125,23 +125,22 @@
                 <!-- 예상가치 -->
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="predict_price" placeholder="예상가격">
+                        <input id="inputPrice" type="text" class="form-control" placeholder="예상가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 시작가격 -->
                     <div class="mb-3">
-                        
-                        <input type="text" class="form-control" id="start_price" placeholder="시작가격">
+                        <input type="text" class="form-control" placeholder="시작가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 경매 날짜 -->
-                    <input class="inputdate" type ="date" id ="start" />
-                    <!-- 경매 시간 -->
-                    <input class="inputtime" id="starttime" type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;">
+                    <div id = "date-time">
+                        <!-- <input class="inputdate" type ="date" id ="start" /> -->
+                        <!-- 경매 시간 -->
+                        <!-- <input class="inputtime" id="starttime" type="time" id="appt" name="appt" min="09:00" max="09:20" required style="margin-bottom: 20px;"> -->
+                    </div>
                     <br>
                     <!-- 게시글  -->
                     
-                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3">
-                        
-                    </textarea>
+                    <textarea rows="11" clos="50" class="form-control" id="content" rows="3"></textarea>
                 </div>
             </div>
        </div>

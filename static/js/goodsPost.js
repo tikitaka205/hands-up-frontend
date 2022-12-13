@@ -3,9 +3,60 @@ $(document).ready(function(){
     console.log('이미지 준비되는 실행되는 함수')
     $('#image').on("change", addFiles)
     let today = new Date()
+    console.log(today)
+    let year = today.getFullYear()
+    let month = today.getMonth()+1
+    let max_date = today.getDate() + 2
+    let min_date = today.getDate()
+
+    // let hours = today.getHours(); // 시
+    // let minutes = today.getMinutes();  // 분
+    // let seconds = today.getSeconds();  // 초
+
+    // console.log('시간',hours, minutes, seconds)
+
+
+    date_html=`<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
+    <input class="inputtime" id="starttime" type="time" id="appt" name="appt" required style="margin-bottom: 20px;">`
+    $('#date-time').append(date_html) 
+})
+
+// 가격에 콤마를 찍는 함수
+function getNumber(obj){
+    var num01;
+    var num02;
+    num01 = obj.value;
+    num02 = num01.replace(/\D/g,""); 
+    num01 = setComma(num02);
+    obj.value =  num01;
+
+    $('#test').text(num01);
+ }
+
+ function setComma(n) {
+    var reg = /(^[+-]?\d+)(\d{3})/;
+    n += '';         
+    while (reg.test(n)) {
+       n = n.replace(reg, '$1' + ',' + '$2');
+    }         
+    return n;
+ }
+
+
+
+//document.getElementById("Date").setAttribute("max", today);
+
+// date value 현재 날짜
+document.getElementById('start').value = new Date().toISOString().substring(0,10);
+let today = new Date()
 let max_date = today.getDate() + 3
 console.log(max_date)
-})
+document.getElementById('start').setAttribute("max", max_date)
+
+
+//현재 시간
+document.getElementById('starttime').value = new Date().toISOString().slice(11,16);
+
 
 let fileTemArr =[]
 let fileTemArrlen ;
@@ -82,6 +133,8 @@ function posthandle(){
 
     console.log(fileTemArr)
     
+    console.log(dateControl, timeControl, auction_room, trade_room)
+
     fd.append('title', title)
     fd.append('category', category)
     fd.append('dateControl', dateControl)
@@ -114,11 +167,3 @@ function posthandle(){
 }
 
 
-// date value 현재 날짜
-document.getElementById('start').value = new Date().toISOString().substring(0,10);
-let today = new Date()
-let max_date = today.getDate() + 3
-console.log(max_date)
-document.getElementById('start').max = max_date
-//현재 시간
-document.getElementById('starttime').value = new Date().toISOString().slice(11,16);

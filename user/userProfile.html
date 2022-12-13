@@ -43,8 +43,8 @@
                 width:100%;
                 margin: auto;
                 padding-left: 200px;
-                border: 1px solid gray;
-                border-radius: 10px;
+                /* border: 1px solid gray;
+                border-radius: 10px; */
             }
 
             .set-bg{
@@ -86,6 +86,24 @@
             .profile-atag:hover{
                 color:blue;
             }
+
+            .goodsItem{
+                transition: all 0.2s linear;
+                border : 1px solid rgb(250, 206, 206);
+                border-radius: 10px;
+
+            }
+
+            .goodsItem:hover{
+                transform: scale(1.1);
+                border : 1px solid rgb(250, 206, 206);
+                border-radius: 10px;
+            }
+            .item-text{
+                width: 100%;
+                
+                
+            }
         </style>
     </head>
     
@@ -116,7 +134,7 @@
                            
                         </div>
                         <!-- 프로필 버튼 -->
-                        <a href="#" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
+                        <a href="http://127.0.0.1:5501/review/my_review_profile.html" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
                     </div>
                     
                     <div class="featured__controls">
@@ -136,7 +154,7 @@
                 <div class="col-lg-9">
                     <div class="row" id="item" style="margin-top:20px;">
                         
-                        <!-- 데이터 들어가는 곳 -->
+                        <!-- 상품 데이터 들어가는 곳 -->
                     </div>
                         <!-- lists end -->
                     </div>

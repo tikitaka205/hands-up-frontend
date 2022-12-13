@@ -1,11 +1,11 @@
 let data_auction_list
 $(document).ready(function () {
     data_auction_list = get_auction_list()
-    review_list()
+    userInfo()
     console.log("여기 실행")
 });
 
-function review_list() {
+function userInfo() {
     $.ajax({
         type: 'GET',
 
@@ -81,7 +81,6 @@ const onIntersect = (entries, observer) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
             get_auction_list()
-            console.log('ddd')
         }
     });
 };
@@ -113,7 +112,7 @@ function get_auction_list() {
 
             let auction_list = response
             temp_response = auction_list
-
+            console.log("욕",response)
             for (let i = 0; i < auction_list.length; i++) {
 
                 let price 
@@ -134,7 +133,6 @@ function get_auction_list() {
                 open.setMinutes(open.getMinutes() + 20);
                 let rt = open - now
                 rt = parseInt(rt/(1000*60))
-
 
                 if (auction_status == null) {
                     auction_status = "wait-auction";

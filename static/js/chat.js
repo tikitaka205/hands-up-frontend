@@ -13,6 +13,7 @@ if (goodsId != null) {
         'ws://' + backUrl +
         '/chat/' + goodsId + '/?token=' + token);
 
+
     console.log(chatSocket)
 
     chatSocket.onopen = function (e) {

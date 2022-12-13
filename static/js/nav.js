@@ -10,7 +10,7 @@ document.getElementById('nav-header').innerHTML = `
             <div class="slicknav_menu">
                 <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
                     <ul>
-                        <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
+                        <li class="active"><a style="text-decoration: none;" href="/index.html" role="menuitem">홈</a></li>
                         <li><a href="/goods/index.html">경매</a></li>
                         <!-- <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
@@ -101,6 +101,7 @@ document.getElementById('nav-header').innerHTML = `
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+        <div id="bad_user"></div>
     </header>
     <!-- Header Section End -->
 

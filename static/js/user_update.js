@@ -15,6 +15,7 @@ $(document).ready(function(){
       }
       
       $(this).siblings('.upload-name').val(filename);
+      console.log(filename)
     });
   });
   
@@ -127,7 +128,7 @@ async function handleUpdate() {
 
         success: function (result) {
         alert("회원정보 변경완료.", result);
-        location.replace('http://127.0.0.1:5501/review/index.html')
+        location.replace('http://127.0.0.1:5500/review/index.html')
         },
         error : function(){
           alert("이미 사용 중인 아이디입니다.");

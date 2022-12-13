@@ -25,7 +25,7 @@ function review() {
     let user_id = localStorage.getItem('user_id')
     let seller_id = localStorage.getItem('seller_id')
     console.log("여기")
-    window.location.href = 'http://127.0.0.1:5501/review/seller.html'
+    window.location.href = 'http://127.0.0.1:5500/review/seller.html'
 
     // if(user_id==seller_id){
     //     window.location.href ='http://127.0.0.1:5501/review/seller.html'

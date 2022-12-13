@@ -44,9 +44,9 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:15px;">
-                                    <strong class="me-auto" style="margin-left: 10px;">${author}</strong>
-                                    <small class="text-muted" style="margin-left: 10px;"><time class="timeago" datetime="${created_at}"></small>
+                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:500px;">
+                                    <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
+                                    <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
                                 <div class="toast-body">
                                     ${content}
@@ -100,19 +100,19 @@ function review_list() {
             }
             
             let bad_score=`
-            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="">
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${bad_review_count}</span>
             `
             let soso_score=`
-            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="">
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${soso_review_count}</span>
             `
             let good_score=`
-            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="">
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${good_review_count}</span>
             `
             let excellent_score=`
-            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px; font-family: inherit;" id="">
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
             ${excellent_review_count}</span>
             `
 

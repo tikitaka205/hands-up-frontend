@@ -1,7 +1,7 @@
 window.onload = function () {
     review_list()
 }
-let user_id = localStorage.getItem('profile_id')
+let user_id = url.searchParams.get('user_id')
 
 
 var backUrl = '127.0.0.1:8000'
@@ -9,18 +9,16 @@ var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
 
 function review_list() {
-    console.log('정보 불러오기 성공')
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTQ0NDE0LCJpYXQiOjE2NzA3NDQ0MTQsImp0aSI6ImYxODk0YThlYTQ0MjQzNGQ5ZWYwZTZkMTIxOWZkZmI0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.JiEzU46-7FlrgdldrCwvGdj9lZ2-VKmDIOUsNELdNps'
     $.ajax({
         type: 'GET',
 
         data: {},
         headers: {
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/review/list/2/`,
-
+        url: `http://127.0.0.1:8000/review/list/${user_id}/`,
+        // 유저아이디 입력
         success: function (response) {
             console.log('성공:', response);
             let profile_image = response['receiver']['profile_image']
@@ -46,9 +44,9 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:15px;">
-                                    <strong class="me-auto" style="margin-left: 10px;">${author}</strong>
-                                    <small class="text-muted" style="margin-left: 10px;"><time class="timeago" datetime="${created_at}"></small>
+                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:500px;">
+                                    <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
+                                    <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
                                 <div class="toast-body">
                                     ${content}
@@ -70,7 +68,7 @@ function review_list() {
                 </div>
                 <br>
                 <div style="display:felx;">
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
                 </div>
             `
             let bad_user = `
@@ -90,7 +88,7 @@ function review_list() {
                         </div>
                         <br>
                         <div style="display:felx;">
-                        <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보러가기</button>
+                        <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
                         </div>
                     `
                 )
@@ -100,23 +98,47 @@ function review_list() {
                 $('#bad_user').append(bad_user)
                 $('#temp').append(temper_bad_user)
             }
+            
+            let bad_score=`
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
+            ${bad_review_count}</span>
+            `
+            let soso_score=`
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
+            ${soso_review_count}</span>
+            `
+            let good_score=`
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
+            ${good_review_count}</span>
+            `
+            let excellent_score=`
+            <span style="text-align: center; background-color: #ff0000; width: 30px; height: 30px; border-radius: 50px; position: absolute; right: 20%; top: 0; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-size: 20px;">
+            ${excellent_review_count}</span>
+            `
 
-            if (bad_review_count == 0) $('#bad_score').hide();
-            else $('#bad_score').text(`${bad_review_count}`);
+            if (bad_review_count > 0){
+            console.log("안좋아")
+            $('#bad_score').append(bad_score);
+            }
+            if (soso_review_count > 0){
+            console.log("안좋아2")
 
-            if (soso_review_count == 0) $('#soso_score').hide();
-            else $('#soso_score').text(`${soso_review_count}`);
+            $('#soso_score').append(soso_score);
+            }
 
-            if (good_review_count == 0) $('#good_score').hide();
-            else $('#good_score').text(`${good_review_count}`);
+            if (good_review_count > 0){
+            $('#good_score').append(good_score);
+            }
 
-            if (excellent_review_count == 0) $('#excellent_score').hide();
-            else $('#excellent_score').text(`${excellent_review_count}`);
+            if (excellent_review_count > 0){
+            console.log("안좋")
+            console.log(excellent_review_count)
+
+            $('#excellent_score').append(excellent_score);
+            }
 
 
-            $('#soso_score').text(`${soso_review_count}`)
-            $('#good_score').text(`${good_review_count}`)
-            $('#excellent_score').text(`${excellent_review_count}`)
+
             $('#username').text(`${username}`)
             $('#profile_image').text(`${profile_image}`)
             $("time.timeago").timeago();
@@ -125,6 +147,6 @@ function review_list() {
 }
 
 
-function review() {
-    location.href = 'goods_list.html'
+function review(id) {
+    location.href = `/review/goods_list.html?user_id=${id}`
 }

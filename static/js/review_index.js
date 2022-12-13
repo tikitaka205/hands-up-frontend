@@ -123,6 +123,6 @@ function review_list() {
 }
 
 
-function review() {
-    location.href = 'goods_list.html'
+function review(id) {
+    location.href = `/review/goods_list.html?user_id=${id}`
 }

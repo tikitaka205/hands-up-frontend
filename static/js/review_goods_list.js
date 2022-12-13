@@ -1,6 +1,6 @@
-'use strict';
-const hostUrl = 'http://127.0.0.1:8000'
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxNzUwMjc4LCJpYXQiOjE2Njk5NTAyNzgsImp0aSI6Ijc3NWZhYWJmNTAwMDQzNzc5YmJiMjQ4Zjg5ODJiMmNlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IiwicGhvbmUiOiIwMTAxMjM0NTY3OCJ9.XhCjA_1O53IB3tZentC9KvBnPAyNc1aW8REsxUgZZDw'
+// 'use strict';
+// const hostUrl = 'http://127.0.0.1:8000'
+// const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcxNzUwMjc4LCJpYXQiOjE2Njk5NTAyNzgsImp0aSI6Ijc3NWZhYWJmNTAwMDQzNzc5YmJiMjQ4Zjg5ODJiMmNlIiwidXNlcl9pZCI6MiwidXNlcm5hbWUiOiJ0ZXN0IiwicGhvbmUiOiIwMTAxMjM0NTY3OCJ9.XhCjA_1O53IB3tZentC9KvBnPAyNc1aW8REsxUgZZDw'
 
 let data_auction_list
 $(document).ready(function () {
@@ -8,16 +8,17 @@ $(document).ready(function () {
     data_auction_list = get_auction_list()
 });
 
-
+var user_id = url.searchParams('user_id')
+console.log(user_id)
 
 function get_auction_list() {
     let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/user/2`,
+        url: `${hostUrl}/goods/user/${user_id}`,
         headers: {
-            // "Authorization": "Bearer " + localStorage.getItem("access"),
-            "Authorization": "Bearer " + accessToken,
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+            // "Authorization": "Bearer " + accessToken,
         },
         data: {},
         async: false,

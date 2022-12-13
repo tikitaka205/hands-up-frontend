@@ -160,14 +160,14 @@ function select_chat_roome() {
                 if (payload['username'] == buyer) {
                     let temp_html = `
                         <div style="background-color: white">
-                        <a href="javascript:get_chatSocket(${goods_id})">판매자: ${seller}</a>
+                        <a href="javascript:getChatRomm(${goods_id})">판매자: ${seller}</a>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
                 } else if (payload['username'] == seller) {
                     let temp_html = `
                         <div style="background-color: green">
-                        <a href="javascript:get_chatSocket(${goods_id})">구매자: ${buyer}</a>
+                        <a href="javascript:getChatRomm(${goods_id})">구매자: ${buyer}</a>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
@@ -181,21 +181,16 @@ function select_chat_roome() {
     });
 }
 
-function get_chatSocket(goods_id) {
-    console.log("들어왓니?")
-    console.log(goods_id)
-    let chatSocket = new WebSocket(
-        'ws://' + backUrl +
-        '/chat/' + goods_id + '/?token=' + token);
+function getChatRomm(goods_id) {
     window.location.href = `index.html?goods=${goods_id}`
-    return chatSocket
+    return
 }
 
 function review() {
     let user_id = localStorage.getItem('user_id')
     let seller_id = localStorage.getItem('seller_id')
     console.log("여기")
-    window.location.href = 'http://127.0.0.1:5501/review/seller.html'
+    window.location.href = `http://127.0.0.1:5501/review/seller.html`
 
     // if(user_id==seller_id){
     //     window.location.href ='http://127.0.0.1:5501/review/seller.html'

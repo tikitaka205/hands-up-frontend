@@ -284,7 +284,7 @@ chatSocket.onmessage = async function (e) {
                 </div>
                 <div class = "card p-2 mb-3">
                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-                    <div class="" style="font-size:25px;" onclick="window.location.href='/review/index.html?$user_id=${data['seller']['id']}'">
+                    <div class="" style="font-size:25px;" onclick="window.location.href='/review/index.html?$user_id=${data['sender']}'">
                         ${data['sender_name']}
                     </div>
                 </div>
@@ -413,10 +413,15 @@ function sendMessage() {
 };
 
 function sendMoney() {
+    if(!confirm('정말 입찰 하시겠습니까?')){
+        return   
+    }
     var messageInputDom = document.querySelector('#chat-money-input');
     var highPrice = document.getElementById('price').innerText;
     var message = messageInputDom.value;
     const reg1 = /^[0-9]+$/;
+    highPrice = highPrice.replace(/,/g,"");
+
 
     if (message === '' || !reg1.test(highPrice) || !reg1.test(message)) {
         return alert('값을 바르게 입력해 주세요.')

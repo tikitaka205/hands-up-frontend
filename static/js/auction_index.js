@@ -26,13 +26,18 @@ observer.observe(listEnd);
 
 
 var nowPage = 1
-var category = ''
 const token = localStorage.getItem('access')
 var goodsStatus = ''
 var isNull = ''
 var search = url.searchParams.get('search')
+var category = url.searchParams.get('category')
 var search = search === null || search === undefined? search ='': search = search
 
+if(!category){
+    category = ''
+}else{
+    $(`#ct-${CATEGORY[category]}`).addClass('active')
+}
 
 function get_auction_list() {
     let temp_response
@@ -101,7 +106,6 @@ function get_auction_list() {
                             참여중
                         </span>
                     </div>
-                        
                     `
                     
                     price = `
@@ -162,7 +166,7 @@ function get_auction_list() {
                                 ${participants}
                             </div>
                         </div>
-                        <div class="" style="background-color : white; padding : 5px 15px 10px; border-radius:0 0 15px 15px; cursor:pointer;" onclick="window.location.href='/goods/auction.html?goods=${auction_list[i]['id']}'">
+                        <div class="" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; background-color : white; padding : 5px 15px 10px; border-radius:0 0 15px 15px; cursor:pointer;" onclick="window.location.href='/goods/auction.html?goods=${auction_list[i]['id']}'">
                             <span style="font-size:17px; font-weight : 700;">${auction_list[i]['title']}</span>
                             ${price}
                         </div>

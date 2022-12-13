@@ -99,9 +99,10 @@ function posthandle(){
     start_price = start_price.replace(/,/g,""); 
 
     let fd = new FormData()
-    
+
     if(fileArr.length < 1){
         alert('최소 하나 이상의 이미지를 포함해 주세요')
+        return
     }else if(title == ""){
         alert('제목을 입력해주세요.')
         return 

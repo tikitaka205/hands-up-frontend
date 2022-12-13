@@ -51,6 +51,13 @@ function moveProfile(){
 }
 
 
+function moveCaht(){
+    if(!payload){
+        needLogin()
+    }
+    return window.location.href = `/chat/index.html?user_id=${payload['user_id']}`
+}
+
 
 
 document.getElementById('nav-header').innerHTML = `
@@ -151,6 +158,9 @@ document.getElementById('nav-header').innerHTML = `
                             <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
                             <li style='cursor:pointer;' onclick='moveProfile()'>
                                 <i class="fas fa-heart"></i>
+                            </li>
+                            <li style='cursor:pointer;' onclick='moveChat()'>
+                                <i class="fas fa-comment-dots"></i>
                             </li>
                         </ul>
                     </div>

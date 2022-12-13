@@ -13,6 +13,7 @@ if (goodsId != null) {
         'ws://' + backUrl +
         '/chat/' + goodsId + '/?token=' + token);
 
+
     console.log(chatSocket)
 
     chatSocket.onopen = function (e) {
@@ -175,8 +176,6 @@ function select_chat_roome() {
 
 
             }
-
-
         },
     });
 }

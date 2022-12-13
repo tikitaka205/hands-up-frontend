@@ -239,12 +239,12 @@ function selectScore(score_1){
 
 // 댓글
 function reviewCreate() {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTMzMzUwLCJpYXQiOjE2NzA3MzMzNTAsImp0aSI6IjMxZWJhN2I4ZWY2YjQ2OTM4ODcxNWI4NWQ3N2NjMjYxIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.fUj3wH0KWszPaI6p9FTukoJAKBEXCZRqbVSOdOQUx_E'
 
    let content = $("#content").val()
    let score= $("input[type=checkbox]:checked").val()
    let formData = new FormData();
    formData.append("content",content);
+   formData.append("score",score);
    console.log("content",content)
    console.log("score",score)
    console.log(formData)
@@ -252,13 +252,13 @@ function reviewCreate() {
    $.ajax({
        
        type: "POST",
-       url: `http://127.0.0.1:8000/review/2/`,
+       url: `http://127.0.0.1:8000/review/5/`,
        processData: false,
        contentType: false,
        data: formData,
        
        headers: {
-        "Authorization": "Bearer " + accessToken,
+        "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
        success: function () {

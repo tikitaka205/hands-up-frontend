@@ -9,14 +9,12 @@ var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
 
 function review_list() {
-    console.log('정보 불러오기 성공')
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTQ0NDE0LCJpYXQiOjE2NzA3NDQ0MTQsImp0aSI6ImYxODk0YThlYTQ0MjQzNGQ5ZWYwZTZkMTIxOWZkZmI0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.JiEzU46-7FlrgdldrCwvGdj9lZ2-VKmDIOUsNELdNps'
     $.ajax({
         type: 'GET',
 
         data: {},
         headers: {
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
         url: `http://127.0.0.1:8000/review/list/2/`,

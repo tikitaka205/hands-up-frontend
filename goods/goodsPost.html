@@ -121,15 +121,18 @@
                 <div class="mb-3">
                     <input class="form-control" type="file" id="image" multiple />
                 </div>
+                <div id="image-wrap" class="row">
+                    
+                </div>
                 <div id="fileList" ></div>
                 <!-- 예상가치 -->
                 <div class="mb-3">
                     <div class="mb-3">
-                        <input id="inputPrice" type="text" class="form-control" placeholder="예상가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
+                        <input id="predictPrice" type="text" class="form-control" placeholder="예상가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 시작가격 -->
                     <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="시작가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
+                        <input id="startPrice" type="text" class="form-control" placeholder="시작가격" onchange="getNumber(this);" onkeyup="getNumber(this);">
                     </div>
                     <!-- 경매 날짜 -->
                     <div id = "date-time">

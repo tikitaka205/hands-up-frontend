@@ -7,6 +7,9 @@ console.log("start_chat", "user_id: ", payload["user_id"]);
 
 console.log(goodsId)
 select_chat_roome()
+// window.onload = function () {
+//     $("time.timeago").timeago();
+// }
 
 if (goodsId != null) {
     const chatSocket = new WebSocket(
@@ -17,8 +20,9 @@ if (goodsId != null) {
 
     chatSocket.onopen = function (e) {
         get_chat_log()
+        // wait_chat_message(goodsId)
+        select_chat_roome()
         // get_chat_other_user()
-        // select_chat_roome()
     }
 
 
@@ -27,7 +31,7 @@ if (goodsId != null) {
         let message = data['message'];
         let sender = data['sender_name']
         let sender_image = data['sender_image']
-        console.log("onmessage: ", sender_image)
+        console.log("onmessage: ", data)
         let temp_html
         if (sender == payload["username"]) {
             temp_html = `
@@ -44,16 +48,18 @@ if (goodsId != null) {
                     <img src="http://127.0.0.1:8000/media/default.jpeg" style="width:30px; height:30;">
                     <span style="margin-left: 5px; font-weight: bolder;">${sender}</span>
                 </div>
-                <div class="chat_message" style="background-color: rgb(183, 183, 183);">
+                <div class="chat_message" style="background-color: #d6cdcd;">
                 <div style=" margin: 5px 20px 5px 20px;"> ${message} </div>
                 </div>
             </div>
             `
+            send_checkMessage(data["goods_id"], data["sender"])
         }
         $('#chatLog').append(temp_html)
         // document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
         const top = $('#chatLog').prop('scrollHeight');
         $('#chatLog').scrollTop(top);
+        select_chat_roome()
     };
 
     chatSocket.onclose = function (e) {
@@ -137,6 +143,10 @@ function get_chat_log() {
                 const top = $('#chatLog').prop('scrollHeight');
                 $('#chatLog').scrollTop(top);
             }
+            let other_user = response["data"].find(e => e.author.username != payload["username"])
+            console.log("test", other_user, other_user["author"]["id"])
+            send_checkMessage(goodsId, other_user["author"]["id"])
+            // wait_chat_message(goodsId)
         }
     });
 }
@@ -150,33 +160,97 @@ function select_chat_roome() {
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            console.log(response)
-            let chat_list = response["room_list"]
-            for (let i = 0; i < chat_list.length; i++) {
-                let buyer = chat_list[i]['buyer']['username']
-                let seller = chat_list[i]['seller']['username']
-                let goods_id = chat_list[i]["id"]
-                console.log(goods_id)
-                if (payload['username'] == buyer) {
-                    let temp_html = `
-                        <div style="background-color: white">
-                        <a href="javascript:getChatRoom(${goods_id})">판매자: ${seller}</a>
-                        </div>
-                    `
-                    $("#chat-list").append(temp_html)
-                } else if (payload['username'] == seller) {
-                    let temp_html = `
-                        <div style="background-color: green">
-                        <a href="javascript:getChatRoom(${goods_id})">구매자: ${buyer}</a>
-                        </div>
-                    `
-                    $("#chat-list").append(temp_html)
+            console.log("룸정보", response)
+            $("#chat-list").empty()
+            for (let i = 0; i < response.length; i++) {
+                let buyer = response[i]['buyer']['username']
+                let seller = response[i]['seller']['username']
+                let goods_id = response[i]["id"]
+                let created_at = response[i]["created_at"]
+                let title = response[i]['title']
+                let auction_image
+                let buyer_profile_img = response[i]['buyer']['profile_image']
+                let seller_profile_img = response[i]['seller']['profile_image']
+                console.log(created_at)
+                try {
+                    if (response[i]['images']["image"]) {
+                        auction_image = response[i]['images']["image"]
+                    }
+                } catch (err) {
+                    auction_image = `/media/goods/cat-7347316__340.jpg`
                 }
 
-
+                if (payload['username'] == buyer) {
+                    let temp_html = `
+                    <div class="chat-list">
+                        <div class=" col-9 p-0" style="background-color: #FFFFFF; border-radius: 10px 0 0 10px; cursor : pointer;" onclick="getChatRoom(${goods_id})" >
+                            <div class="row m-0 p-0" >
+                                <div class="col-sm-3 p-2">
+                                    <img class="" src="${buyer_profile_img}" id="image2"
+                                        style="width:30px; border-radius:500px;">
+                                </div>
+                                <span class="col-sm-9 p-1" style="font-size: 20px; font-weight: bold;">
+                                    ${buyer}
+                                    <span style="font-size: 5px;">(<time class="timeago" datetime="${created_at}"></time>)</span>
+                                </span>
+                            </div>
+                            <div class="p-2">
+                                <div class=""
+                                    style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                    ${title}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 m-0 p-0" style="border-radius: 10px 0 0 10px;">
+                        <img src="${hostUrl}${auction_image}" alt="" style="border-radius: 0 10px 10px 0;width: 100%; height: 100%; object-fit: cover;">
+                            <span
+                                style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;"
+                                id="wait-msg-${goods_id}">
+                                
+                            </span>
+                        </div>
+                    </div>
+                    `
+                    $("#chat-list").append(temp_html)
+                    // wait_chat_message(goods_id)
+                } else if (payload['username'] == seller) {
+                    let temp_html = `
+                    <div class="chat-list">
+                        <div class=" col-9 p-0" style="background-color: #FFFFFF; border-radius: 10px 0 0 10px; cursor : pointer;" onclick="getChatRoom(${goods_id})" >
+                            <div class="row m-0 p-0" >
+                                <div class="col-sm-3 p-2">
+                                    <img class="" src="${seller_profile_img}" id="image2"
+                                        style="width:30px; border-radius:500px;">
+                                </div>
+                                <span class="col-sm-9 p-1" style="font-size: 20px; font-weight: bold;">
+                                    ${seller}
+                                    <span style="font-size: 5px;">(<time class="timeago" datetime="${created_at}"></time>)</span>
+                                </span>
+                                
+                            </div>
+                            <div class="p-2">
+                                <div class=""
+                                    style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                    <span style="font-size: 15px">${title}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 m-0 p-0" style="border-radius: 10px 0 0 10px;">
+                            <img src="${hostUrl}${auction_image}" alt="" style="border-radius: 0 10px 10px 0;width: 100%; height: 100%; object-fit: cover;">
+                            <span
+                                style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;"
+                                id="wait-msg-${goods_id}">
+                                
+                            </span>
+                        </div>
+                    </div>
+                    `
+                    $("#chat-list").append(temp_html)
+                    // wait_chat_message(goods_id)
+                }
+                wait_chat_message(goods_id)
             }
-
-
+            $("time.timeago").timeago();
         },
     });
 }
@@ -190,7 +264,7 @@ function review() {
     let user_id = localStorage.getItem('user_id')
     let seller_id = localStorage.getItem('seller_id')
     console.log("여기")
-    window.location.href = `http://127.0.0.1:5501/review/seller.html`
+    window.location.href = `/review/seller.html`
 
     // if(user_id==seller_id){
     //     window.location.href ='http://127.0.0.1:5501/review/seller.html'
@@ -199,6 +273,53 @@ function review() {
     // }
 }
 
+
+function send_checkMessage(goods_id, user_id) {
+    let is_read = "True"
+    formdata = new FormData()
+    formdata.append("is_read", is_read)
+
+    $.ajax({
+        type: "POST",
+        url: `${hostUrl}/chat/${goods_id}/check_msg/${user_id}/`,
+        processData: false,
+        contentType: false,
+        data: formdata,
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+
+        },
+    });
+}
+
+function wait_chat_message(trade_room_id) {
+
+    $.ajax({
+        type: "GET",
+        // url: `${hostUrl}/chat/${goods_id}/check_msg/${user_id}/`,
+        // url: `${hostUrl}/chat/${goodsId}/?token=${token}`,
+        url: `${hostUrl}/chat/wait_msg/${trade_room_id}/?token=${token}`,
+        processData: false,
+        contentType: false,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            console.log(response)
+            // let count
+            // for (let i = 0; i < response.length; i++) {
+            //     if (response[i]["is_read"] === true) {
+            //         count++
+            //     }
+            // }
+            $(`#wait-msg-${trade_room_id}`).text(response.length)
+            console.log("count", response.length)
+        },
+    });
+}
 
 // function get_chat_other_user() {
 //     $.ajax({

@@ -28,37 +28,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
     <style>
         .header__menu>ul>li {
             margin: 0 10px;
         }
-        .cate-wrap > div:hover{
+
+        .cate-wrap>div:hover {
             cursor: pointer;
         }
-        .hero__item{
+
+        .hero__item {
             background-image: url('/static/images/event-bg.png');
             background-position: center;
             background-size: cover;
         }
+
         .swiper {
-        width: 100%;
-        padding-top: 50px;
-        padding-bottom: 50px;
-      }
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
 
-      .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 300px;
-        height: 300px;
-      }
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 300px;
+        }
 
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-      }
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -105,101 +108,123 @@
 
     <!-- 인기 경매 섹션 -->
     <section class="categories mb-3">
-        <div class="text-center" style="font-size: 30px; font-weight : 700;color: white;"><i class="fas fa-angle-double-up"></i> 치열한 경매 <i class="fas fa-angle-double-up"></i></div>
+        <div class="text-center" style="font-size: 30px; font-weight : 700;color: white;"><i
+                class="fas fa-angle-double-up"></i> 치열한 경매 <i class="fas fa-angle-double-up"></i></div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper" id="recommend-list">
             </div>
             <div class="swiper-pagination"></div>
-          </div>
+        </div>
     </section>
     <!-- Categories Section End -->
 
     <!-- Category Section Start -->
     <section class="cate">
         <div class="container">
-            <h5 class="mb-3 pt-3 text-center" style="font-size: 30px; color: white; font-weight: 700;"><i class="fas fa-sliders-h"></i> 카테고리</h5>
+            <h5 class="mb-3 pt-3 text-center" style="font-size: 30px; color: white; font-weight: 700;"><i
+                    class="fas fa-sliders-h"></i> 카테고리</h5>
 
             <div class="row cate-wrap">
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=디지털기기'">
-                    <div class="card text-center" style="color: #ffd567; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=디지털기기'">
+                    <div class="card text-center"
+                        style="color: #ffd567; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-laptop"></i>
                         디지털 기기
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=생활가전'">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=생활가전'">
 
-                    <div class="card text-center" style="color: #d09600; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                    <div class="card text-center"
+                        style="color: #d09600; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-plug"></i>
 
                         생활가전
                     </div>
 
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=가구/인테리어'">
-                    <div class="card text-center" style="color: #6e4f00; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=가구/인테리어'">
+                    <div class="card text-center"
+                        style="color: #6e4f00; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-couch"></i>
 
                         가구/인테리어
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=생활/주방'">
-                    <div class="card text-center" style="color: #5dc4ff; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=생활/주방'">
+                    <div class="card text-center"
+                        style="color: #5dc4ff; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-sink"></i>
 
                         생활/주방
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=유아'">
-                    <div class="card text-center" style="color: #d0b46d; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=유아'">
+                    <div class="card text-center"
+                        style="color: #d0b46d; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-baby-carriage"></i>
 
                         유아
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=여성의류'">
-                    <div class="card text-center" style="color: #9c67ff; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=여성의류'">
+                    <div class="card text-center"
+                        style="color: #9c67ff; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-female"></i>
 
                         여성의류
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=남성의류'">
-                    <div class="card text-center" style="color: #a1d044; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=남성의류'">
+                    <div class="card text-center"
+                        style="color: #a1d044; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-male"></i>
 
                         남성의류
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=스포츠'">
-                    <div class="card text-center" style="color: #fb8954; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=스포츠'">
+                    <div class="card text-center"
+                        style="color: #fb8954; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-dumbbell"></i>
 
                         스포츠
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=반려동물용품'">
-                    <div class="card text-center" style="color: #67ffe3; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=반려동물용품'">
+                    <div class="card text-center"
+                        style="color: #67ffe3; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-dog"></i>
 
                         반려동물 용품
                     </div>
-                    
+
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-3" onclick="window.location.href='/goods/index.html?category=기타'">
-                    <div class="card text-center" style="color: #6f6f6f; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3"
+                    onclick="window.location.href='/goods/index.html?category=기타'">
+                    <div class="card text-center"
+                        style="color: #6f6f6f; font-weight: 600;font-size:20px; border-radius:15px; padding:15px">
                         <i class="fas fa-won-sign"></i>
 
                         기타
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
         </div>
@@ -219,23 +244,22 @@
     <script src="/static/js/jquery.slicknav.js"></script>
     <script src="/static/js/mixitup.min.js"></script>
     <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/nav.js"></script>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
 
     <script>
 
         $.ajax({
-            tyep : "GET",
-            url : `${hostUrl}/goods/recommend/`,
+            tyep: "GET",
+            url: `${hostUrl}/goods/recommend/`,
             headers: {},
 
-            success: function(response){
+            success: function (response) {
                 let recommendList = response
                 console.log(response)
-                for (let i = 0; i < recommendList.length; i++){
+                for (let i = 0; i < recommendList.length; i++) {
                     let banner
-                    let price 
+                    let price
                     let participants
                     let heart
 
@@ -246,7 +270,7 @@
 
 
 
-                    let time = recommendList[i]['start_time'].slice(0,2) + '시' + ' ' +  recommendList[i]['start_time'].slice(3,)+'분'
+                    let time = recommendList[i]['start_time'].slice(0, 2) + '시' + ' ' + recommendList[i]['start_time'].slice(3,) + '분'
                     let startTime = recommendList[i]['start_date'].split('-').slice(1,).join('/') + ' ' + time + ' 오픈!'
 
                     var now = new Date();
@@ -254,7 +278,7 @@
 
                     open.setMinutes(open.getMinutes() + 20);
                     let rt = open - now
-                    rt = parseInt(rt/(1000*60))
+                    rt = parseInt(rt / (1000 * 60))
 
 
                     if (status == null) {
@@ -272,12 +296,12 @@
                             </span>
                         </div>
                         `
-                        
+
                     } else if (status == true) {
                         status = "started-auction";
                         var hp = priceToString(recommendList[i]['high_price'])
                         var sp = priceToString(recommendList[i]["start_price"])
-                        high_price = recommendList[i]["high_price"] === 0 || ! recommendList[i]["high_price"]? sp +'원': hp + '원';
+                        high_price = recommendList[i]["high_price"] === 0 || !recommendList[i]["high_price"] ? sp + '원' : hp + '원';
                         banner = `<span style="padding : 4px; border-radius:10px;background-color:#ffd700; color:black;">경매 ${rt}분 남았어요!<span>`
                         participants = `
                         <div style="background-color:black; border-radius : 10px; padding:3px;">
@@ -289,7 +313,7 @@
                         </div>
                             
                         `
-                        
+
                         price = `
                         <div>
                             <span style="font-size : 19px; font-weight:700;">
@@ -316,16 +340,16 @@
                             </span>
                         </h5>
                         `
-                        
+
                     };
-                    if(is_like){
-                        heart= `
+                    if (is_like) {
+                        heart = `
                         <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                             <i id="heart-${goods_id}" class="fas fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                         </div>
                         `
-                    }else{
-                        heart=`
+                    } else {
+                        heart = `
                         <div class="" id="post-like" style="width: 30px; margin: 0 auto; padding: 3px; cursor: pointer;" onclick="goodsLike(${goods_id})">
                             <i id="heart-${goods_id}" class="far fa-heart" style="color : #ffcaca; font-size : 25px"></i>
                         </div>
@@ -369,55 +393,55 @@
                     `
                 }
             }
-            })
+        })
 
 
 
-            function goodsLike(goods_id) {
-                if (!payload){
-                    needLogin()
-                }
-                $.ajax({
-                    type: 'GET',
-
-                    data: {},
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.getItem('access'),
-                    },
-
-                    url: `${hostUrl}/goods/like/${goods_id}/`,
-                    // document
-                    success: function () {
-                        if ($(`#heart-${goods_id}`).hasClass('fas')) {
-                            $(`#heart-${goods_id}`).attr('class', 'far fa-heart')
-
-                        } else {
-                            $(`#heart-${goods_id}`).attr('class', 'fas fa-heart')
-
-                        }
-                    },
-                });
+        function goodsLike(goods_id) {
+            if (!payload) {
+                needLogin()
             }
+            $.ajax({
+                type: 'GET',
 
-            var swiper = new Swiper(".mySwiper", {
-                effect: "coverflow",
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: "auto",
-                autoplay:{
-                    delay:800,
+                data: {},
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem('access'),
                 },
-                coverflowEffect: {
+
+                url: `${hostUrl}/goods/like/${goods_id}/`,
+                // document
+                success: function () {
+                    if ($(`#heart-${goods_id}`).hasClass('fas')) {
+                        $(`#heart-${goods_id}`).attr('class', 'far fa-heart')
+
+                    } else {
+                        $(`#heart-${goods_id}`).attr('class', 'fas fa-heart')
+
+                    }
+                },
+            });
+        }
+
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            autoplay: {
+                delay: 800,
+            },
+            coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
                 depth: 100,
                 modifier: 1,
                 slideShadows: true,
-                },
-                pagination: {
+            },
+            pagination: {
                 el: ".swiper-pagination",
-                },
-            });
+            },
+        });
     </script>
 
 

@@ -3,56 +3,56 @@ const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
 const CATEGORY = {
-    '' : '',
-    'all' : '',
-    '디지털기기' : 'digital',
-    '생활가전' : 'machine',
-    '가구/인테리어' : 'inte',
-    '생활/주방' : 'dinning',
-    '유아' : 'baby',
-    '여성의류' : 'w-cloth',
-    '남성의류' : 'm-cloth',
-    '스포츠' : 'sport',
-    '반려동물용품' : 'animal',
-    '기타' : 'etc',
+    '': '',
+    'all': '',
+    '디지털기기': 'digital',
+    '생활가전': 'machine',
+    '가구/인테리어': 'inte',
+    '생활/주방': 'dinning',
+    '유아': 'baby',
+    '여성의류': 'w-cloth',
+    '남성의류': 'm-cloth',
+    '스포츠': 'sport',
+    '반려동물용품': 'animal',
+    '기타': 'etc',
 }
 
 
-function searchAuction(){
+function searchAuction() {
     var keyword = document.getElementById('search-input').value;
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
-function searchAuction2(){
+function searchAuction2() {
     var keyword = document.getElementById('search-input-2').value;
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
 function priceToString(price) {
-    if (price === null){
+    if (price === null) {
         return null
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-function needLogin(){
-    if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
+function needLogin() {
+    if (confirm('로그인이 필요합니다. 로그인하러 갈까요?')) {
         return window.location.href = '/user/login.html'
-    }else{
+    } else {
         return
     }
 }
 
-function moveProfile(){
-    if(!payload){
+function moveProfile() {
+    if (!payload) {
         needLogin()
     }
     return window.location.href = `/review/index.html?user_id=${payload['user_id']}`
 }
 
 
-function moveCaht(){
-    if(!payload){
+function moveChat() {
+    if (!payload) {
         needLogin()
     }
     return window.location.href = `/chat/index.html?user_id=${payload['user_id']}`

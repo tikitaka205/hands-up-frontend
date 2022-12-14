@@ -30,6 +30,7 @@
 /* Template default CSS
 /*----------------------------------------*/
 
+
 html,
 body {
   height: 100%;
@@ -38,6 +39,33 @@ body {
   font-smoothing: antialiased;
 }
 
+.free_title p {
+  font-size: 28px ;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 15px;
+  position: relative;
+}
+.free_title p:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: #111;
+}
+.free_title p:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #333;
+}
 h1,
 h2,
 h3,

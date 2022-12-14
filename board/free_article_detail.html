@@ -9,24 +9,19 @@
   <meta name="generator" content="Hugo 0.104.2" />
   <title>자유게시판 상세페이지Y</title>
   <!-- css 파일 -->
-  <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
-  <link href="/static/css/base.css?after" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
   <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
   <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/static/css/slicknav.min.css">
   <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" href="/static/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- bootstrap css cdn -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
   <!-- Google Font -->
   <link href="" rel="stylesheet">
   <!-- JS 파일 -->
-  <script src="/static/js/bootstrap.bundle.min.js"></script>
-  <script src="/static/js/community_index.js"></script>
+  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -34,13 +29,12 @@
   
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
-    console.log(FLAG)
     if(!FLAG){
         alert("로그인이 필요합니다.");
         window.location.replace("/user/login.html")
         return
     }
-    // DOM이 아직 로드되지 않았기에 ready 이벤트를 사용해야 한다.
+
     });
     </script>
 ​
@@ -48,123 +42,17 @@
     .header__menu>ul>li {
             margin: 0 10px;
         }
-    /* .stady_btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .stady_wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-​
-    .cam_size {
-      width: 375px;
-      height: 375px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: #e9ecef;
-      margin-bottom: 10px;
-    }
-​ */
-    /* .nav_logo {
-      width: 100px;
-      height: 40px;
-    }
-​
-​
-    #main_nav {
-      padding-top: 0.5rem;
-      background-color: #eaeaea;
-      width: 100%;
-      margin: 0 auto;
-    } */
     </style>
     
 </head>
-<body id="body" class="" style="background-color: #ffffff;">
+<body id="body" class="" style="background-color:#d7f7c5;">
+  <!-- Page Preloder -->
   <div id="preloder" style="display: none;">
       <div class="loader" style="display: none;"></div>
   </div>
-  <div class="humberger__menu__overlay" style="z-index: 995;"></div>
-  <div class="humberger__menu__wrapper" style="z-index: 999;">
-      <div class="humberger__menu__widget">
-          <div class="header__top__right__auth">
-              <a href="#"><i class="fa fa-user"></i> Login</a>
-          </div>
-      </div>
-      <div id="mobile-menu-wrap">
-          <div class="slicknav_menu">
-              <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                  <ul>
-                      <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                      <li><a href="/goods/index.html">경매장</a></li>
-                      <li><a href="/community/free_article.html">게시판</a></li>
-                      <li><a href="/contact.html">Contact & Feedback</a></li>
-                      <li class="p-2">
-                          <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                          <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
-  </div>
-  <haed>
-<header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: fixed; z-index: 99; width: 100%; color: white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                    </div>
-                </div>
-                <div class="col-lg-8" style="padding: 0;">
-                    <nav class="header__menu">
-                        <ul style="color: white;">
-                            <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
-                                    <li><a href="/shop-details.html">Shop Details</a></li>
-                                    <li><a href="/shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="/checkout.html">Check Out</a></li>
-                                    <li><a href="/blog-details.html">Blog Details</a></li>
-                                </ul> -->
-                            </li>
-                            <li><a href="/community/free_article.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact &amp; Feedback</a></li>
-                            <li style="margin-right: 0;">
-                                <input type="text" class="form-control" placeholder="What do yo u need?">
-                            </li>
-                            <li style="margin: 0;" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i></a></li>
-                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                            <i class="fas fa-heart" style="color: black;"></i>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
+  <div id="nav-header"></div>
+
+
 <!-- 작성부분 -->
 <body id="body" class="h-100 text-center" style="background-color: #fcc5c5;">
     <div class="w-100 h-100 p-3 mx-auto">
@@ -173,51 +61,42 @@
       </header>
   
       <main class="container" style="height: 900px; margin-top : 90px;">
-​
+
         <!-- 제목 -->
-          <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #ffffff;" id="title"> </h1>
+        <div>
+          <h1 class = "free_title" id="title">  </h1> </div>
         <!-- 작성자 -->
-          <div style="display: flex; text-align: right; margin-top: 150px;" >
-            <h3 class='contents' style="text-align :right; font-size: 15px;" id="user">작성자 </h1>
+          <div style="display: flex; text-align: right; margin-top: 35px;" >
+            <h3 class='contents' style="text-align :right; font-size: 15px;" id="user"> 작성자: </h1>
           </div>
-        <!-- 게시글 조회수 댓글수 좋아요수 -->
-        <div style="text-align: right; display: flex;" >
-            <h1 class='contents' style="text-align :right; font-size: 12px;" id="hits">조회수 </h1>
-        </div>
         <!-- line -->
-        <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">
+        <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">   
         <!-- content -->
         <div>
-            <p class='contents' style="text-align :left; font-size: 25px; margin-top: 40px; margin-bottom: 90px;" id="content">
+            <p class='contents' style="text-align :left; font-size: 25px; margin-top: 50px; margin-bottom: 90px;" id="content"> </p>
+            <p class='image'  id ="image"> </p> 
         </div>
-        <!-- img -->
-        <div id="img">
-          
-        </div>
+       
         
-​
-​
-​
-​
               <!-- 게시글 옵션 -->
               <div class="mb-3" style="margin-top: 20px;">
                 <div style="margin-left: 70%;">
-                    <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="comment_put_submit()">수정</button>
+                    <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="free_article_put()">수정</button>
                     <button id="delete_submit" type="button" class="btn btn-outline-danger" onclick="post_delete_submit()" >삭제</button>
                 </div>
               <!-- 구분선 -->
               <hr style="margin-top: 50px; background-color: #00b395; height: 5px;">
               <div id="test">
-​
-​
+
+
               <!-- 댓글 리스트 -->
               <div id="comment_list" style="margin-top: 30px;"></div>
-​
+
               <!-- 댓글 페이지네이션 -->
               <nav aria-label="Page navigation example" style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
                 <ul class="pagination">
-                  <a onclick="" id="previous" class="page-link" href="#">이전</a>
-                  <a onclick="" id="next" class="page-link" href="#">다음</a>
+                  <a type="button" onclick="" id="previous" class="page-link">이전</a>
+                  <a type="button" onclick="" id="next" class="page-link">다음</a>
                 </ul>
               </nav>
 
@@ -238,7 +117,8 @@
       </main>
     </div>
     <script src="/static/js/user.js"></script>
-​
+    <script src="/static/js/base.js"></script>
+    <script src="/static/js/free_article_detail.js"></script>
+
 </body>
-​
 </html>

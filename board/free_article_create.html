@@ -43,7 +43,7 @@
 <body id="body" class="" style="background-color: #d7f7c5;">
   <!-- Page Preloder -->
   <div id="preloder" style="display: none;">
-      <div class="loader" style="display: none;"></div>
+    <div class="loader" style="display: none;"></div>
   </div>
   <div id="nav-header"></div>
 <!-- 작성부분 -->
@@ -59,8 +59,22 @@
 
         </div>
       </div>
+      <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+      </div>
+    </div>
+  </header>
+  <!-- 작성부분 -->
 
-    </header>
+  <body id="body" class="h-100 text-center" style="background-color: #ffffff;">
+    <div class="w-100 h-100 p-3 mx-auto">
+      <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
+        <div class="contain">
+          <div class="fixed-top" id="main_nav">
+            <h3 class="float-md-start mb-0">
+              <a href="/">
+              </a>
+            </h3>
 
     <!-- 작성란 -->
     <main class="container" style="height: 500px; margin-top : 120px;">
@@ -76,12 +90,13 @@
 
           <div class="mb-1">
             <label for="formFile" class="form-label"></label>
-            <input class="form-control" type="file" id="img" name="img" >
+            <input class="form-control" type="file" id="img" name="img">
           </div>
 
           <div class="mb-2">
             <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-            <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자' name='content' rows="12"required></textarea>
+            <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자'
+              name='content' rows="12" required></textarea>
           </div>
           <div style="display:flex;">
             <button type="button" onclick="free_article_create()" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
@@ -95,5 +110,4 @@
   <script src="/static/js/base.js"></script>
   <script src="/static/js/free_article_create.js"></script>
 
-</body>
 </html>

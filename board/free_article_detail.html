@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" class="h-100">
 ​
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,7 +27,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
   <script type="text/JavaScript">
-  
+
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
     if(!FLAG){
@@ -37,7 +38,7 @@
 
     });
     </script>
-​
+  ​
   <style>
     .header__menu>ul>li {
             margin: 0 10px;
@@ -48,7 +49,7 @@
 <body id="body" class="" style="background-color:#d7f7c5;">
   <!-- Page Preloder -->
   <div id="preloder" style="display: none;">
-      <div class="loader" style="display: none;"></div>
+    <div class="loader" style="display: none;"></div>
   </div>
   <div id="nav-header"></div>
 
@@ -93,7 +94,8 @@
               <div id="comment_list" style="margin-top: 30px;"></div>
 
               <!-- 댓글 페이지네이션 -->
-              <nav aria-label="Page navigation example" style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
+              <nav aria-label="Page navigation example"
+                style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
                 <ul class="pagination">
                   <a type="button" onclick="" id="previous" class="page-link">이전</a>
                   <a type="button" onclick="" id="next" class="page-link">다음</a>
@@ -103,17 +105,19 @@
 
             </div>
 
-              <!-- 댓글입력 -->
-              <form id="comment_content">
+            <!-- 댓글입력 -->
+            <form id="comment_content">
               <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-              <textarea class="form-control" id="comment_content2" placeholder='댓글을 입력해주세요.' name='comment_content2' rows="3" required></textarea>
-            </div>
-            <div>
-              <button type="button" class="btn btn-outline-success" style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()" >등록하기</button>
-            </div>
-              </form>
+              <textarea class="form-control" id="comment_content2" placeholder='댓글을 입력해주세요.' name='comment_content2'
+                rows="3" required></textarea>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-success"
+              style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()">등록하기</button>
+          </div>
+          </form>
 
-        </div>
+      </div>
       </main>
     </div>
     <script src="/static/js/user.js"></script>

@@ -27,14 +27,15 @@
     <link rel="stylesheet" href="/static/css/all.min.css">
 
 
-        <style>
+    <style>
         .header__menu>ul>li {
             margin: 0 10px;
         }
 
-        .redfont{
+        .redfont {
             color: red;
         }
+
         .title-center {
             text-align: center;
             margin-top: 50px;
@@ -61,7 +62,8 @@
         .img2 {
             width: 70px;
         }
-        input:focus{
+
+        input:focus {
             outline: none;
         }
     </style>
@@ -76,43 +78,52 @@
     <div class="page" style="height: 100%;">
         <div class="p-3">
             <div class="container"
-            style="margin-top: 100px; max-width: 500px; position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); padding: 40px; background-color: white; border-radius: 15px; box-shadow: 7px -5px 10px 0px;">
-            <h3 class="text-center">회원정보 수정</h3>
-            <div class="box" style="width:100%; display: flex; justify-content: center; margin-top: 20px;">
-                
-                <img class="profile" id="profile_image_2" style="width: 80px; height: 80px; border-radius: 500px;">
+                style="margin-top: 100px; max-width: 500px; position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); padding: 40px; background-color: white; border-radius: 15px; box-shadow: 7px -5px 10px 0px;">
+                <h3 class="text-center">회원정보 수정</h3>
+                <div class="box" style="width:100%; display: flex; justify-content: center; margin-top: 20px;">
 
-              </div>
-              <div>
-                <div class="mb-3">
-                    
-                    <label for="exampleInputEmail1" class="form-label">프로필 사진</label>
-                    <div class="row" style="border: 1px solid gray; display: flex; justify-content: end; border-radius: 10px; ">
-                        <input class="upload-name" id="upload-name" disabled="disabled" style="font-size: 15px; color: black; border: 0; width: 310px; background-color:transparent" value="">
+                    <img class="profile" id="profile_image_2" style="width: 80px; height: 80px; border-radius: 500px;">
 
-                        <label id="file-label" for="profile_image" class="form-label" style=" text-align: center; margin-top: 10px; margin-right: 17px; height: 30px; width: 100px; background-color: #deef87; border-radius: 10px; border: 1px solid black; line-height: 30px;" value="">파일 선택</label>
-                        <input onchange="readURL(this);" type="file" class="profile_image" id="profile_image" src="" style="display:none" >
+                </div>
+                <div>
+                    <div class="mb-3">
+
+                        <label for="exampleInputEmail1" class="form-label">프로필 사진</label>
+                        <div class="row"
+                            style="border: 1px solid gray; display: flex; justify-content: end; border-radius: 10px; ">
+                            <input class="upload-name" id="upload-name" disabled="disabled"
+                                style="font-size: 15px; color: black; border: 0; width: 310px; background-color:transparent"
+                                value="">
+
+                            <label id="file-label" for="profile_image" class="form-label"
+                                style=" text-align: center; margin-top: 10px; margin-right: 17px; height: 30px; width: 100px; background-color: #deef87; border-radius: 10px; border: 1px solid black; line-height: 30px;"
+                                value="">파일 선택</label>
+                            <input onchange="readURL(this);" type="file" class="profile_image" id="profile_image" src=""
+                                style="display:none">
+                        </div>
+                        <div id="phone-message" class="form-text"></div>
                     </div>
-                    <div id="phone-message" class="form-text"></div>
-                </div>
-                <div class="mb-3">
-                    <label for="" class="form-label">활동 아이디</label>
-                    <div class="row" style="border: 1px solid gray; padding: 8px 15px; border-radius: 10px;">
-                        <input type="text" style="border: none; font-size: 15px;" class="col-9" id="username" value="" placeholder="2 ~ 10자 영문, 한글">
-                        <input type="button" style="background-color: #deef87; border-radius: 10px; border: 1px solid black;" class="col-3" value="중복 체크" onclick="checkUsername()">
+                    <div class="mb-3">
+                        <label for="" class="form-label">활동 아이디</label>
+                        <div class="row" style="border: 1px solid gray; padding: 8px 15px; border-radius: 10px;">
+                            <input type="text" style="border: none; font-size: 15px;" class="col-9" id="username"
+                                value="" placeholder="2 ~ 10자 영문, 한글">
+                            <input type="button"
+                                style="background-color: #deef87; border-radius: 10px; border: 1px solid black;"
+                                class="col-3" value="중복 체크" onclick="checkUsername()">
+                        </div>
+                        <div id="username-message" class="form-text"></div>
                     </div>
-                    <div id="username-message" class="form-text"></div>
+
+                    <div style="margin-top:40px; display: flex; justify-content: end;">
+                        <button type="button" onclick="handleUpdate()" class="btn btn-primary">수정완료</button>
+                    </div>
                 </div>
 
-                <div style="margin-top:40px; display: flex; justify-content: end;">
-                    <button type="button" onclick="handleUpdate()" class="btn btn-primary">수정완료</button>
-                </div>
+
             </div>
-
-
         </div>
-        </div>
-        
+
 
     </div>
 
@@ -128,7 +139,6 @@
     <script src="/static/js/owl.carousel.min.js"></script>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
-    <script src="/static/js/nav.js"></script>
     <script src="/static/js/user_update.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

@@ -91,7 +91,7 @@
                 transition: all 0.2s linear;
                 border : 1px solid rgb(250, 206, 206);
                 border-radius: 10px;
-
+                margin-left: 20px;
             }
 
             .goodsItem:hover{
@@ -100,10 +100,19 @@
                 border-radius: 10px;
             }
             .item-text{
-                width: 100%;
-                
-                
+                width: 100%;  
             }
+           
+            .card{
+                margin-left: 20px;
+                margin-top: 20px;
+            }
+            .row{
+                width: 100%;
+                margin-left: 20px;
+            }
+            
+            
         </style>
     </head>
     
@@ -131,35 +140,20 @@
                     <!-- 프로필 사진. 프로필 페이지  -->
                     <div class="profile-wrap">
                         <div id = 'userdata'>
-                           
                         </div>
-                        <!-- 프로필 버튼 -->
-                        <a href="http://127.0.0.1:5500/review/my_review_profile.html" class="profile-atag"><div class="profile-bnt">프로필 보기</div></a>
-                    </div>
-                    
-                    <div class="featured__controls">
-                        <ul>
-                            <!-- <li class="active" data-filter="*">All</li> -->
-                            <li data-filter=".oranges" onclick="sellgoods()">판매상품</li>
-                            <li data-filter=".fresh-meat" onclick="buygoods()">구매상품</li>
-                            <li data-filter=".vegetables" onclick="likegoods()">관심상품</li>
-                            <!-- <li data-filter=".fastfood">Fastfood</li> -->
-                        </ul>
                     </div>
                 </div>
-            </div>
                 <!-- 이미지 리스트 들어가는 곳 -->
-                <div class="lists">
-                <div class="items" >
-                <div class="col-lg-9">
-                    <div class="row" id="item" style="margin-top:20px;">
-                        
-                        <!-- 상품 데이터 들어가는 곳 -->
+                <!-- <div class="lists"> -->
+                    <div class="item-goods" >
+                        <div class="col-lg-15">
+                            <div class="row" id="items" style="margin-top:20px;">
+                                <!-- 상품 데이터 들어가는 곳 -->
+                            </div>
+                                <!-- lists end -->
+                        </div>
                     </div>
-                        <!-- lists end -->
-                    </div>
-                    </div>
-                </div>
+                <!-- </div> -->
                 
             </div>
         </div>
@@ -180,7 +174,7 @@
     <script src="/static/js/jquery.slicknav.js"></script>
     <script src="/static/js/mixitup.min.js"></script>
     <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/base.js"></script>
     <script src="/static/js/main.js"></script>
     <script src="/static/js/like_goods.js"></script>
 

@@ -2,10 +2,8 @@ const goodsId = url.searchParams.get('goods');
 const backUrl = '127.0.0.1:8000';
 const token = localStorage.getItem('access');
 
-console.log(payload["username"])
-console.log("start_chat", "user_id: ", payload["user_id"]);
+console.log("start_chat", "user_id: ", payload["username"]);
 
-console.log(goodsId)
 select_chat_roome()
 
 if (goodsId != null) {
@@ -13,12 +11,11 @@ if (goodsId != null) {
         'ws://' + backUrl +
         '/chat/' + goodsId + '/?token=' + token);
 
-    console.log(chatSocket)
-
     chatSocket.onopen = function (e) {
         get_chat_log()
         // get_chat_other_user()
         // select_chat_roome()
+        // wait_chat_message()
     }
 
 
@@ -27,7 +24,7 @@ if (goodsId != null) {
         let message = data['message'];
         let sender = data['sender_name']
         let sender_image = data['sender_image']
-        console.log("onmessage: ", sender_image)
+        console.log("onmessage: ", data)
         let temp_html
         if (sender == payload["username"]) {
             temp_html = `
@@ -49,15 +46,16 @@ if (goodsId != null) {
                 </div>
             </div>
             `
+            send_checkMessage(data["goods_id"], data["sender"])
         }
         $('#chatLog').append(temp_html)
         // document.querySelector('#chatLog').value += (sender + ": " + message + '\n');
         const top = $('#chatLog').prop('scrollHeight');
         $('#chatLog').scrollTop(top);
+        // wait_chat_message(goodsId)
     };
 
     chatSocket.onclose = function (e) {
-        console.log(e)
         console.error('Chat socket closed unexpectedly');
     };
 
@@ -98,7 +96,7 @@ function get_chat_log() {
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            // console.log(response)
+            console.log(response)
             if (response['message'] != '입장') {
                 return false
             }
@@ -107,8 +105,7 @@ function get_chat_log() {
                 let message = response['data'][i]['content'];
                 let sender = response['data'][i]['author']['username'];
                 let profile_image = response['data'][i]['author']['profile_image'];
-                console.log(profile_image)
-                // console.log(message, sender)
+
                 let temp_html
                 if (sender == payload["username"]) {
                     temp_html = `
@@ -130,6 +127,7 @@ function get_chat_log() {
                         </div>
                     </div>
                     `
+
                 }
 
                 $('#chatLog').append(temp_html)
@@ -137,6 +135,9 @@ function get_chat_log() {
                 const top = $('#chatLog').prop('scrollHeight');
                 $('#chatLog').scrollTop(top);
             }
+            let other_user = response["data"].find(e => e.author.username != payload["username"])
+            console.log("test", other_user, other_user["author"]["id"])
+            send_checkMessage(goodsId, other_user["author"]["id"])
         }
     });
 }
@@ -151,16 +152,15 @@ function select_chat_roome() {
         },
         success: function (response) {
             console.log(response)
-            let chat_list = response["room_list"]
-            for (let i = 0; i < chat_list.length; i++) {
-                let buyer = chat_list[i]['buyer']['username']
-                let seller = chat_list[i]['seller']['username']
-                let goods_id = chat_list[i]["id"]
-                console.log(goods_id)
+            for (let i = 0; i < response.length; i++) {
+                let buyer = response[i]['buyer']['username']
+                let seller = response[i]['seller']['username']
+                let goods_id = response[i]["id"]
                 if (payload['username'] == buyer) {
                     let temp_html = `
                         <div style="background-color: white">
                         <a href="javascript:get_chatSocket(${goods_id})">판매자: ${seller}</a>
+                        <span id="wait-msg-${goods_id}"></span>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
@@ -168,27 +168,74 @@ function select_chat_roome() {
                     let temp_html = `
                         <div style="background-color: green">
                         <a href="javascript:get_chatSocket(${goods_id})">구매자: ${buyer}</a>
+                        <span id="wait-msg-${goods_id}"></span>
                         </div>
                     `
                     $("#chat-list").append(temp_html)
+                    wait_chat_message(goods_id)
                 }
-
+                // wait_chat_message(goods_id)
 
             }
-
 
         },
     });
 }
 
 function get_chatSocket(goods_id) {
-    console.log("들어왓니?")
-    console.log(goods_id)
     let chatSocket = new WebSocket(
         'ws://' + backUrl +
         '/chat/' + goods_id + '/?token=' + token);
     window.location.href = `index.html?goods=${goods_id}`
     return chatSocket
+}
+
+
+function send_checkMessage(goods_id, user_id) {
+    let is_read = "True"
+    formdata = new FormData()
+    formdata.append("is_read", is_read)
+
+    $.ajax({
+        type: "POST",
+        url: `${hostUrl}/chat/${goods_id}/check_msg/${user_id}/`,
+        processData: false,
+        contentType: false,
+        data: formdata,
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+
+        },
+    });
+}
+
+function wait_chat_message(trade_room_id) {
+
+    $.ajax({
+        type: "GET",
+        // url: `${hostUrl}/chat/${goods_id}/check_msg/${user_id}/`,
+        // url: `${hostUrl}/chat/${goodsId}/?token=${token}`,
+        url: `${hostUrl}/chat/wait_msg/${trade_room_id}/?token=${token}`,
+        processData: false,
+        contentType: false,
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + token,
+        },
+        success: function (response) {
+            console.log(response)
+            // let count
+            // for (let i = 0; i < response.length; i++) {
+            //     if (response[i]["is_read"] === true) {
+            //         count++
+            //     }
+            // }
+            $(`#wait-msg-${trade_room_id}`).text(response.length)
+            console.log("count", response.length)
+        },
+    });
 }
 
 function review() {

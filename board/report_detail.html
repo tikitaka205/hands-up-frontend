@@ -46,6 +46,34 @@
     .header__menu>ul>li {
             margin: 0 10px;
         }
+
+  .three h1 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    padding-bottom: 15px;
+    position: relative;
+  }
+  .three h1:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 55px;
+    background-color: #111;
+  }
+  .three h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    height: 1px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #333;
+  }
     </style>
 
 
@@ -62,7 +90,10 @@
     <main class="container" style="height: 900px; margin-top : 150px;">
       
       <!-- 제목 -->
-      <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #fcc5c5; margin-top: 150px; "  id="title"> </h1>
+      <h1 class='contents' style="text-align :left; font-size: 45px; background-color: #fcc5c5; margin-top: 150px; " > </h1>
+      <div class="three">
+        <h1 id="title"></h1>
+      </div>
       
       <!-- 작성자 -->
       <div style="display: flex; text-align: right; margin-top: 15px;" >
@@ -122,3 +153,4 @@
 </body>
 
 </html>
+

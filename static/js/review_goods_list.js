@@ -14,7 +14,7 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/user/`,
+        url: `http://127.0.0.1:8000/user/info/${user_id}`,
 
         success: function (response) {
             console.log('성공:', response);

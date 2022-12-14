@@ -28,12 +28,14 @@ function searchAuction2(){
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
+
 function priceToString(price) {
     if (price === null){
         return null
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
 
 function needLogin(){
     if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
@@ -50,6 +52,8 @@ function moveAuction(){
     }
     return window.location.href = `/goods/index.html`
 }
+
+
 function moveProfile(){
     if(!payload){
         needLogin()
@@ -64,7 +68,6 @@ function moveChat(){
     }
     return window.location.href = `/chat/index.html?user_id=${payload['user_id']}`
 }
-
 
 
 if(!payload){

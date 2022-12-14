@@ -4,7 +4,8 @@ async function handleLogin() {
     const password = document.getElementById("password").value
 
     console.log(phone, password)
-    const response = await fetch('http://127.0.0.1:8000/user/api/token/', {
+    // const response = await fetch('http://127.0.0.1:8000/user/api/token/', {
+        const response = await fetch('http://localhost:8000/user/api/token/', {
         headers: {
             'content-type': 'application/json',
         },
@@ -36,8 +37,8 @@ async function handleLogin() {
 
         window.location.href = "/index.html"
 
-    } else {
-        console.log(response)
+    } else if (response.status === 401){
+        alert('번호 혹은 비밀번호를 확인해 주세요.')
     }
 
 }

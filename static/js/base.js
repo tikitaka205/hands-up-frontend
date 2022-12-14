@@ -51,7 +51,7 @@ function moveProfile(){
 }
 
 
-function moveCaht(){
+function moveChat(){
     if(!payload){
         needLogin()
     }
@@ -60,12 +60,23 @@ function moveCaht(){
 
 
 
+if(!payload){
+    var login_temp = `
+        <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
+    `
+}else{
+    var login_temp = `
+        <a href="/review/index.html"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+    ` 
+}
+
+
 document.getElementById('nav-header').innerHTML = `
 <div class="humberger__menu__overlay" style="z-index: 995;"></div>
     <div class="humberger__menu__wrapper" style="z-index: 999;">
         <div class="humberger__menu__widget">
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                ${login_temp}
             </div>
         </div>
         <div id="mobile-menu-wrap">
@@ -173,3 +184,15 @@ document.getElementById('nav-header').innerHTML = `
     </header>
     <!-- Header Section End -->
 `
+
+document.querySelector('#search-input').onkeyup = function (e) {
+    if (e.keyCode === 13) {  // enter, return
+        searchAuction(false)
+    }
+};
+
+document.querySelector('#search-input-2').onkeyup = function (e) {
+    if (e.keyCode === 13) {  // enter, return
+        searchAuction2(false)
+    }
+};

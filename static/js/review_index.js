@@ -8,6 +8,7 @@ var backUrl = '127.0.0.1:8000'
 var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
 
+
 function review_list() {
     $.ajax({
         type: 'GET',

@@ -67,9 +67,11 @@ function userInfo() {
             }
             if (user_id == `${id}`){
                 $('#btn').append(`
-                <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="profileUpdate(${id})">프로필 수정</button>
+                <button style="margin-right:20px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="profileUpdate(${id})">내 프로필 수정</button>
                 `)
-            }
+                $('#btn').append(`
+                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
+                `)}
             if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
             $('#username').text(`${username}`)
             
@@ -83,6 +85,9 @@ function profileUpdate(id) {
     if(payload["user_id"]==user_id){
     location.href = `/user/update.html?user_id=${id}`
     }
+}
+function review(id) {
+        location.href = `/review/index.html?user_id=${id}`
 }
 
 const listEnd = document.getElementById('endList');

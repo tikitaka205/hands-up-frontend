@@ -76,7 +76,7 @@ function review_list() {
                 </div>
                 <br>
                 <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
+                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보기</button>
                 </div>
             `
             let temperature_good_user=`
@@ -86,7 +86,7 @@ function review_list() {
             </div>
             <br>
             <div class="row" style="display:felx;" id="profile_btn">
-            <button id="goods_list_btn" style="margin-right:25px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">경매 모아보기</button>
+            <button id="goods_list_btn" style="margin-right:25px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보기</button>
             </div>
             `
             let myProfileBtn=`

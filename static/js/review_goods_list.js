@@ -45,7 +45,7 @@ function userInfo() {
                 </div>
                 <br>
                 <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">후기 모아보기</button>
+                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                 </div>
             `
             let temperature_good_user=`
@@ -57,7 +57,7 @@ function userInfo() {
                         </div>
                         <br>
                         <div class="row" style="display:felx;" id="profile_btn">
-                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">후기 모아보기</button>
+                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                         </div>
                     `
             if (is_active == true && temperature > 0) {

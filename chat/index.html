@@ -14,7 +14,6 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/elegant-icons.css">
     <link rel="stylesheet" href="/static/css/nice-select.css">
@@ -130,75 +129,92 @@
     </div>
     <div id="nav-header"></div>
 
-
-    <div style="display: flex; justify-content: center; align-items: center; flex-direction: row; height: 100vh;">
-        <div style="width:380px; height: 100vh; background-color: #24210b; overflow-y: overlay;">
-            <!--  -->
-            <div>
+<div class="container mt-3 p-0" >
+    <div class="row">
+        <div class="col-sm-4">
+            <div style="width:100%; height: 60vh; background-color: #24210b; overflow-y: scroll;">
+                <!--  -->
                 <div>
-                    <div class="toast show">
-                        <div class="toast-header">
-                            <img src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
-                            <strong class="me-auto" style="position:absolute; left: 50px;">이름이에오</strong>
-                            <small class="text-muted" style="position:absolute; right: 50px;"><time class="timeago" datetime="${created_at}"> 10분전</small>
-                                <div >
-                                    <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit;" id="">1</div>
+                    <div>
+                        <div class="row m-0 mb-2" style="background-color: #217af4;">
+                            <div class=" col-9 p-0" style="background-color: #dee2e6; border-radius: 10px 0 0 10px">
+                                <div class="row m-0 p-0">
+                                    <div class="col-sm-3 p-2">
+                                        <img class="" src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
+                                    </div>
+                                    <span class="col-sm-9 p-1" style="font-size: 13px;">
+                                        이름이에오
+                                        (<time class="timeago" datetime="${created_at}"> 10분전</time>)
+                                    </span>
+                                </div>
+                                <div class="p-2">
+                                    <div class="" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                        길어진 내용이에요
+                                    </div>
+                                </div>  
                             </div>
-                            <div class="toast-body" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                                길어진 내용이에요
+                            <div class="col-3 m-0 p-0">
+                                <img src="/static/images/yummy.png" alt="">
+                                <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit; position: absolute; right: 5px; top: 5px;" id="">
+                                    1
+                                </span>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
-            </div>
-            <div >
-                <div>
-                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <img src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
-                            <strong class="me-auto" style="position:absolute; left: 50px;">이름이에오</strong>
-                            <small class="text-muted" style="position:absolute; right: 50px;"><time class="timeago" datetime="${created_at}"> 10분전</small>
-                                <div >
-                                    <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit;" id="">1</div>
+                <div >
+                    <div>
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
+                                <strong class="me-auto" style="position:absolute; left: 50px;">이름이에오</strong>
+                                <small class="text-muted" style="position:absolute; right: 50px;"><time class="timeago" datetime="${created_at}"> 10분전</small>
+                                    <div >
+                                        <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit;" id="">1</div>
+                                </div>
+                                <div class="toast-body" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                    길어도 생략돼요 길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요
                             </div>
-                            <div class="toast-body" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                                길어도 생략돼요 길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요
                         </div>
                     </div>
                 </div>
-            </div>
-            <div >
-                <div>
-                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
-                        <div class="toast-header">
-                            <img src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
-                            <strong class="me-auto" style="position:absolute; left: 50px;">이름이에오</strong>
-                            <small class="text-muted" style="position:absolute; right: 50px;"><time class="timeago" datetime="${created_at}"> 10분전</small>
-                                <div >
-                                    <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit;" id="">1</div>
+                <div >
+                    <div>
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
+                            <div class="toast-header">
+                                <img src="/static/images/yummy.png" id="image2" style="width:30px; border-radius:500px;">
+                                <strong class="me-auto" style="position:absolute; left: 50px;">이름이에오</strong>
+                                <small class="text-muted" style="position:absolute; right: 50px;"><time class="timeago" datetime="${created_at}"> 10분전</small>
+                                    <div >
+                                        <span style="text-align: center; background-color: #ff0000; width: 20px; height: 20px; border-radius: 50px; position: absolute; right: 20px; top: 8px; z-index: 99; color: rgb(255, 255, 255); font-weight: bold; font-family: inherit;" id="">1</div>
+                                </div>
+                                <div class="toast-body" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                                    길어도 생략돼요 길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요
                             </div>
-                            <div class="toast-body" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                                길어도 생략돼요 길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요길어도 생략돼요
                         </div>
                     </div>
                 </div>
+                
+    
+    
+    
+                <!-- <div id="chat-other-user" style="text-align: center; font-size: 40px; margin-top: 20px;"></div> -->
+                
+                
+                
             </div>
-            
-
-
-
-            <!-- <div id="chat-other-user" style="text-align: center; font-size: 40px; margin-top: 20px;"></div> -->
             <div id="chat-list" style="text-align: center; font-size: 40px; margin-top: 20px; color: #dee2e6;"></div>
-
-
-            
         </div>
-        <div style="width: 100%; height: 100vh;">
+        <div class="col-sm-8">
+        <div style="width: 100%; height: 60vh;">
             <!-- <div id="review-btn" style="display: flex; justify-content: end">
             </div> -->
-            <div style="display: flex; justify-content: end">
-                <button style="color: white; border: hidden; background-color : #24210b; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review()">후기 작성하기</button>
+            <div id="chatLog" style="width: 100%; height: 55vh;">
+                <div class="text-center" style="position: fixed; right: 30%;">
+                    <button style="color: white; border: hidden; background-color : #24210b; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review()">후기 작성하기</button>
+                </div>
             </div>
-            <div id="chatLog" style="width: 100%;"></div>
             <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 10px;">
                 <input type="text" class="form-control" id="chatMessageInput" placeholder="메시지를 입력하세요"
                     style="width: 100%; margin: 0 5px 0 5px;">
@@ -206,34 +222,14 @@
                     style="background-color: rgb(65, 166, 209); border-radius: 10px; margin-right: 5px;">Send</button>
             </div>
         </div>
-        <!-- <div class="row" style="width: 940px; display: flex; justify-content: center">
-            <div id="chat-other-user" style="text-align: center; font-size: 40px; margin-top: 20px;"></div>
         </div>
-
-        <div>
-            <div id="review-btn" style="display: flex; justify-content: end">
-            </div>
-            <div class="mb-2" style="display: flex; justify-content: center; margin-top: 20px; width: 600px;">
-
-                <label for="chatLog"></label>
-                <div id="chatLog"></div>
-            </div>
-            <div class="mb-2" style="display: flex; justify-content: center; width: 600px;">
-
-                <input type="text" class="form-control" id="chatMessageInput" placeholder="메시지를 입력하세요"
-                    style="width: 540px; border-radius: 10px; margin-right: 5px;">
-                <div class="input-group-append">
-                    <button class="btn btn-success" id="chatMessageSend" type="button"
-                        style="background-color: rgb(65, 166, 209); border-radius: 10px;">Send</button>
-
-                </div>
-            </div>
-        </div> -->
-
-
     </div>
-    </div>
-    </div>
+    
+
+</div>
+
+    
+    
     <script src="/static/js/base.js"></script>
     <script src="/static/js/nav.js"></script>
     <script src="/static/js/chat.js"></script>

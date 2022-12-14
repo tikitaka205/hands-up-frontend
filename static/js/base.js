@@ -66,7 +66,7 @@ if(!payload){
     `
 }else{
     var login_temp = `
-        <a href="/review/index.html"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+        <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
     ` 
 }
 

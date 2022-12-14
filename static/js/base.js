@@ -36,14 +36,9 @@ function priceToString(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-<<<<<<< HEAD
+
 function needLogin() {
     if (confirm('로그인이 필요합니다. 로그인하러 갈까요?')) {
-=======
-
-function needLogin(){
-    if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
->>>>>>> e9db9a883bdd1f3ad46ac04b9cebe6774075d8c1
         return window.location.href = '/user/login.html'
     } else {
         return

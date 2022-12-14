@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" class="h-100">
 ​
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,7 +14,6 @@
   <link href="/static/css/base.css?after" rel="stylesheet" />
   <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
   <link href="/static/css/base.css?after" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/font-awesome.min.css">
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
   <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
@@ -35,15 +35,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 
   <style>
-      .header__menu>ul>li {
-          margin: 0 10px;
-      }
-      .article_create {
-         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-      }
-      .article_create {
-         font-size:large;
-      }
+    .header__menu>ul>li {
+      margin: 0 10px;
+    }
+
+    .article_create {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+
+    .article_create {
+      font-size: large;
+    }
+
     /* .stady_btn {
       display: flex;
       flex-direction: column;
@@ -71,134 +74,142 @@
       background-color: #e9ecef;
       margin-bottom: 10px;
     } */
-    </style>
+  </style>
 </head>
+
 <body id="body" class="" style="background-color:#ffffff">
   <div id="preloder" style="display: none;">
-      <div class="loader" style="display: none;"></div>
+    <div class="loader" style="display: none;"></div>
   </div>
   <div class="humberger__menu__overlay" style="z-index: 995;"></div>
   <div class="humberger__menu__wrapper" style="z-index: 999;">
-      <div class="humberger__menu__widget">
-          <div class="header__top__right__auth">
-              <a href="#"><i class="fa fa-user"></i> Login</a>
-          </div>
+    <div class="humberger__menu__widget">
+      <div class="header__top__right__auth">
+        <a href="#"><i class="fa fa-user"></i> Login</a>
       </div>
-      <div id="mobile-menu-wrap">
-          <div class="slicknav_menu">
-              <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-                  <ul>
-                      <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
-                      <li><a href="/goods/index.html">경매장</a></li>
-                      <li><a href="/board/free_article.html">게시판</a></li>
-                      <li><a href="/contact.html">Contact & Feedback</a></li>
-                      <li class="p-2">
-                          <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
-                          <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
+    </div>
+    <div id="mobile-menu-wrap">
+      <div class="slicknav_menu">
+        <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
+          <ul>
+            <li class="active"><a href="/index.html" role="menuitem">홈</a></li>
+            <li><a href="/goods/index.html">경매장</a></li>
+            <li><a href="/board/free_article.html">게시판</a></li>
+            <li><a href="/contact.html">Contact & Feedback</a></li>
+            <li class="p-2">
+              <input type="text" class="form-control mb-1" placeholder="What do yo u need?">
+              <button style="width: 100%;" type="submit" class="btn btn-primary ">SEARCH</button>
+            </li>
+          </ul>
+        </nav>
       </div>
+    </div>
   </div>
- <header class="header" style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: sticky; z-index: 99; width: 100%; color: white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
-                    </div>
-                </div>
-                <div class="col-lg-8" style="padding: 0;">
-                    <nav class="header__menu">
-                        <ul style="color: white;">
-                            <li><a href="/goods/index.html">경매</a>
-                                <!-- <ul class="header__menu__dropdown">
+  <header class="header"
+    style="background: linear-gradient(45deg, #8088FF, #C24AFF) !important; position: sticky; z-index: 99; width: 100%; color: white;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="header__logo">
+            <h1 style="font-size: 30px;font-weight: 800;color: white; padding-top: 10px;">👋 핸즈업</h1>
+          </div>
+        </div>
+        <div class="col-lg-8" style="padding: 0;">
+          <nav class="header__menu">
+            <ul style="color: white;">
+              <li><a href="/goods/index.html">경매</a>
+                <!-- <ul class="header__menu__dropdown">
                                     <li><a href="/shop-details.html">Shop Details</a></li>
                                     <li><a href="/shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="/checkout.html">Check Out</a></li>
                                     <li><a href="/blog-details.html">Blog Details</a></li>
                                 </ul> -->
-                            </li>
-                            <li><a href="/board/free_article.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact &amp; Feedback</a></li>
-                            <li style="margin-right: 0;">
-                                <input type="text" class="form-control" placeholder="What do yo u need?">
-                            </li>
-                            <li style="margin: 0;" class="btn btn-primary">
-                                <i class="fas fa-search"></i>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-2">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-user"></i></a></li>
-                            <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
-                            <i class="fas fa-heart" style="color: black;"></i>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
+              </li>
+              <li><a href="/board/free_article.html">게시판</a></li>
+              <li><a href="/contact.html">Contact &amp; Feedback</a></li>
+              <li style="margin-right: 0;">
+                <input type="text" class="form-control" placeholder="What do yo u need?">
+              </li>
+              <li style="margin: 0;" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+              </li>
+            </ul>
+          </nav>
         </div>
- </header>
-<!-- 작성부분 -->
-<body id="body" class="h-100 text-center" style="background-color: #ffffff;">
-  <div class="w-100 h-100 p-3 mx-auto">
-    <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
-      <div class="contain">
-        <div class="fixed-top" id="main_nav">
-          <h3 class="float-md-start mb-0">
-            <a href="/">
-            </a>
-          </h3>
-
+        <div class="col-lg-2">
+          <div class="header__cart">
+            <ul>
+              <li><a href="#"><i class="fa fa-user"></i></a></li>
+              <li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>
+              <i class="fas fa-heart" style="color: black;"></i>
+            </ul>
+          </div>
         </div>
       </div>
+      <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+      </div>
+    </div>
+  </header>
+  <!-- 작성부분 -->
 
-    </header>
+  <body id="body" class="h-100 text-center" style="background-color: #ffffff;">
+    <div class="w-100 h-100 p-3 mx-auto">
+      <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
+        <div class="contain">
+          <div class="fixed-top" id="main_nav">
+            <h3 class="float-md-start mb-0">
+              <a href="/">
+              </a>
+            </h3>
 
-    <!-- 작성란 -->
-    <main class="container" style="height: 500px; margin-top : 120px;">
+          </div>
+        </div>
 
-      <!-- <div class="row"> -->
-        
+      </header>
+
+      <!-- 작성란 -->
+      <main class="container" style="height: 500px; margin-top : 120px;">
+
+        <!-- <div class="row"> -->
+
         <h4 class="article_create">게시물 작성</h4>
 
         <form>
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label"></label>
-            <input type="text" class="form-control" id="title" placeholder='제목을 입력해주세요. 최대 40자' name='title' type="required">
+            <input type="text" class="form-control" id="title" placeholder='제목을 입력해주세요. 최대 40자' name='title'
+              type="required">
           </div>
 
           <div class="mb-1">
             <label for="formFile" class="form-label"></label>
-            <input class="form-control" type="file" id="img" name="img" >
+            <input class="form-control" type="file" id="img" name="img">
           </div>
 
 
 
           <div class="mb-2">
             <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-            <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자' name='content' rows="12"required></textarea>
+            <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자'
+              name='content' rows="12" required></textarea>
           </div>
 
           <!-- 등록하기 onclick에 js함수 넣어주기-->
           <!-- 등록버튼을 누르면 작성한 부분이 리스트로 올라가고, 리스트를 보여주기.-->
           <div style="display:flex;">
-            <button type="button" onclick="" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
-            <button type="button" onclick="" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
+            <button type="button" onclick="" class="btn btn-outline-success"
+              style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
+            <button type="button" onclick="" class="btn btn-outline-success"
+              style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
           </div>
-         </form>
-      <!-- </div> -->
-    </main>
-  </div>
-  <script src="/static/js/user.js"></script>
+        </form>
+        <!-- </div> -->
+      </main>
+    </div>
+    <script src="/static/js/user.js"></script>
 
-</body>
+  </body>
+
 </html>

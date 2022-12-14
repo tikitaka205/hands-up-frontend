@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" class="h-100">
-​
 
 <head>
   <meta charset="utf-8" />
@@ -8,8 +7,10 @@
   <meta name="description" content="" />
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
   <meta name="generator" content="Hugo 0.104.2" />
-  <title>자유게시판 상세페이지Y</title>
+  <title>자유게시판 상세페이지</title>
   <!-- css 파일 -->
+  <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
+  <link href="/static/css/base.css?after" rel="stylesheet" />
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
   <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
@@ -22,7 +23,8 @@
   <!-- Google Font -->
   <link href="" rel="stylesheet">
   <!-- JS 파일 -->
-  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
@@ -30,39 +32,52 @@
 
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
-    if(!FLAG){
-        alert("로그인이 필요합니다.");
-        window.location.replace("/user/login.html")
-        return
-    }
-
+    console.log(FLAG)
+    // if(!FLAG){
+    //     alert("로그인이 필요합니다.");
+    //     window.location.replace("/user/login.html")
+    //     return
+    
+    // DOM이 아직 로드되지 않았기에 ready 이벤트를 사용해야 한다.
     });
-    </script>
-  ​
+  </script>
   <style>
     .header__menu>ul>li {
-            margin: 0 10px;
-        }
-    </style>
-    
+      margin: 0 10px;
+    }
+  </style>
+
 </head>
-<body id="body" class="" style="background-color:#d7f7c5;">
-  <!-- Page Preloder -->
+
+
+<!-- 작성부분 -->
+
+<body id="body" class="" style="background-color: #d7f7c5;">
   <div id="preloder" style="display: none;">
     <div class="loader" style="display: none;"></div>
   </div>
   <div id="nav-header"></div>
 
+  <main class="container" style="height: 900px; margin-top : 150px;">
 
-<!-- 작성부분 -->
-<body id="body" class="h-100 text-center" style="background-color: #fcc5c5;">
-    <div class="w-100 h-100 p-3 mx-auto">
-      <header class="mb-auto" style="background-color: white; max-width: 1280px; margin: 0 auto;">
-  
-      </header>
-  
-      <main class="container" style="height: 900px; margin-top : 90px;">
+    <!-- 제목 -->
+    <div>
+      <h1 class="free_title" id="title"> </h1>
+    </div>
+    <!-- 작성자 -->
+    <div style="display: flex; text-align: right; margin-top: 35px;">
+      <h3 class='contents' style="text-align :right; font-size: 15px;" id="user"> 작성자: </h1>
+    </div>
+    <!-- line -->
+    <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">
+    <!-- content -->
+    <div>
+      <p class='contents' style="text-align :left; font-size: 25px; margin-top: 50px; margin-bottom: 90px;"
+        id="content"> </p>
+      <p class='image' id="image"> </p>
+    </div>
 
+<<<<<<< HEAD
         <!-- 제목 -->
           <div class="three">
             <h1 id="title"> </h1>
@@ -90,41 +105,52 @@
               <!-- 구분선 -->
               <hr style="margin-top: 50px; background-color: #00b395; height: 5px;">
               <div id="test">
+=======
+    <!-- 게시글 옵션 -->
+    <div class="mb-3" style="margin-top: 20px;">
+      <div style="margin-left: 70%;">
+        <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="free_article_put()">수정</button>
+        <button id="delete_submit" type="button" class="btn btn-outline-danger"
+          onclick="post_delete_submit()">삭제</button>
+      </div>
+      <!-- 구분선 -->
+      <hr style="margin-top: 50px; background-color: #00b395; height: 5px;">
+      <div id="test">
+>>>>>>> c3d97e253ff3d1ffdd1ee378751b1a2f78a610f9
 
 
-              <!-- 댓글 리스트 -->
-              <div id="comment_list" style="margin-top: 30px;"></div>
+        <!-- 댓글 리스트 -->
+        <div id="comment_list" style="margin-top: 30px;"></div>
 
-              <!-- 댓글 페이지네이션 -->
-              <nav aria-label="Page navigation example"
-                style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
-                <ul class="pagination">
-                  <a type="button" onclick="" id="previous" class="page-link">이전</a>
-                  <a type="button" onclick="" id="next" class="page-link">다음</a>
-                </ul>
-              </nav>
+        <!-- 댓글 페이지네이션 -->
+        <nav aria-label="Page navigation example"
+          style="margin-top: 20px;justify-content: center; align-items: center; display: flex;width: 100%;">
+          <ul class="pagination">
+            <a type="button" onclick="" id="previous" class="page-link">이전</a>
+            <a type="button" onclick="" id="next" class="page-link">다음</a>
+          </ul>
+        </nav>
 
-
-            </div>
-
-            <!-- 댓글입력 -->
-            <form id="comment_content">
-              <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-              <textarea class="form-control" id="comment_content2" placeholder='댓글을 입력해주세요.' name='comment_content2'
-                rows="3" required></textarea>
-          </div>
-          <div>
-            <button type="button" class="btn btn-outline-success"
-              style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()">등록하기</button>
-          </div>
-          </form>
 
       </div>
-      </main>
+
+      <!-- 댓글입력 -->
+      <form id="comment_content">
+        <label for="exampleFormControlTextarea1" class="form-labe2"></label>
+        <textarea class="form-control" id="comment_content2" placeholder='댓글을 입력해주세요.' name='comment_content2' rows="3"
+          required></textarea>
+        <div>
+          <button type="button" class="btn btn-outline-success"
+            style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()">등록하기</button>
+        </div>
+      </form>
     </div>
-    <script src="/static/js/user.js"></script>
-    <script src="/static/js/base.js"></script>
-    <script src="/static/js/free_article_detail.js"></script>
+  </main>
+  <script src="/static/js/user.js"></script>
+  <script src="/static/js/base.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/free_article_detail.js"></script>
 
 </body>
+
 </html>

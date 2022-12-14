@@ -14,15 +14,16 @@
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
   <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
   <link rel="stylesheet" href="/static/css/slicknav.min.css">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <!-- bootstrap css cdn -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" /> -->
 
   <!-- JS 파일 -->
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -31,65 +32,58 @@
 
   <style>
     .header__menu>ul>li {
-            margin: 0 10px;
-        }
+      margin: 0 10px;
+    }
+
     .article_create {
-        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-        }
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+
     .article_create {
-         font-size:large;
-        }
-    </style>
+      font-size: large;
+    }
+  </style>
 </head>
-<body id="body" class="" style="background-color: #d7f7c5;">
-    <!-- Page Preloder -->
-    <div id="preloder" style="display: none;">
-        <div class="loader" style="display: none;"></div>
-    </div>
-    <div id="nav-header"></div>
 
 <!-- 작성부분 -->
-<body id="body" class="h-100 text-center" style="background-color: #ffffff;">
-    <div class="w-100 h-100 p-3 mx-auto">
-      <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
-        <div class="contain">
-          <div class="fixed-top" id="main_nav">
-            <h3 class="float-md-start mb-0">
-              <a href="/">
-              </a>
-            </h3>
 
-          </div>
+<body id="body" class="" style="background-color: #d7f7c5;">
+  <div id="preloder" style="display: none;">
+    <div class="loader" style="display: none;"></div>
+  </div>
+  <div id="nav-header"></div>
+
+  <main class="container" style="height: 500px; margin-top : 120px;">
+    <div class="row1">
+      <h4 class='subject mb-5'>게시글 작성</h4>
+      <form>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"></label>
+          <input type="text" class="form-control" id="free_article_title" name='title' type="required" value="">
         </div>
-  
-      </header>
-  
-      <main class="container" style="height: 500px; margin-top : 120px;">
-  
-          <h4 class='subject mb-5'>게시글 작성</h4>
-          <form>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"></label>
-                <input type="text" class="form-control" id="free_article_title" name='title' type="required" value="">
-            </div>
 
-            <div class="mb-1">
-                <label for="formFile" class="form-label"></label>
-                <input class="form-control" type="file" id="image" name="image">
-            </div>
-            <div class = "mb-2">
-                <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-              <textarea class="form-control" id="free_article_content" name='free_article_content' rows="12"required></textarea>
-            </div>
-            <div style="display:flex;">
-                <button type="button" onclick="free_article_put()" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">수정하기</button>
-                <button type="button" onclick="window.location.href='/board/free_article.html'" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
-              </div>
+        <div class="mb-1">
+          <label for="formFile" class="form-label"></label>
+          <input class="form-control" type="file" id="image" name="image">
+        </div>
+        <div class="mb-2">
+          <label for="exampleFormControlTextarea1" class="form-labe2"></label>
+          <textarea class="form-control" id="free_article_content" name='free_article_content' rows="12"
+            required></textarea>
+        </div>
+        <div style="display:flex;">
+          <button type="button" onclick="free_article_put()" class="btn btn-outline-success"
+            style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">수정하기</button>
+          <button type="button" onclick="window.location.href='/board/free_article.html'"
+            class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
+        </div>
 
-          </form>
-      </main>
+      </form>
     </div>
-    <script src="/static/js/user.js"></script>
-    <script src="/static/js/base.js"></script>
-    <script src="/static/js/free_article_put.js"></script>
+  </main>
+  <script src="/static/js/base.js"></script>
+  <script src="/static/js/user.js"></script>
+  <script src="/static/js/free_article_put.js"></script>
 </body>
+
+</html>

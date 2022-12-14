@@ -11,7 +11,7 @@
   <!-- css 파일 -->
   <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
   <link href="/static/css/base.css?after" rel="stylesheet" />
-  
+
   <link rel="stylesheet" href="/static/css/elegant-icons.css">
   <link rel="stylesheet" href="/static/css/nice-select.css">
   <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
@@ -29,65 +29,64 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/locales/jquery.timeago.ko.js"></script>
 
   <style>
-      .header__menu>ul>li {
-          margin: 0 10px;
-      }
-      .article_create {
-         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-      }
-      .article_create {
-         font-size:large;
-      }
-    </style>
+    .header__menu>ul>li {
+      margin: 0 10px;
+    }
+
+    .article_create {
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+
+    .article_create {
+      font-size: large;
+    }
+  </style>
 </head>
+
 <body id="body" class="" style="background-color: #d7f7c5;">
   <!-- Page Preloder -->
   <div id="preloder" style="display: none;">
     <div class="loader" style="display: none;"></div>
   </div>
   <div id="nav-header"></div>
+<<<<<<< HEAD
   </header>
   <!-- 작성부분 -->
+=======
 
-  <body id="body" class="h-100 text-center" style="background-color: #ffffff;">
-    <div class="w-100 h-100 p-3 mx-auto">
-      <header class="mb-auto" style="background-color: white; max-width: 720px; margin: 0 auto;">
-        <div class="contain">
-          <div class="fixed-top" id="main_nav">
-            <h3 class="float-md-start mb-0">
-              <a href="/">
-              </a>
-            </h3>
+  <!-- 작성란 -->
+  <main class="container" style="height: 500px; margin-top : 120px;">
 
-    <!-- 작성란 -->
-    <main class="container" style="height: 500px; margin-top : 120px;">
-        
-        <h4 class="article_create">게시물 작성</h4>
+    <h4 class="article_create">게시물 작성</h4>
 
-        <form>
+    <form>
 
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label"></label>
-            <input type="text" class="form-control" id="title" placeholder='제목을 입력해주세요. 최대 20자' name='title' type="required">
-          </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"></label>
+        <input type="text" class="form-control" id="title" placeholder='제목을 입력해주세요. 최대 20자' name='title'
+          type="required">
+      </div>
 
-          <div class="mb-1">
-            <label for="formFile" class="form-label"></label>
-            <input class="form-control" type="file" id="img" name="img">
-          </div>
+      <div class="mb-1">
+        <label for="formFile" class="form-label"></label>
+        <input class="form-control" type="file" id="img" name="img">
+      </div>
+>>>>>>> c3d97e253ff3d1ffdd1ee378751b1a2f78a610f9
 
-          <div class="mb-2">
-            <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-            <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자'
-              name='content' rows="12" required></textarea>
-          </div>
-          <div style="display:flex;">
-            <button type="button" onclick="free_article_create()" class="btn btn-outline-success" style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
-            <button type="button" onclick="window.location.href='/board/free_article.html'" class="btn btn-outline-success" style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
-          </div>
-         </form>
-      <!-- </div> -->
-    </main>
+      <div class="mb-2">
+        <label for="exampleFormControlTextarea1" class="form-labe2"></label>
+        <textarea class="form-control" style="overflow-y:scroll;" id="content" placeholder='내용을 입력해주세요. 최대 200자'
+          name='content' rows="12" required></textarea>
+      </div>
+      <div style="display:flex;">
+        <button type="button" onclick="free_article_create()" class="btn btn-outline-success"
+          style="margin-left: 85%; margin-top: 20px; margin-bottom: 100px;">등록하기</button>
+        <button type="button" onclick="window.location.href='/board/free_article.html'" class="btn btn-outline-success"
+          style="margin-left: 1%; margin-top: 20px; margin-bottom: 100px;">취소</button>
+      </div>
+    </form>
+    <!-- </div> -->
+  </main>
   </div>
   <script src="/static/js/user.js"></script>
   <script src="/static/js/base.js"></script>

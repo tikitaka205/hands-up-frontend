@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const FLAG = localStorage.getItem("access", '')
+    const FLAG = localStorage.getItem("access", ' ')
     if(!FLAG){
         window.location.href = "/user/login.html"
         return
@@ -190,7 +190,7 @@ function post_delete_submit() {
 
         success: function () { // 성공 시
             alert("게시글을 삭제했습니다")
-            window.location.href = "http://127.0.0.1:5500/board/free_article.html"
+            window.location.href = "/board/free_article.html"
         }
 
         });

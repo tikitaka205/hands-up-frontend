@@ -47,7 +47,7 @@ function moveProfile(){
     if(!payload){
         needLogin()
     }
-    return window.location.href = `/review/index.html?user_id=${payload['user_id']}`
+    return window.location.href = `/user/userProfile.html?user_id=${payload['user_id']}`
 }
 
 

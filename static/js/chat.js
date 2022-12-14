@@ -261,15 +261,33 @@ function getChatRoom(goods_id) {
 }
 
 function review() {
-    let user_id = localStorage.getItem('user_id')
-    let seller_id = localStorage.getItem('seller_id')
-    console.log("여기")
-    window.location.href = `/review/seller.html`
 
-    // if(user_id==seller_id){
-    //     window.location.href ='http://127.0.0.1:5501/review/seller.html'
-    // }else{
-    //     window.location.href ='http://127.0.0.1:5501/review/buyer.html'
+    $.ajax({
+        type: 'GET',
+        url: `${hostUrl}/goods/${goodsId}`,
+        data: {},
+        success: function (response) {
+            console.log("review get: ", response)
+            let user_id = payload['user_id']
+            let seller_id = response['seller']['id']
+            if (user_id == seller_id) {
+                window.location.href = `/review/seller.html?goods_id=${goodsId}`
+            } else {
+                window.location.href = `/review/buyer.html?goods_id=${goodsId}`
+            }
+        },
+    });
+
+
+    // let user_id = payload['user_id']
+    // let seller_id = localStorage.getItem('seller_id')
+    // console.log("여기")
+    // window.location.href = `/review/seller.html?goods_id=${goodsId}`
+
+    // if (user_id == seller_id) {
+    //     window.location.href = 'http://127.0.0.1:5501/review/seller.html'
+    // } else {
+    //     window.location.href = 'http://127.0.0.1:5501/review/buyer.html'
     // }
 }
 

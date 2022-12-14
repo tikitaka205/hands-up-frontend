@@ -234,7 +234,7 @@ function selectScore(score_1) {
 //     })
 // }
 
-let user_id = url.searchParams.get('user_id')
+let goods_id = url.searchParams.get('goods_id')
 
 
 function reviewCreate() {
@@ -248,7 +248,7 @@ function reviewCreate() {
     $.ajax({
 
         type: "POST",
-        url: `${hostUrl}/review//?user_id=${user_id}/`,
+        url: `${hostUrl}/review/${goods_id}/`,
         processData: false,
         contentType: false,
         data: formData,
@@ -258,7 +258,8 @@ function reviewCreate() {
         },
 
         success: function () {
-            location.reload()
+            // location.reload()
+            window.location.href = `/chat/index.html?good_id=${goods_id}`
         },
         error: function (response) {
             console.log(response)

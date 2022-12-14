@@ -9,8 +9,6 @@
     <meta name="generator" content="Hugo 0.104.2" />
     <title>자유게시판</title>
     <!-- css 파일 -->
-    <link href="/static/css/bootstrap.min.css?after" rel="stylesheet" />
-    <link href="/static/css/base.css?after" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/elegant-icons.css">
     <link rel="stylesheet" href="/static/css/nice-select.css">
     <link rel="stylesheet" href="/static/css/jquery-ui.min.css">
@@ -31,25 +29,18 @@
             margin: 0 10px;
         }
 
-        .stady_btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .stady_wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .table table-hover {
+        text-align: left;
+        overflow: hidden;
+        width: 80%;
+        margin: 0 auto;
+        display: table;
+        padding: 0 0 8em 0;
         }
     </style>
 </head>
-
-<body id="body" class="" style="background-color: #ffffff;">
+<body id="body" class="" style="background-color: #d7f7c5;">
+    <!-- Page Preloder -->
     <div id="preloder" style="display: none;">
         <div class="loader" style="display: none;"></div>
     </div>
@@ -59,11 +50,11 @@
         <div class="container" style="margin-top: 60px;">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <button type="button" onclick="category_list('자유게시판')" class="btn btn-outline-success"
+                    <button type="button" onclick="location.href='free_article.html'" class="btn btn-outline-success"
                         style="margin-left: 20px;">자유게시판</button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" id="blind_list" onclick="category_list('제보게시판')"
+                    <button type="button" id="blind_list" onclick="location.href='report_article.html'"
                         class="btn btn-outline-danger" style="margin-left: 20px;"><a>제보게시판</a></button>
                 </li>
             </ul>
@@ -79,7 +70,7 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
-                    <tbody id="post_list">
+                    <tbody id="free_article">
                     </tbody>
                 </table>
                 <div style="display: flex; justify-content: flex-end; ">
@@ -102,7 +93,7 @@
     </section>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/user.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/free_article.js?after"></script>
 </body>
 
 </html>

@@ -28,7 +28,11 @@ function review_list() {
             let good_review_count = response['good_review_count']
             let excellent_review_count = response['excellent_review_count']
             let username = response['receiver']['username']
-            let temperature = response['receiver']['rating_score']
+            let temperature=response['receiver']['rating_score']
+            if(temperature > 99)
+            {
+            temperature=99
+            }
             let id = response['receiver']['id']
             let is_active = response['receiver']['is_active']
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
@@ -88,11 +92,8 @@ function review_list() {
             let myProfileBtn=`
             <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
             `
-            console.log(myProfileBtn)
             if (profile_image)$('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
-            console.log(user_id, id)
-            console.log(id)
-            console.log(`${id}`)
+
             
             if (is_active == true && temperature > 0) {
                 $('#temp').append(temperature_good_user)

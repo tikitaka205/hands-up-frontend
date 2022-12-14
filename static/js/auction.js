@@ -20,6 +20,9 @@ async function goodsInfoView() {
     let nowPrice = !data['high_price'] ? sp : hp
 
     let ratingScore = data['seller']['rating_score']
+    if (ratingScore > 99){
+        ratingScore=99
+    }
     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
  
     // 사진 섹션

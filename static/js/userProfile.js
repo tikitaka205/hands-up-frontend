@@ -20,10 +20,15 @@ function userInfo() {
             console.log('성공:', response);
             let profile_image = response['profile_image']
             let username = response['username']
-            let temperature = response['rating_score']
+            let temperature=response['rating_score']
+            if(temperature > 99)
+            {
+            temperature=99
+            }            
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
             let is_active = response['is_active']
             let id = response['id']
+
             let bad_user = 
             `
             <div style="background-color:#c00000; height:70px; display: flex; justify-content: center; align-items: center; font-weight: bolder;">

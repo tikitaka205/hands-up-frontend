@@ -103,7 +103,7 @@ document.getElementById('nav-header').innerHTML = `
                                     <li><a href="/blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li> -->
-                        <li><a href="http://127.0.0.1:5500/board/free_article.html">게시판</a></li>
+                        <li><a href="/board/free_article.html">게시판</a></li>
                         <li><a href="/contact.html">Contact & Feedback</a></li>
                         <li class="p-2">
                             <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="search-input-2">
@@ -160,7 +160,7 @@ document.getElementById('nav-header').innerHTML = `
                                         <li><a href="/blog-details.html">Blog Details</a></li>
                                     </ul> -->
                             </li>
-                            <li><a href="http://127.0.0.1:5500/board/free_article.html">게시판</a></li>
+                            <li><a href="/board/free_article.html">게시판</a></li>
                             <li><a href="/contact.html">Contact & Feedback</a></li>
                             <li style="margin-right: 0;">
                                 <input type="text" class="form-control" placeholder="What do yo u need?" id="search-input">

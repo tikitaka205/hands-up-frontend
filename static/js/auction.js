@@ -3,6 +3,10 @@ const backUrl = '127.0.0.1:8000'
 const token = localStorage.getItem('access')
 var goods = JSON.parse(localStorage.getItem('goods', ''))
 
+if (!goods){
+    goods = {}
+}
+
 if (Object.keys(goods).length > 9){
     goods = {}
 }
@@ -10,8 +14,10 @@ if (Object.keys(goods).length > 9){
 async function goodsInfoView() {
     let data = await goodsInfoApi()
     let seller = data['seller']
+    var hp = priceToString(data['high_price'])
+    var sp = priceToString(data['start_price'])
     // let images = data['images']
-    let nowPrice = !data['high_price'] ? data['start_price'] : data['high_price']
+    let nowPrice = !data['high_price'] ? sp : hp
 
     let ratingScore = data['seller']['rating_score']
     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
@@ -50,8 +56,8 @@ async function goodsInfoView() {
     });
     // 사용자 정보 섹션
     var temp = `
-        <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black;">
-            <div class = "row" onclick="console.log('프로필로이동하장')">
+        <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black; cursor:pointer;">
+            <div class = "row" onclick="window.location.href='/review/index.html?user_id=${seller['id']}'">
                 <div class = "col-2">
                     <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
                 </div>
@@ -75,7 +81,7 @@ async function goodsInfoView() {
                     판매자 예상 가치 :                        
                 </span>
                 <span class="text-end col-6" style="font-weight : 700">
-                    ${data['predict_price']} 원 
+                    ${priceToString(data['predict_price'])} 원 
                 </span>
             </div>
         </div>
@@ -142,9 +148,12 @@ async function goodsStatusView(data) {
     let totalSecond = 20 * 60 - time2
     if (status === true) {
         await startTimer(totalSecond)
-
+        var hp = priceToString(data['high_price'])
+        var sp = priceToString(data['start_price'])
         if (data['buyer'] !== null) {
             let buyer = data['buyer']
+            
+            console.log(data)
             //사진으로 해야하는지 의문
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center mb-3">
@@ -154,22 +163,24 @@ async function goodsStatusView(data) {
                         현재 최고가
                     </div>
                     <div style = "font-wetight : 600">
-                        <b id="price" style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
+                        <b id="price" style = "font-size:22px">${hp}</b> <span class = "text-secondary">원</span>
                     </div>
                 </div>
                 <div class = "card p-2 mb-3" style="box-shadow: 0 2px 5px 0px;">
                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-                    <div class="" style="font-size:25px; font-weight : 700;" onclick="console.log('프로필로 가장')">
+                    <div class="" style="font-size:25px; font-weight : 700; cursor:pointer;" onclick="window.location.href='/review/index.html?user_id=${buyer['id']}'">
                         ${buyer['username']}
                     </div>
                 </div>
             </div>
             `
         } else {
+            console.log(data)
+
             document.getElementById('high-price').innerHTML = `
             <div class="p-3 text-center card mb-3" style="box-shadow: 0 2px 5px 0px;">
                 <div style="font-weight : 500">과연 첫 번째 오너는?</div>
-                <span style="font-weight:600;">시작가 <span id="price" style="font-size:24px; font-weight : 700;">${data['start_price']}</span> 원</span>
+                <span style="font-weight:600;">시작가 <span id="price" style="font-size:24px; font-weight : 700;">${sp}</span> 원</span>
             </div>
             `
         }
@@ -196,7 +207,6 @@ async function goodsStatusView(data) {
             <div style="font-size : 25px; font-weight:600;">${data['start_date']} ${data['start_time']}:00</div>
             <div  style='padding:15px 44% 0; color:white; font-size: 25px; font-weight : 500;'>오너 될 준비, 되셨나요 ??</div>
         </div>
-        
         `
         $('#auction-wrap').html(temp)
     }
@@ -269,12 +279,12 @@ chatSocket.onmessage = async function (e) {
                         현재 최고가
                     </div>
                     <div style = "font-wetight : 600">
-                        <b id="price" style = "font-size:22px">${data['high_price']}</b> <span class = "text-secondary">원</span>
+                        <b id="price" style = "font-size:22px">${priceToString(data['high_price'])}</b> <span class = "text-secondary">원</span>
                     </div>
                 </div>
                 <div class = "card p-2 mb-3">
                     <div><i class="fas fa-crown" style="color:salmon;"></i> 현재 오너<div>
-                    <div class="" style="font-size:25px;" onclick="console.log('프로필로 가장')">
+                    <div class="" style="font-size:25px;" onclick="window.location.href='/review/index.html?$user_id=${data['sender']}'">
                         ${data['sender_name']}
                     </div>
                 </div>
@@ -289,7 +299,7 @@ chatSocket.onmessage = async function (e) {
                     <b style = "font-size : 20px">${data['sender_name']}</b>
                 </div>
                 <div style = "margin-left : 20px; width: 80%; font-size : 20px; border-radius : 8px; background-color : hotpink; padding : 5px; margin-bottom : 10px;">
-                    ${data['high_price']} 원 입찰!!
+                    ${priceToString(data['high_price'])} 원 입찰!!
                 </div>
             </div>
         `
@@ -403,10 +413,15 @@ function sendMessage() {
 };
 
 function sendMoney() {
+    if(!confirm('정말 입찰 하시겠습니까?')){
+        return   
+    }
     var messageInputDom = document.querySelector('#chat-money-input');
     var highPrice = document.getElementById('price').innerText;
     var message = messageInputDom.value;
     const reg1 = /^[0-9]+$/;
+    highPrice = highPrice.replace(/,/g,"");
+
 
     if (message === '' || !reg1.test(highPrice) || !reg1.test(message)) {
         return alert('값을 바르게 입력해 주세요.')

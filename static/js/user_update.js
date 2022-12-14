@@ -52,9 +52,6 @@ function getInfo(){
         $('#upload-name').attr('value', profile_image)
         localStorage.setItem('username', username)
 
-        console.log(username)
-        console.log(response)
-        console.log(profile_image)
         }
     })
 }

@@ -234,6 +234,8 @@ function selectScore(score_1){
 //     })
 // }
 
+let user_id = url.searchParams.get('user_id')
+
 
 function reviewCreate() {
 
@@ -242,14 +244,11 @@ function reviewCreate() {
    let formData = new FormData();
    formData.append("content",content);
    formData.append("score",score);
-   console.log("content",content)
-   console.log("score",score)
-   console.log(formData)
 
    $.ajax({
        
        type: "POST",
-       url: `http://127.0.0.1:8000/review/5/`,
+       url: `http://127.0.0.1:8000/review/${user_id}/`,
        processData: false,
        contentType: false,
        data: formData,

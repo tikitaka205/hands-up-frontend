@@ -117,7 +117,7 @@ function buygoods(){
             console.log(response)
             console.log(response['buy_goods'].length)
             for(let i =0 ; i < response['buy_goods'].length; i++){
-                if (response['buy_goods'][i]['images'].length > 0){
+                if (response['buy_goods'][i]['images'] > 0){
                     let images = response['buy_goods'][i]['images'][0]
                     let title = response['buy_goods'][i]['title']
                     let predict_price = response['buy_goods'][i]['predict_price']
@@ -146,17 +146,17 @@ function buygoods(){
                     let start_price = response['buy_goods'][i]['star_price']
 
                     let temp_html = `
-                    <div id="item" class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
+                    <a href="#"><div id="item" class="goodsItem col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg"
-                            style="background-image: url(${images}); background-size: cover;">
+                            style="background-image: url(${images}); background-size: cover;" >
                         </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">${title}</a></h6>
-                                <h5>${predict_price}</h5>
+                            <div class="item-text featured__item__text">
+                                <a href="#"> <h6 style="border-bottom:1px solid gray">${title}<h6> </a>
+                                <a href="#"> <h5 >${predict_price}원</h5></a>
                             </div>
                         </div>
-                    </div>`
+                    </div></a>`
     
                     
                     $('#item').append(temp_html)
@@ -180,6 +180,7 @@ function likegoods(){
         data: {},
 
         success: function (response) {
+            console.log(response['like_goods'])
             console.log(response['user_data']['profile_image'])
             let user_image = response['user_data']['profile_image']
             console.log(response['user_data']['username'])
@@ -196,7 +197,7 @@ function likegoods(){
 
             console.log(response['like_goods'].length)
             for(let i =0 ; i < response['like_goods'].length; i++){
-                if (response['like_goods'][i]['images'].length > 0){
+                if (response['like_goods'][i]['images'] > 0){
                     let images = response['like_goods'][i]['images'][0]
                     let title = response['like_goods'][i]['title']
                     let predict_price = response['like_goods'][i]['predict_price']
@@ -214,6 +215,22 @@ function likegoods(){
                             </div>
                         </div>
                     </div>`
+
+                    // let temp_html = `
+                    // <div id="item" class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
+                    // <div class="featured__item">
+                    //     <div class="featured__item__pic set-bg" 
+                    //         style="background-image: url(http://127.0.0.1:8000${images['image']}); background-size: cover;">
+                    //     </div>
+                    //         <div class="featured__item__text">
+                    //             <h6><a href="#">${title}</a></h6>
+                    //             <h5>${predict_price}</h5>
+                    //         </div>
+                    //     </div>
+                    // </div>`
+    
+                    
+                    $('#item').append(temp_html)
     
                     
                     $('#item').append(temp_html)
@@ -224,18 +241,30 @@ function likegoods(){
                     let predict_price = response['like_goods'][i]['predict_price']
                     let start_price = response['like_goods'][i]['star_price']
 
+                    // let temp_html = `
+                    // <div id="item" class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
+                    // <div class="featured__item">
+                    //     <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg"
+                    //         style="background-image: url(${images}); background-size: cover;">
+                    //     </div>
+                    //         <div class="featured__item__text">
+                    //             <h6><a href="#">${title}</a></h6>
+                    //             <h5>${predict_price}</h5>
+                    //         </div>
+                    //     </div>
+                    // </div>`
                     let temp_html = `
-                    <div id="item" class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
+                    <a href="#"><div id="item" class="goodsItem col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">     
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg"
-                            style="background-image: url(${images}); background-size: cover;">
+                            style="background-image: url(${images}); background-size: cover;" >
                         </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">${title}</a></h6>
-                                <h5>${predict_price}</h5>
+                            <div class="item-text featured__item__text">
+                                <a href="#"> <h6 style="border-bottom:1px solid gray">${title}<h6> </a>
+                                <a href="#"> <h5 >${predict_price}원</h5></a>
                             </div>
                         </div>
-                    </div>`
+                    </div></a>`
     
                     
                     $('#item').append(temp_html)

@@ -1,11 +1,11 @@
-let data_auction_list
-$(document).ready(function () {
-    data_auction_list = get_auction_list()
-    userInfo()
-    console.log("여기 실행")
-});
+var data_auction_list = get_auction_list()
+var user_id = url.searchParams.get('user_id')
+
+
+userInfo()
 
 function userInfo() {
+
     $.ajax({
         type: 'GET',
 
@@ -14,7 +14,7 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/review/list/2/`,
+        url: `http://127.0.0.1:8000/review/list/${user_id}/`,
 
         success: function (response) {
             console.log('성공:', response);
@@ -99,20 +99,17 @@ var search = search === null || search === undefined? search ='': search = searc
 
 
 function get_auction_list() {
-    let temp_response
     $.ajax({
         type: "GET",
-        url: `${hostUrl}/goods/user/1/?page=${nowPage}&category=${category}&status=${goodsStatus}&search=${search}`,
+        url: `${hostUrl}/goods/user/${user_id}/?page=${nowPage}&status=${goodsStatus}`,
         headers: {
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + localStorage.getItem("access"),
         },
         data: {},
         async: false,
         success: function (response) {
-
+            console.log(`${hostUrl}/goods/user/1/?page=${nowPage}&status=${goodsStatus}`)
             let auction_list = response
-            temp_response = auction_list
-            console.log("욕",response)
             for (let i = 0; i < auction_list.length; i++) {
 
                 let price 
@@ -231,15 +228,6 @@ function get_auction_list() {
                 $('#auction_list').append(temp_html)
 
             }
-            console.log(search, '나 서치', !search)
-            if(search){
-                
-                $('#search-result').text(`"${search}"에 대한 결과`)
-                $('#search-result').show()
-
-            }
-
-
             nowPage += 1
         },
         error : function(error){
@@ -252,7 +240,7 @@ function get_auction_list() {
             $('#endList').html(temp)
         }
     })
-    return temp_response
+    return
 }
 
 

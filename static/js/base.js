@@ -28,12 +28,14 @@ function searchAuction2(){
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
+
 function priceToString(price) {
     if (price === null){
         return null
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
 
 function needLogin(){
     if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
@@ -43,11 +45,20 @@ function needLogin(){
     }
 }
 
+
+function moveAuction(){
+    if(!payload){
+        needLogin()
+    }
+    return window.location.href = `/goods/index.html`
+}
+
+
 function moveProfile(){
     if(!payload){
         needLogin()
     }
-    return window.location.href = `/review/index.html?user_id=${payload['user_id']}`
+    return window.location.href = `/user/userProfile.html?user_id=${payload['user_id']}`
 }
 
 
@@ -59,14 +70,13 @@ function moveChat(){
 }
 
 
-
 if(!payload){
     var login_temp = `
         <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
     `
 }else{
     var login_temp = `
-        <a href="/review/index.html"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
+        <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
     ` 
 }
 
@@ -165,10 +175,10 @@ document.getElementById('nav-header').innerHTML = `
 
                     <div class="header__cart">
                         <ul>
+                            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+
                             <li style='cursor:pointer;' onclick='moveProfile()'><i class="fa fa-user"></i></li>
                             <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
-                            <li style='cursor:pointer;' onclick='moveProfile()'>
-                                <i class="fas fa-heart"></i>
                             </li>
                             <li style='cursor:pointer;' onclick='moveChat()'>
                                 <i class="fas fa-comment-dots"></i>

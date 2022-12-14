@@ -43,6 +43,13 @@ function needLogin(){
     }
 }
 
+
+function moveAuction(){
+    if(!payload){
+        needLogin()
+    }
+    return window.location.href = `/goods/index.html`
+}
 function moveProfile(){
     if(!payload){
         needLogin()
@@ -165,10 +172,10 @@ document.getElementById('nav-header').innerHTML = `
 
                     <div class="header__cart">
                         <ul>
+                            <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+
                             <li style='cursor:pointer;' onclick='moveProfile()'><i class="fa fa-user"></i></li>
                             <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
-                            <li style='cursor:pointer;' onclick='moveProfile()'>
-                                <i class="fas fa-heart"></i>
                             </li>
                             <li style='cursor:pointer;' onclick='moveChat()'>
                                 <i class="fas fa-comment-dots"></i>

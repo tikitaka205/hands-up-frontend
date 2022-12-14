@@ -69,7 +69,7 @@ async function goodsInfoView() {
                 </div>
                 <div class = "col-6 text-end">
                     <div class="progress" max=100 style="--w:${ratingScore}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
-                    <span class='text-secondary small'>매너점수</span> ${seller["rating_score"]}
+                    <span class='text-secondary small'>매너점수</span> ${ratingScore}
                     
                 </div>
             </div>

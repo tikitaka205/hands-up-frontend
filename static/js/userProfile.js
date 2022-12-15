@@ -253,7 +253,7 @@ function get_auction_list() {
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}"  style="margin-bottom : 50px">
                     <div class="featured__item" style="">
                         <div id="img" class="featured__item__pic set-bg"
-                            style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px 15px 0 0;">
+                            style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px 15px 0 0; width:100%">
                             <div style="position: absolute; right: 5px; bottom:5px;">
                                 ${heart}
                             </div>

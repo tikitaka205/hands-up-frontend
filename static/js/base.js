@@ -3,81 +3,81 @@ const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
 const CATEGORY = {
-    '' : '',
-    'all' : '',
-    '디지털기기' : 'digital',
-    '생활가전' : 'machine',
-    '가구/인테리어' : 'inte',
-    '생활/주방' : 'dinning',
-    '유아' : 'baby',
-    '여성의류' : 'w-cloth',
-    '남성의류' : 'm-cloth',
-    '스포츠' : 'sport',
-    '반려동물용품' : 'animal',
-    '기타' : 'etc',
+    '': '',
+    'all': '',
+    '디지털기기': 'digital',
+    '생활가전': 'machine',
+    '가구/인테리어': 'inte',
+    '생활/주방': 'dinning',
+    '유아': 'baby',
+    '여성의류': 'w-cloth',
+    '남성의류': 'm-cloth',
+    '스포츠': 'sport',
+    '반려동물용품': 'animal',
+    '기타': 'etc',
 }
 
 
-function searchAuction(){
+function searchAuction() {
     var keyword = document.getElementById('search-input').value;
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
-function searchAuction2(){
+function searchAuction2() {
     var keyword = document.getElementById('search-input-2').value;
     window.location.href = `/goods/index.html?search=${keyword}`
 }
 
 
 function priceToString(price) {
-    if (price === null){
+    if (price === null) {
         return null
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 
-function needLogin(){
-    if(confirm('로그인이 필요합니다. 로그인하러 갈까요?')){
+function needLogin() {
+    if (confirm('로그인이 필요합니다. 로그인하러 갈까요?')) {
         return window.location.href = '/user/login.html'
-    }else{
+    } else {
         return
     }
 }
 
 
-function moveAuction(){
-    if(!payload){
+function moveAuction() {
+    if (!payload) {
         needLogin()
     }
     return window.location.href = `/goods/index.html`
 }
 
 
-function moveProfile(){
-    if(!payload){
+function moveProfile() {
+    if (!payload) {
         needLogin()
     }
     return window.location.href = `/user/userProfile.html?user_id=${payload['user_id']}`
 }
 
 
-function moveChat(){
-    if(!payload){
+function moveChat() {
+    if (!payload) {
         needLogin()
     }
     return window.location.href = `/chat/index.html?user_id=${payload['user_id']}`
 }
 
 
-if(!payload){
+if (!payload) {
     var login_temp = `
         <a href="/user/login.html"><i class="fa fa-user"></i>Login</a>
     `
-}else{
+} else {
     var login_temp = `
         <a href="/user/userProfile.html?user_id=${payload['user_id']}"><i class="fa fa-user"></i>${payload['username']}님 안녕하세요</a>
-    ` 
+    `
 }
 
 
@@ -103,7 +103,7 @@ document.getElementById('nav-header').innerHTML = `
                                     <li><a href="/blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li> -->
-                        <li><a href="/blog/blog.html">게시판</a></li>
+                        <li><a href="/board/free_article.html">게시판</a></li>
                         <li><a href="/contact.html">Contact & Feedback</a></li>
                         <li class="p-2">
                             <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="search-input-2">
@@ -160,7 +160,7 @@ document.getElementById('nav-header').innerHTML = `
                                         <li><a href="/blog-details.html">Blog Details</a></li>
                                     </ul> -->
                             </li>
-                            <li><a href="/blog/blog.html">게시판</a></li>
+                            <li><a href="/board/free_article.html">게시판</a></li>
                             <li><a href="/contact.html">Contact & Feedback</a></li>
                             <li style="margin-right: 0;">
                                 <input type="text" class="form-control" placeholder="What do yo u need?" id="search-input">

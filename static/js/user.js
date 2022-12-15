@@ -35,8 +35,8 @@ async function handleLogin() {
 
         window.location.href = "/index.html"
 
-    } else {
-        console.log(response)
+    } else if (response.status === 401){
+        alert('번호 혹은 비밀번호를 확인해 주세요.')
     }
 
 }

@@ -60,7 +60,8 @@
             font-size: 20px;
             transform: translate(-50%, -50%);
         }
-        #participants-count{
+
+        #participants-count {
             position: absolute;
             top: 60%;
             left: 50%;
@@ -78,7 +79,8 @@
 
             /* height: 300px; */
         }
-        .swiper-slide{
+
+        .swiper-slide {
             height: 100%;
             text-align: center;
         }
@@ -109,7 +111,8 @@
         .header__menu>ul>li {
             margin: 0 10px;
         }
-        #auction-wrap{
+
+        #auction-wrap {
             max-height: 650px;
             border-radius: 15px;
             /* background: radial-gradient(#c692ff, #fde55d); */
@@ -131,37 +134,36 @@
     <div id="nav-header"></div>
 
 
-    <div class="whole-wrap container "
-        style="margin : 0 auto; padding-top: 20px;">
+    <div class="whole-wrap container " style="margin : 0 auto; padding-top: 20px;">
         <div class="row">
             <div class="col-lg-5" style="padding: 0 10px;">
                 <div>
-                    <!-- 상품 사진   --> 
+                    <!-- 상품 사진   -->
                     <div id="goods-image-wrap">
                         <div class="swiper">
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper" id="swiper-wrapper">
-                              <!-- Slides -->
+                                <!-- Slides -->
                             </div>
                             <!-- If we need pagination -->
                             <div class="swiper-pagination"></div>
-                          
+
                             <!-- If we need navigation buttons -->
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
-                          
+
                             <!-- If we need scrollbar -->
                             <div class="swiper-scrollbar"></div>
-                          </div>
+                        </div>
                     </div>
                     <!-- 사용자 정보 섹션 -->
                     <div id="seller-info-wrap"></div>
                     <!-- 사용자 예상 가격 섹션 -->
                     <div id="predict-price-wrap"></div>
                     <!-- 상품 정보 섹션 -->
-                    <div id="goods-info-wrap"></div>    
+                    <div id="goods-info-wrap"></div>
                 </div>
-                
+
             </div>
 
             <div class="col-lg-3" id="whole-auction-wrap" style="padding: 0 10px;">
@@ -173,38 +175,43 @@
                             <div id="participants-count"></div>
                         </div>
                     </div>
-            
+
                     <!-- 현재가(최고가) -->
                     <div id="high-price">
-            
+
                     </div>
-                    <input class="form-control mb-2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="chat-money-input" type="text" style="border: 2px solid gold;" placeholder="입찰가를 입력해 주세요!" />
-                    <input class="btn btn-warning form-control" style="box-shadow: 0 1px 2px 0px;" id="chat-message-submit"
-                        type="button" onclick="sendMoney()" value="입찰" />
+                    <input class="form-control mb-2"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        id="chat-money-input" type="text" style="border: 2px solid gold;" placeholder="입찰가를 입력해 주세요!" />
+                    <input class="btn btn-warning form-control" style="box-shadow: 0 1px 2px 0px;"
+                        id="chat-message-submit" type="button" onclick="sendMoney()" value="입찰" />
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="p-3" style="height : 600px;overflow: scroll; background-color: white; border-radius: 5px;" id="chat-wrap">
+                <div class="p-3" style="height : 600px;overflow: scroll; background-color: white; border-radius: 5px;"
+                    id="chat-wrap">
                     <div class="" id="chat-log">
                         <div id="chat" class="">
                         </div>
                     </div>
                 </div>
                 <div class="row" style="padding: 10px 0 0 10px;">
-                    <input style="border: 1px solid #fde55d; border-radius: 10px;" class="col-9" id="chat-message-input" placeholder="채팅에 참여하세요!" type="text" />
+                    <input style="border: 1px solid #fde55d; border-radius: 10px;" class="col-9" id="chat-message-input"
+                        placeholder="채팅에 참여하세요!" type="text" />
                     <div class="col-3">
-                        <input style="border: 1px solid #201e0c; border-radius: 5px; height: 100%; background-color: #cce5ff;" class="" id="chat-message-submit" type="button" onclick="sendMessage()" value="보내기" />
+                        <input
+                            style="border: 1px solid #201e0c; border-radius: 5px; height: 100%; background-color: #cce5ff;"
+                            class="" id="chat-message-submit" type="button" onclick="sendMessage()" value="보내기" />
                     </div>
-            
+
                 </div>
-            
+
             </div>
-            </div>
-        
+        </div>
+
     </div>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/auction.js"></script>
-    <script src="/static/js/nav.js"></script>
     <script src="/static/js/main.js"></script>
 
 </body>

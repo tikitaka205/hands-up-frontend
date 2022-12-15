@@ -14,13 +14,13 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/user/info/${user_id}`,
+        url: `http://127.0.0.1:8000/user/${user_id}/profile/`,
 
         success: function (response) {
             console.log('성공:', response);
             let profile_image = response['profile_image']
-            let username = response['username']
-            temperature=response['rating_score']
+            let username = response['receiver']['username']
+            temperature= response['rating_score']<0 || response['rating_score']>100? 99 : response['rating_score']>100
             if(response['rating_score'] > 99)
             {
             temperature=99

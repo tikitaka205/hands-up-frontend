@@ -3,8 +3,8 @@ window.onload = function () {
     userInfo()
     review_list()
 }
-let user_id = url.searchParams.get('user_id')
 
+let user_id = url.searchParams.get('user_id')
 var backUrl = '127.0.0.1:8000'
 var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
@@ -163,6 +163,7 @@ function userInfo() {
                 $('#profile_btn').append(myProfileBtn)
             }
             if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            $('#username').text(`${username}`)
         }
     })
 }

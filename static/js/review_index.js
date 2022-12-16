@@ -1,9 +1,9 @@
 window.onload = function () {
-    review_list()
     $("time.timeago").timeago();
+    userInfo()
+    review_list()
 }
 let user_id = url.searchParams.get('user_id')
-
 
 var backUrl = '127.0.0.1:8000'
 var backEndUrl = 'http://127.0.0.1:8000'
@@ -19,24 +19,13 @@ function review_list() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/review/list/${user_id}/`,
+        url: `${hostUrl}/review/list/${user_id}/`,
         success: function (response) {
             console.log('성공:', response);
-            let profile_image = response['receiver']['profile_image']
             let bad_review_count = response['bad_review_count']
             let soso_review_count = response['soso_review_count']
             let good_review_count = response['good_review_count']
             let excellent_review_count = response['excellent_review_count']
-            let username = response['receiver']['username']
-            let temperature=response['receiver']['rating_score']
-            if(temperature > 99)
-            {
-            temperature=99
-            }
-            let id = response['receiver']['id']
-            let is_active = response['receiver']['is_active']
-            let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
-
             if (response['results'].length > 0) {
                 for (let i = 0; i < response['results'].length; i++) {
                     let author = response['results'][i]['author']
@@ -61,51 +50,6 @@ function review_list() {
                     `
                     $('#review_list').append(temp_html)
                 }
-            }
-            let bad_user = `
-                <div style="background-color:#c00000; height:70px; display: flex; justify-content: center; align-items: center; font-weight: bolder;">
-                    <div >
-                        현재 비매너 사유로 이용정지 중입니다.
-                    </div>
-                </div>
-            `
-            let temperature_bad_user = `
-                <div>
-                <div class="progress" max=100 "></div>
-                <span class='text-secondary small'>매너점수</span> 0
-                </div>
-                <br>
-                <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보기</button>
-                </div>
-            `
-            let temperature_good_user=`
-            <div>
-            <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
-            <span class='text-secondary small'>매너점수</span> ${temperature}
-            </div>
-            <br>
-            <div class="row" style="display:felx;" id="profile_btn">
-            <button id="goods_list_btn" style="margin-right:25px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">판매상품 보기</button>
-            </div>
-            `
-            let myProfileBtn=`
-            <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
-            `
-            if (profile_image)$('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
-
-            
-            if (is_active == true && temperature > 0) {
-                $('#temp').append(temperature_good_user)
-            } else if (is_active == true && temperature <= 0) {
-                $('#temp').append(temperature_bad_user)
-            } else if (is_active == false) {
-                $('#bad_user').append(bad_user)
-                $('#temp').append(temperature_bad_user)
-            }
-            if (payload["user_id"]==`${id}`){
-                $('#goods_list_btn').hide()
-                $('#profile_btn').append(myProfileBtn)
             }
             
             let bad_score=`
@@ -139,19 +83,89 @@ function review_list() {
 
             if (excellent_review_count > 0){
             console.log(excellent_review_count)
-
             $('#excellent_score').append(excellent_score);
             }
 
-
-
-            $('#username').text(`${username}`)
-            $('#profile_image').text(`${profile_image}`)
             $("time.timeago").timeago();
         }
     });
 }
 
+function userInfo() {
+
+    $.ajax({
+        type: 'GET',
+
+        data: {},
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+        },
+
+        url: `${hostUrl}/user/info/${user_id}/`,
+
+        success: function (response) {
+            console.log('성공:', response);
+            let profile_image = response['profile_image']
+            let username = response['username']
+            temperature= response['rating_score']<0 || response['rating_score']>100? 99 : response['rating_score']
+            if(response['rating_score'] > 99)
+            {
+            temperature=99
+            }
+            let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
+            let is_active = response['is_active']
+            let id = response['id']
+
+            let bad_user = `
+                <div style="background-color:#c00000; height:70px; display: flex; justify-content: center; align-items: center; font-weight: bolder;">
+                    <div >
+                        현재 비매너 사유로 이용정지 중입니다.
+                    </div>
+                </div>
+                `
+            let temperature_bad_user = `
+                <div>
+                <div class="progress" max=100 "></div>
+                <div style="color:white">
+                <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
+                </div>
+                </div>
+                <br>
+                <div class="row" style="display:felx;" id="profile_btn">
+                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                </div>
+            `
+            let temperature_good_user=`
+                        <div>
+                        <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
+                        <div style="color : black;">
+                        <span class='text-secondary small' style="color : black;">매너점수</span> ${temperature}
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row" style="display:felx;" id="profile_btn">
+                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                        </div>
+                    `
+            let myProfileBtn=`
+            <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
+            `
+            if (is_active == true && temperature > 0) {
+                $('#temp').append(temperature_good_user)
+            } else if (is_active == true && temperature <= 0) {
+                $('#temp').append(temperature_bad_user)
+            } else if (is_active == false) {
+                $('#bad_user').append(bad_user)
+                $('#temp').append(temperature_bad_user)
+            }
+            if (payload["user_id"]==`${id}`){
+                $('#goods_list_btn').hide()
+                $('#profile_btn').append(myProfileBtn)
+            }
+            if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+        }
+    })
+}
 
 function review(id) {
     location.href = `/review/goods_list.html?user_id=${id}`

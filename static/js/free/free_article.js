@@ -3,7 +3,6 @@ window.onload = function(){
     $("time.timeago").timeago();
 
 }
-console.log ("작동되니?")
 free_article_list = () =>{
     $.ajax({
         type: "GET",

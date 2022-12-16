@@ -82,7 +82,9 @@ if (goodsId != null) {
     chatMessageSend.onclick = function (e) {
         const messageInputDom = chatMessageInput;
         const message = messageInputDom.value;
-
+        if(message === ''){
+            return
+        }
         chatSocket.send(JSON.stringify({
             'user_id': payload['user_id'],
             'goods_id': `${goodsId}`,
@@ -144,7 +146,6 @@ function get_chat_log() {
                 $('#chatLog').scrollTop(top);
             }
             let other_user = response["data"].find(e => e.author.username != payload["username"])
-            console.log("test", other_user, other_user["author"]["id"])
             send_checkMessage(goodsId, other_user["author"]["id"])
             // wait_chat_message(goodsId)
         }
@@ -190,7 +191,7 @@ function select_chat_roome() {
                                         style="width:30px; border-radius:500px;">
                                 </div>
                                 <span class="col-sm-9 p-1" style="font-size: 20px; font-weight: bold;">
-                                    ${buyer}
+                                    ${seller}
                                     <span style="font-size: 5px;">(<time class="timeago" datetime="${created_at}"></time>)</span>
                                 </span>
                             </div>
@@ -223,7 +224,7 @@ function select_chat_roome() {
                                         style="width:30px; border-radius:500px;">
                                 </div>
                                 <span class="col-sm-9 p-1" style="font-size: 20px; font-weight: bold;">
-                                    ${seller}
+                                    ${buyer}
                                     <span style="font-size: 5px;">(<time class="timeago" datetime="${created_at}"></time>)</span>
                                 </span>
                                 

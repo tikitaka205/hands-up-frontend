@@ -24,7 +24,6 @@ async function goodsInfoView() {
         ratingScore=99
     }
     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
- 
     // 사진 섹션
     var temp = ``
     for (var i = 0; i < data['images'].length; i++) {
@@ -58,11 +57,13 @@ async function goodsInfoView() {
         },
     });
     // 사용자 정보 섹션
+    console.log(`${seller['profile_image']}`)
+
     var temp = `
         <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black; cursor:pointer;">
             <div class = "row" onclick="window.location.href='/review/index.html?user_id=${seller['id']}'">
                 <div class = "col-2">
-                    <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
+                    <img style="border-radius:50%;" src="${hostUrl}${seller['profile_image']}" alt="img">
                 </div>
                 <div class = "col-4">
                     <b>${seller["username"]}</b>

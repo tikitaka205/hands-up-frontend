@@ -32,6 +32,7 @@ function review_list() {
                     let content = response['results'][i]['content']
                     let created_at = response['results'][i]['created_at']
                     let review_image = response['review_image'][i]
+                    
                     temp_html = `
                     <div class="col-lg-4 col-md-6 col-sm-8" style="margin-top: 10px;>
                         <div class="col-lg-4 col-md-6 col-sm-8">

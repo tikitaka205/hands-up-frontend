@@ -59,7 +59,7 @@ function addFiles(e) {
 // 업로드 이미지 파일크기제한
         if (this.files && this.files[0]) {
                 
-            var maxSize = 1 * 1 * 1;
+            var maxSize = 5 * 1024 * 1024;
             var fileSize = this.files[0].size;
 
             if(fileSize > maxSize){

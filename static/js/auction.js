@@ -1,5 +1,4 @@
 const goodsId = url.searchParams.get('goods');
-const backUrl = '127.0.0.1:8000'
 const token = localStorage.getItem('access')
 var goods = JSON.parse(localStorage.getItem('goods', ''))
 
@@ -242,11 +241,11 @@ goodsInfoView()
 
 if (token !== null){
     var chatSocket = new WebSocket(
-        `ws://${backUrl}/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
+        `ws://${hostUrl}/ws/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
     );
 }else{
     var chatSocket = new WebSocket(
-        `ws://${backUrl}/auction/${goodsId}/`
+        `ws://${hostUrl}/ws/auction/${goodsId}/`
     );
 }
 
@@ -404,6 +403,7 @@ function sendMessage() {
     }
     // console.log(goods, payload)
     if (chatSocket.readyState === WebSocket.OPEN) {
+        console.log('opened')
         chatSocket.send(JSON.stringify({
             'is_money': false,
             'goods_id': goodsId,

@@ -5,8 +5,6 @@ window.onload = function () {
 }
 
 let user_id = url.searchParams.get('user_id')
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
 console.log("페이로드 아이디",payload["user_id"])
 
@@ -19,7 +17,7 @@ function review_list() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `${hostUrl}/review/list/${user_id}/`,
+        url: `${hostUrl}/review/?user_id=${user_id}`,
         success: function (response) {
             console.log('성공:', response);
             let bad_review_count = response['bad_review_count']
@@ -38,7 +36,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:500px;">
+                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:500px;">
                                     <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>

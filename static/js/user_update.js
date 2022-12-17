@@ -35,7 +35,7 @@ function getInfo(){
     console.log('회원정보 가져오기')
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:8000/user/`,
+        url: `${hostUrl}/user/`,
         data: {},
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("access"),
@@ -46,7 +46,7 @@ function getInfo(){
 
         $('#profile_image').attr('src', profile_image)
         if(profile_image){
-            $('#profile_image_2').attr("src", `http://127.0.0.1:8000${profile_image}`)
+            $('#profile_image_2').attr("src", `${hostUrl}${profile_image}`)
         }
         $('#username').attr('value',username)
         $('#upload-name').attr('value', profile_image)
@@ -75,7 +75,7 @@ function checkUsername(){
         "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
-    url: `http://127.0.0.1:8000/user/check/`,
+    url: `${hostUrl}/user/check/`,
 
     success: function (result) {
         // 유저이름 안바꾸면 체크 안하게끔 해야한다.
@@ -113,7 +113,7 @@ async function handleUpdate() {
     $.ajax({
 
         type: "PUT",
-        url: `http://127.0.0.1:8000/user/`,
+        url: `${hostUrl}/user/`,
         processData: false,
         contentType: false,
         data: formData,

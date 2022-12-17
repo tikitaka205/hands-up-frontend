@@ -36,7 +36,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:500px;">
+                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:50%;">
                                     <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
@@ -123,19 +123,19 @@ function userInfo() {
                 </div>
                 `
             let temperature_bad_user = `
-                <div>
+                <div style="width:30vw">
                 <div class="progress" max=100 "></div>
                 <div style="color:white">
                 <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
                 </div>
                 </div>
                 <br>
-                <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                <div class="row" style="display:flex;" id="profile_btn">
+                <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">판매상품 보기</button>
                 </div>
             `
             let temperature_good_user=`
-                        <div>
+                        <div style="width:30vw">
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : black;">
                         <span class='text-secondary small' style="color : black;">매너점수</span> ${temperature}
@@ -143,11 +143,11 @@ function userInfo() {
                         </div>
                         <br>
                         <div class="row" style="display:felx;" id="profile_btn">
-                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                        <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">판매상품 보기</button>
                         </div>
                     `
             let myProfileBtn=`
-            <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
+            <button style="margin:5px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
             `
             if (is_active == true && temperature > 0) {
                 $('#temp').append(temperature_good_user)

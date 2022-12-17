@@ -161,7 +161,7 @@ function userInfo() {
                 $('#goods_list_btn').hide()
                 $('#profile_btn').append(myProfileBtn)
             }
-            if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
             $('#username').text(`${username}`)
         }
     })

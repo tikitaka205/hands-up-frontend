@@ -96,7 +96,7 @@
                                 value="">
 
                             <label id="file-label" for="profile_image" class="form-label"
-                                style=" text-align: center; margin-top: 10px; margin-right: 17px; height: 30px; width: 100px; background-color: #deef87; border-radius: 10px; border: 1px solid black; line-height: 30px;"
+                                style=" text-align: center; margin-top: 10px; margin-right: 22px; height: 30px; width: 100px; background-color: #deef87; border-radius: 10px; border: 1px solid black; line-height: 30px;"
                                 value="">파일 선택</label>
                             <input onchange="readURL(this);" type="file" class="profile_image" id="profile_image" src=""
                                 style="display:none">
@@ -106,11 +106,14 @@
                     <div class="mb-3">
                         <label for="" class="form-label">활동 아이디</label>
                         <div class="row" style="border: 1px solid gray; padding: 8px 15px; border-radius: 10px;">
-                            <input type="text" style="border: none; font-size: 15px;" class="col-9" id="username"
+                            <input type="text" style="width: 310px; border: none; font-size: 15px;" id="username"
                                 value="" placeholder="2 ~ 10자 영문, 한글">
-                            <input type="button"
-                                style="background-color: #deef87; border-radius: 10px; border: 1px solid black;"
-                                class="col-3" value="중복 체크" onclick="checkUsername()">
+                                <div style="display: flex; justify-content: end">
+                                    <input type="button"
+                                    style="text-align: center; height: 30px; width: 100px; background-color: #deef87; border-radius: 10px; border: 1px solid black; line-height: 30px;"
+                                    value="중복 체크" onclick="checkUsername()">
+                                </div>
+
                         </div>
                         <div id="username-message" class="form-text"></div>
                     </div>

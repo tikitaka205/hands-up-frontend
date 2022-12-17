@@ -78,16 +78,19 @@ function checkUsername(){
     url: `${hostUrl}/user/check/`,
 
     success: function (result) {
+        let updated_username=localStorage.getItem("username")
         // 유저이름 안바꾸면 체크 안하게끔 해야한다.
+        // 그렇게 했지만 페이로드에서 들고오는건 고정이 되어있다
         console.log("local_user_name",local_user_name)
-
         if(result['result'] === false || username==result['username']){ // 같은 이름의 유저가 없음
             $('#username-message').html('<i class="fas fa-check" style="color:green"> 사용가능한 아이디 입니다.</i>')
             username_check = true}
-        else if(username==local_user_name){$('#username-message').html('<i class="fas fa-check" style="color:green"> 현재 아이디와 같습니다.</i>')}
+        else if(username==updated_username){$('#username-message').html('<i class="fas fa-check" style="color:green"> 현재 아이디와 같습니다.</i>')}
         else{$('#username-message').html('<i class="fas fa-times" style="color:red"> 이미 사용 중인 아이디입니다.</i>')}
+
     },
 });
+
 
 }
 $('#username').on('input', usernameChecker);
@@ -125,6 +128,7 @@ async function handleUpdate() {
         success: function (result) {
         alert("회원정보 변경완료.", result);
         moveProfile()
+
         },
         error : function(){
           alert("이미 사용 중인 아이디입니다.");

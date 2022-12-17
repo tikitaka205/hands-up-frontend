@@ -1,4 +1,5 @@
-const hostUrl = "http://127.0.0.1:8000"
+const hostUrl = "http://hands-up.co.kr"
+// const hostUrl = "http://127.0.0.1:8000"
 const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
@@ -181,6 +182,9 @@ document.getElementById('nav-header').innerHTML = `
                             <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
                             </li>
                             <li style='cursor:pointer;' onclick='moveChat()'>
+                                <i class="fas fa-comment-dots"></i>
+                            </li>
+                            <li style='cursor:pointer;' onclick='()'>
                                 <i class="fas fa-comment-dots"></i>
                             </li>
                         </ul>

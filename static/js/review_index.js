@@ -5,8 +5,7 @@ window.onload = function () {
 let user_id = url.searchParams.get('user_id')
 
 
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
+var backEndUrl = 'http://43.200.179.49'
 var token = localStorage.getItem('access')
 console.log("페이로드 아이디",payload["user_id"])
 
@@ -19,7 +18,7 @@ function review_list() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/review/list/${user_id}/`,
+        url: `${hostUrl}/review/list/${user_id}/`,
         success: function (response) {
             console.log('성공:', response);
             let profile_image = response['receiver']['profile_image']
@@ -48,7 +47,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:500px;">
+                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:500px;">
                                     <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
@@ -92,7 +91,7 @@ function review_list() {
             let myProfileBtn=`
             <button style="border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="myProfile(${id})">내 프로필 가기</button>
             `
-            if (profile_image)$('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            if (profile_image)$('#profile_image').attr("src", `${hostUrl}${profile_image}`);
 
             
             if (is_active == true && temperature > 0) {

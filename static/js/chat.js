@@ -1,5 +1,5 @@
 const goodsId = url.searchParams.get('goods');
-const backUrl = '127.0.0.1:8000';
+const backUrl = '43.200.179.49';
 const token = localStorage.getItem('access');
 
 console.log(payload["username"])
@@ -13,8 +13,8 @@ select_chat_roome()
 
 if (goodsId != null) {
     const chatSocket = new WebSocket(
-        'ws://' + backUrl +
-        '/chat/' + goodsId + '/?token=' + token);
+        'ws://' + backUrl  +
+        '/ws/chat/' + goodsId + '/?token=' + token);
 
     console.log(chatSocket)
 
@@ -45,7 +45,7 @@ if (goodsId != null) {
             temp_html = `
             <div class="chat_message_wrap" style="align-items: flex-start;">
                 <div style="display: flex; flex-direction: row;">    
-                    <img src="http://127.0.0.1:8000/media/default.jpeg" style="width:30px; height:30;">
+                    <img src="/media/default.jpeg" style="width:30px; height:30;">
                     <span style="margin-left: 5px; font-weight: bolder;">${sender}</span>
                 </div>
                 <div class="chat_message" style="background-color: #d6cdcd;">

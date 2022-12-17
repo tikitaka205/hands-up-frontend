@@ -1,4 +1,4 @@
-// const hostUrl = "http://127.0.0.1:8000"
+
 let post_id=localStorage.getItem('community_post_id')
 
 window.onload = function(){
@@ -10,7 +10,7 @@ function post_change_get(){
     console.log(post_id)
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:8000/board/report_articles/${post_id}/`,
+        url: `${hostUrl}/board/report_articles/${post_id}/`,
         data: {},
         success: function(response){
         console.log(response)
@@ -64,7 +64,7 @@ function post_put() {
     $.ajax({
 
         type: "PUT",
-        url: `http://127.0.0.1:8000/board/report_articles/${post_id}/`,
+        url: `${hostUrl}/board/report_articles/${post_id}/`,
         processData: false,
         contentType: false,
         data: formData,

@@ -140,7 +140,7 @@ function posthandle() {
 
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:8000/goods/",
+        url: `${hostUrl}/goods/`,
         processData: false,
         contentType: false,
         data: fd,

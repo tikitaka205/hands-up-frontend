@@ -5,7 +5,7 @@ let free_article_id=localStorage.getItem('free_article_id')
 function free_article_change_get(){
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:8000/board/detail/${free_article_id}/`,
+        url: `${hostUrl}/board/detail/${free_article_id}/`,
         data: {},
         success: function(response){
 
@@ -48,7 +48,7 @@ function free_article_put() {
     $.ajax({
 
         type: "PUT",
-        url: `http://127.0.0.1:8000/board/detail/${free_article_id}/`,
+        url: `${hostUrl}/board/detail/${free_article_id}/`,
         processData: false,
         contentType: false,
         data: formData,

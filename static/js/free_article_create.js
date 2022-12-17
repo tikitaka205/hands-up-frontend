@@ -15,7 +15,7 @@ function free_article_create() {
     $.ajax({
         
         type: "POST",
-        url: "http://127.0.0.1:8000/board/free_articles/",
+        url: `${hostUrl}/board/free_articles/`,
         processData: false,
         contentType: false,
         data: formData,

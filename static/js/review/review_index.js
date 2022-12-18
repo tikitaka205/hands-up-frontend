@@ -26,18 +26,18 @@ function review_list() {
             let excellent_review_count = response['excellent_review_count']
             if (response['results'].length > 0) {
                 for (let i = 0; i < response['results'].length; i++) {
-                    let author = response['results'][i]['author']
+                    // let author = response['results'][i]['author']
                     let content = response['results'][i]['content']
                     let created_at = response['results'][i]['created_at']
-                    let review_image = response['review_image'][i]
+                    // let review_image = response['review_image'][i]
                     
                     temp_html = `
                     <div class="col-lg-4 col-md-6 col-sm-8" style="margin-top: 10px;>
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:50%;">
-                                    <strong class="me-auto" style="position:absolute; left: 50px;">${author}</strong>
+                                    <img src="${hostUrl}/media/media/default.jpeg/" id="image2" style="width:30px; border-radius:50%;">
+                                    <strong class="me-auto" style="position:absolute; left: 50px;">익명</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
                                 <div class="toast-body">
@@ -89,6 +89,7 @@ function review_list() {
         }
     });
 }
+
 
 function userInfo() {
 

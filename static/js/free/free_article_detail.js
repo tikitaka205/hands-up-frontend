@@ -78,7 +78,7 @@ $(document).ready(function () {
 
                         temp_html=
                         `
-                        <li class="list-group-item d-flex justify-content-between align-items-start" style="margin-top:10px; background-color: #a7f77b">
+                        <li class="list-group-item d-flex justify-content-between align-items-start" style="margin-top:10px; background-color: #85f2ad;">
                           <div class="ms-2 me-auto" style="width:65%;">
                             <div class="fw-bold">${user}</div>
                               ${content}
@@ -189,7 +189,7 @@ function post_delete_submit() {
         },
 
         success: function () { // 성공 시
-            alert("게시글을 삭제했습니다")
+            alert("게시글을 삭제완료!")
             window.location.href = "/board/free_article.html"
         }
 
@@ -274,7 +274,7 @@ function comment_delete_submit(comment) {
           },
 
         success: function () { // 성공 시
-            alert("게시글 삭제 완료!")
+            alert("댓글 삭제 완료!")
             location.reload()        
           },
         });

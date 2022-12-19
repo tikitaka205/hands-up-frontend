@@ -34,7 +34,7 @@ free_article_list = () =>{
                     </td>
                     <td>${user}</td>
                     <td>${today.toLocaleDateString()}</td>
-                    <td>${hits}</td>
+                    // <td>${hits}</td>
                 </tr>`
                 $('#free_article').append(temp_html)
                 $('#next').attr('onclick', `page("${next}")`)
@@ -85,13 +85,12 @@ function page(page) {
                     let previous=response['previous']
                     
                     temp_html=` <tr>
-                    <td>${id}</td>
-                    <td>
+                    <td style="width: 15%;">${id}</td>
+                    <td style="width: 15%;">
                     <div style = "cursor : pointer;" onclick="free_article_id(${id})"> ${title}</div>
                     </td>
-                    <td>${user}</td>
-                    <td>${today.toLocaleDateString()}</td>
-                    <td>${hits}</td>
+                    <td style="width: 15%;">${user}</td>
+                    <td style="width: 15%;">${today.toLocaleDateString()}</td>
                 </tr>`
                 $('#free_article').append(temp_html)
                 $('#next').attr('onclick', `page("${next}")`)

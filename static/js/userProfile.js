@@ -38,7 +38,7 @@ function userInfo() {
             </div>
             `
             let temperature_bad_user = `
-            <div>
+            <div style="width:30vw">
             <div class="progress" max=100 "></div>
             <span class='text-secondary small'>매너점수</span> 0
             </div>
@@ -49,12 +49,12 @@ function userInfo() {
             `
             let temperature_good_user=
             `
-            <div>
+            <div style="width:30vw">
             <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
             <span class='text-secondary small'>매너점수</span> ${temperature}
             </div>
             <br>
-            <div class="row" style="display:felx;" id="btn">
+            <div class="row" style="display:flex;" id="btn">
             </div>
             `
             if (is_active == true && temperature > 0) {
@@ -67,10 +67,10 @@ function userInfo() {
             }
             if (user_id == `${id}`){
                 $('#btn').append(`
-                <button style="margin-right:20px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="profileUpdate(${id})">내 프로필 수정</button>
+                <button style="margin:5px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="profileUpdate(${id})">내 프로필 수정</button>
                 `)
                 $('#btn').append(`
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
+                <button style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
                 `)}
             if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
             $('#username').text(`${username}`)

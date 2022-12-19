@@ -37,7 +37,7 @@ function userInfo() {
                 </div>
                 `
             let temperature_bad_user = `
-                <div>
+                <div style="width:30vw>
                 <div class="progress" max=100 "></div>
                 <div style="color:white">
                 <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
@@ -45,11 +45,11 @@ function userInfo() {
                 </div>
                 <br>
                 <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                 </div>
             `
             let temperature_good_user=`
-                        <div>
+                        <div style="width:30vw">
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : white;">
                         <span class='text-secondary small' style="color : white;">매너점수</span> ${temperature}
@@ -57,7 +57,7 @@ function userInfo() {
                         </div>
                         <br>
                         <div class="row" style="display:felx;" id="profile_btn">
-                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                        <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                         </div>
                     `
             if (is_active == true && temperature > 0) {

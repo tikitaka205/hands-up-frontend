@@ -189,7 +189,7 @@ function get_auction_list() {
         },
         error : function(error){
             if(error.status === 401){
-                if(!confirm('로그인이 만료 됐어요. 로그인하시겠어요?')){
+                if(confirm('로그인이 만료 됐어요. 로그인하시겠어요?')){
                     window.location.href = '/user/login.html'
                 }else{
                     localStorage.removeItem("access")

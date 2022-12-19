@@ -59,11 +59,11 @@ function addFiles(e) {
 // 업로드 이미지 파일크기제한
         if (this.files && this.files[0]) {
                 
-            var maxSize = 5 * 1024 * 1024;
+            var maxSize = 10 * 1024 * 1024;
             var fileSize = this.files[0].size;
 
             if(fileSize > maxSize){
-                alert("첨부파일 사이즈는 1MB 이내로 등록 가능합니다.");
+                alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
                 $(this).val('');
             }else{
                 fileArr.push(element);

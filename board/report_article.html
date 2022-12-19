@@ -15,9 +15,11 @@
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/slicknav.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/table.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <!-- bootstrap css cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
+    
     <!-- Google Font -->
     <link href="" rel="stylesheet">
     <!-- JS 파일 -->
@@ -28,7 +30,7 @@
         .header__menu>ul>li {
             margin: 0 10px;
         }
-
+        
         .table table-hover {
             text-align: left;
             overflow: hidden;
@@ -37,6 +39,7 @@
             display: table;
             padding: 0 0 8em 0;
         }
+        
     </style>
 </head>
 
@@ -60,13 +63,13 @@
             </ul>
             <!-- 게시글 -->
             <div class="container my-4">
-                <table class="table table-hover">
+                <table class="container1">
                     <thead>
                         <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>글쓴이</th>
-                            <th>작성일</th>
+                            <th><h1>번호</h1></th>
+                            <th><h1>제목</h1></th>
+                            <th><h1>글쓴이</h1></th>
+                            <th><h1>작성일</h1></th>
                         </tr>
                     </thead>
                     <tbody id="post_list">
@@ -93,7 +96,7 @@
     </section>
     <script src="/static/js/base.js"></script>
     <script src="/static/js/user.js"></script>
-    <script src="/static/js/report_article_index.js"></script>
+    <script src="/static/js/report_article/report_article_index.js"></script>
 </body>
 
 </html>

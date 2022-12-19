@@ -8,7 +8,7 @@ window.onload = function(){
 post_list = () =>{
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:8000/board/report_articles/`,
+        url: `${hostUrl}/board/report_articles/`,
         data: {},
         headers: {
         },
@@ -66,7 +66,7 @@ function report_article(post_id) {
 //     $.ajax({
 
 //         type: "GET",
-//         url: `http://127.0.0.1:8000/board/report_articles/`,
+//         url: `http://127.0.0.1/board/report_articles/`,
 //         data: {},
 //         // /?category=${category}
 

@@ -1,6 +1,6 @@
 
-
 $('#image').on("change", addFiles)
+
 
 // date value 현재 날짜
 let today = new Date()
@@ -55,23 +55,35 @@ function addFiles(e) {
             alert("이미지 확장자만 가능")
             return
         }
-        fileArr.push(element);
 
-        var reader = new FileReader();
-        reader.onload = function (e) {
+// 업로드 이미지 파일크기제한
+        if (this.files && this.files[0]) {
+                
+            var maxSize = 10 * 1024 * 1024;
+            var fileSize = this.files[0].size;
 
-            var temp = `
-                <div class="p-3 col-4 m-0" id="img_id_${index}">
-                    <div  style="position:relative">
-                        <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${e.target.result}" data-file="${element.name}" alt="상품이미지"/>
-                        <button style="position : absolute; border-radius : 5px; background-color: #ffda00; top : 0; right:15px; color :black; font-weight:700;" onclick="deleteImage(${index})">X</button>
-                    </div>
-                </div>
-                `
-            $('#image-wrap').append(temp)
-            index++;
+            if(fileSize > maxSize){
+                alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
+                $(this).val('');
+            }else{
+                fileArr.push(element);
+                var reader = new FileReader();
+                reader.onload = function (e) {
+        
+                    var temp = `
+                        <div class="p-3 col-4 m-0" id="img_id_${index}">
+                            <div  style="position:relative">
+                                <img style="box-shadow: 0 2px 5px 0px; border-radius:10px" src="${e.target.result}" data-file="${element.name}" alt="상품이미지"/>
+                                <button style="position : absolute; border-radius : 5px; background-color: #ffda00; top : 0; right:15px; color :black; font-weight:700;" onclick="deleteImage(${index})">X</button>
+                            </div>
+                        </div>
+                        `
+                    $('#image-wrap').append(temp)
+                    index++;
+                }
+                reader.readAsDataURL(element);
+            }
         }
-        reader.readAsDataURL(element);
     });
 }
 
@@ -140,7 +152,7 @@ function posthandle() {
 
     $.ajax({
         type: 'POST',
-        url: "http://127.0.0.1:8000/goods/",
+        url: `${hostUrl}/goods/`,
         processData: false,
         contentType: false,
         data: fd,

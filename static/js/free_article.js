@@ -7,7 +7,7 @@ console.log ("작동되니?")
 free_article_list = () =>{
     $.ajax({
         type: "GET",
-        url: `http://127.0.0.1:8000/board/`,
+        url: `${hostUrl}/board/`,
         data: {},
         headers: {
         },

@@ -10,7 +10,7 @@ async function authSms() {
         return alert('번호를 바르게 입력해 주세요')
     }
 
-    const response = await fetch('http://127.0.0.1:8000/user/auth/sms/', {
+    const response = await fetch(`${hostUrl}/user/auth/sms/`, {
         headers: {
             'content-type': 'application/json',
         },
@@ -46,7 +46,7 @@ function checkUsername(){
         // "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
-    url: `http://127.0.0.1:8000/user/check/`,
+    url: `${hostUrl}/user/check/`,
 
     success: function (result) {
         console.log(result)
@@ -91,7 +91,7 @@ function authNumberCheker(){
         // "Authorization": "Bearer " + localStorage.getItem("access"),
     },
 
-    url: `http://127.0.0.1:8000/user/auth/sms/`,
+    url: `${hostUrl}/user/auth/sms/`,
 
     success: function (result) {
         console.log(result)
@@ -148,7 +148,7 @@ async function handleJoin() {
         return false
     }
 
-    const response = await fetch('http://127.0.0.1:8000/user/', {
+    const response = await fetch(`${hostUrl}/user/`, {
         headers: {
             'content-type': 'application/json',
         },

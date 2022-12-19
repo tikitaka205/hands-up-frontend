@@ -14,7 +14,7 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/user/`,
+        url: `${hostUrl}/user/`,
 
         success: function (response) {
             console.log('성공:', response);
@@ -38,7 +38,7 @@ function userInfo() {
             </div>
             `
             let temperature_bad_user = `
-            <div>
+            <div style="width:30vw">
             <div class="progress" max=100 "></div>
             <span class='text-secondary small'>매너점수</span> 0
             </div>
@@ -49,12 +49,12 @@ function userInfo() {
             `
             let temperature_good_user=
             `
-            <div>
+            <div style="width:30vw">
             <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
             <span class='text-secondary small'>매너점수</span> ${temperature}
             </div>
             <br>
-            <div class="row" style="display:felx;" id="btn">
+            <div class="row" style="display:flex;" id="btn">
             </div>
             `
             if (is_active == true && temperature > 0) {
@@ -67,12 +67,12 @@ function userInfo() {
             }
             if (user_id == `${id}`){
                 $('#btn').append(`
-                <button style="margin-right:20px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="profileUpdate(${id})">내 프로필 수정</button>
+                <button style="margin:5px; border: hidden; background-color : gold; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="profileUpdate(${id})">내 프로필 수정</button>
                 `)
                 $('#btn').append(`
-                <button style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
+                <button style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
                 `)}
-            if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
             $('#username').text(`${username}`)
             
         }
@@ -253,7 +253,7 @@ function get_auction_list() {
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}"  style="margin-bottom : 50px">
                     <div class="featured__item" style="">
                         <div id="img" class="featured__item__pic set-bg"
-                            style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px 15px 0 0;">
+                            style="background-image: url(${hostUrl}${image}); border-radius:15px 15px 0 0; width:100%">
                             <div style="position: absolute; right: 5px; bottom:5px;">
                                 ${heart}
                             </div>

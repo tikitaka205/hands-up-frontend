@@ -38,7 +38,6 @@ async function handleLogin() {
     } else if (response.status === 401){
         alert('번호 혹은 비밀번호를 확인해 주세요.')
     }
-
 }
 
 async function handleLogout() {

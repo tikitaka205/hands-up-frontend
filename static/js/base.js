@@ -83,7 +83,7 @@ if (!payload) {
 }
 
 async function handleLogout() {
-    console.log('logout')
+
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
     localStorage.removeItem("payload")
@@ -91,7 +91,7 @@ async function handleLogout() {
 }
 
 function dp_menu(){
-    console.log('drop')
+
     let click = document.getElementById("dr_menu");
             if(click.style.display === "none"){
                 click.style.display = "block";
@@ -222,9 +222,6 @@ document.getElementById('nav-header').innerHTML = `
                                 </li>
                             
                             <li style='cursor:pointer;' onclick='moveChat()'>
-                                <i class="fas fa-comment-dots"></i>
-                            </li>
-                            <li style='cursor:pointer;' onclick='()'>
                                 <i class="fas fa-comment-dots"></i>
                             </li>
                         </ul>

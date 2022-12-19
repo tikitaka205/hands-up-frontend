@@ -84,7 +84,7 @@
         }
 
         .post-picture {
-            width: 100%;
+            width: 100px;
             cursor: pointer;
             border: 1px solid black;
             border-radius: 20px;
@@ -100,7 +100,6 @@
             flex-direction: row;
             justify-self: start;
             align-items: flex-start;
-            overflow: scroll;
         }
     </style>
 
@@ -128,6 +127,7 @@
                     <label for="image" style="width: 20%; margin-top: 10px;">
                         <div class="post-picture">
                             <img src="/static/images/add-images.png" alt="">
+                            사진 등록
                         </div>
                     </label>
                     <input class="form-control" type="file" id="image" name="file" multiple

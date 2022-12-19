@@ -1,4 +1,3 @@
-// const hostUrl = "http://127.0.0.1:8000"
 let post_id=localStorage.getItem('community_post_id')
 console.log(post_id)
 

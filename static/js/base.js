@@ -1,4 +1,6 @@
-const hostUrl = "http://127.0.0.1:8000"
+// const hostUrl = "http://43.200.179.49"
+const hostUrl = "http://backend.hands-up.co.kr"
+// const hostUrl = "http://127.0.0.1:8000"
 const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
@@ -80,6 +82,31 @@ if (!payload) {
     `
 }
 
+async function handleLogout() {
+
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    localStorage.removeItem("payload")
+    return window.location.href = `/user/login.html`
+}
+
+function dp_menu(){
+
+    let click = document.getElementById("dr_menu");
+            if(click.style.display === "none"){
+                click.style.display = "block";
+                click.style.textAlign = "center"
+                click.style.paddingTop = "10px";
+                click.style.height = "70px";
+                click.style.borderRadius ="10px";
+                click.style.backgroundColor='white';
+ 
+            }else{
+                click.style.display = "none";
+ 
+            }
+}
+
 
 document.getElementById('nav-header').innerHTML = `
 <div class="humberger__menu__overlay" style="z-index: 995;"></div>
@@ -88,7 +115,10 @@ document.getElementById('nav-header').innerHTML = `
             <div class="header__top__right__auth">
                 ${login_temp}
             </div>
+            <br>
+            <div><span style="cursor:pointer" onclick="handleLogout()">로그아웃</span></div>
         </div>
+        
         <div id="mobile-menu-wrap">
             <div class="slicknav_menu">
                 <nav class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
@@ -176,10 +206,21 @@ document.getElementById('nav-header').innerHTML = `
                     <div class="header__cart">
                         <ul>
                             <li style='cursor:pointer;' onclick='moveAuction()'><i class="fas fa-gavel" style="color: white;"></i></li>
+                            
+                                <li style='cursor:pointer;' onclick="dp_menu()" ><i class="fa fa-user"></i></li>
+                                    <ul class="header__menu__dropdown" 
+                                    style="display:none; 
+                                    position: absolute;
+                                    z-index: 1;"
+                                    
+                                    id="dr_menu">
+                                        <li onclick='moveProfile()'><a style="color:black; font-size:15px;" href="#">프로필</a></li>
+                                        <li onclick="handleLogout()"><a style="color:black;font-size:15px; " href="#">로그아웃</a></li>
+                                    </ul> 
 
-                            <li style='cursor:pointer;' onclick='moveProfile()'><i class="fa fa-user"></i></li>
-                            <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
-                            </li>
+                                <!--<li><a href="#"><i class="fas fa-bell"></i> <span>3</span></a></li>-->
+                                </li>
+                            
                             <li style='cursor:pointer;' onclick='moveChat()'>
                                 <i class="fas fa-comment-dots"></i>
                             </li>

@@ -5,8 +5,6 @@ window.onload = function () {
 
 
 
-var backUrl = '127.0.0.1:8000'
-var backEndUrl = 'http://127.0.0.1:8000'
 var token = localStorage.getItem('access')
 
 function review_list() {
@@ -15,8 +13,6 @@ function review_list() {
     const user = JSON.parse(storage)
 
     let user_id = user['user_id']
-    console.log(user_id)
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjcyNTQ0NDE0LCJpYXQiOjE2NzA3NDQ0MTQsImp0aSI6ImYxODk0YThlYTQ0MjQzNGQ5ZWYwZTZkMTIxOWZkZmI0IiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBob25lIjoiMDEwIn0.JiEzU46-7FlrgdldrCwvGdj9lZ2-VKmDIOUsNELdNps'
     $.ajax({
         type: 'GET',
 
@@ -25,7 +21,7 @@ function review_list() {
             "Authorization": "Bearer " + token,
         },
 
-        url: `http://127.0.0.1:8000/user/${user_id}/profile/`,
+        url: `${hostUrl}/user/${user_id}/profile/`,
 
         success: function (response) {
             console.log('성공:', response);
@@ -52,7 +48,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="http://127.0.0.1:8000${review_image}" id="image2" style="width:30px; border-radius:15px;">
+                                    <img src="${hostUrl}${review_image}" id="image2" style="width:30px; border-radius:15px;">
                                     <strong class="me-auto" style="margin-left: 10px;">${author}</strong>
                                     <small class="text-muted" style="margin-left: 10px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>
@@ -67,7 +63,7 @@ function review_list() {
                 }
             }
 
-            if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
 
             let temper_bad_user = `
                 <div>

@@ -14,13 +14,13 @@ function userInfo() {
             "Authorization": "Bearer " + localStorage.getItem("access"),
         },
 
-        url: `http://127.0.0.1:8000/user/info/${user_id}`,
+        url: `${hostUrl}/user/info/${user_id}/`,
 
         success: function (response) {
             console.log('성공:', response);
             let profile_image = response['profile_image']
             let username = response['username']
-            temperature=response['rating_score']
+            temperature= response['rating_score']<0 || response['rating_score']>100? 99 : response['rating_score']
             if(response['rating_score'] > 99)
             {
             temperature=99
@@ -37,7 +37,7 @@ function userInfo() {
                 </div>
                 `
             let temperature_bad_user = `
-                <div>
+                <div style="width:30vw>
                 <div class="progress" max=100 "></div>
                 <div style="color:white">
                 <span class='text-secondary small' style="color : white; width:50px">매너점수</span> 0
@@ -45,11 +45,11 @@ function userInfo() {
                 </div>
                 <br>
                 <div class="row" style="display:felx;" id="profile_btn">
-                <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                 </div>
             `
             let temperature_good_user=`
-                        <div>
+                        <div style="width:30vw">
                         <div class="progress" max=100 style="--w:${temperature}%; --c1:${ratingColor[0]};--c2:${ratingColor[1]};"></div>
                         <div style="color : white;">
                         <span class='text-secondary small' style="color : white;">매너점수</span> ${temperature}
@@ -57,7 +57,7 @@ function userInfo() {
                         </div>
                         <br>
                         <div class="row" style="display:felx;" id="profile_btn">
-                        <button id="goods_list_btn" style="border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:150px; height:40px; text-align:center;" onclick="review(${id})">거래후기 보기</button>
+                        <button id="goods_list_btn" style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">거래후기 보기</button>
                         </div>
                     `
             if (is_active == true && temperature > 0) {
@@ -69,7 +69,7 @@ function userInfo() {
                 $('#temp').append(temperature_bad_user)
             }
 
-            if (profile_image) $('#profile_image').attr("src", `http://127.0.0.1:8000${profile_image}`);
+            if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
             $('#username').text(`${username} 님의 판매물품`)
 
         }
@@ -218,7 +218,7 @@ function get_auction_list() {
                 <div class="col-lg-3 col-md-4 col-sm-6 mix ${auction_status}"  style="margin-bottom : 50px">
                     <div class="featured__item" style="">
                         <div id="img" class="featured__item__pic set-bg"
-                            style="background-image: url(http://127.0.0.1:8000${image}); border-radius:15px 15px 0 0;">
+                            style="background-image: url(${hostUrl}${image}); border-radius:15px 15px 0 0;">
                             <div style="position: absolute; right: 5px; bottom:5px;">
                                 ${heart}
                             </div>

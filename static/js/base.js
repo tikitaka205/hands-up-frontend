@@ -134,7 +134,7 @@ document.getElementById('nav-header').innerHTML = `
                                 </ul>
                             </li> -->
                         <li><a href="/board/free_article.html">게시판</a></li>
-                        <li><a href="/contact.html">Contact & Feedback</a></li>
+                        <li><a href="https://forms.gle/2iNG5v4vcmAqrC8o9">Contact & Feedback</a></li>
                         <li class="p-2">
                             <input type="text" class="form-control mb-1" placeholder="What do yo u need?" id="search-input-2">
                             <button style="width: 100%;" type="submit" class="btn btn-primary" onclick="searchAuction2()">SEARCH</button>
@@ -191,7 +191,7 @@ document.getElementById('nav-header').innerHTML = `
                                     </ul> -->
                             </li>
                             <li><a href="/board/free_article.html">게시판</a></li>
-                            <li><a href="/contact.html">Contact & Feedback</a></li>
+                            <li><a href="https://forms.gle/2iNG5v4vcmAqrC8o9">Contact & Feedback</a></li>
                             <li style="margin-right: 0;">
                                 <input type="text" class="form-control" placeholder="What do yo u need?" id="search-input">
                             </li>
@@ -232,6 +232,7 @@ document.getElementById('nav-header').innerHTML = `
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+        <div id="bad_user"></div>
     </header>
     <!-- Header Section End -->
 `

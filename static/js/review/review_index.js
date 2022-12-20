@@ -81,7 +81,6 @@ function review_list() {
             }
 
             if (excellent_review_count > 0){
-            console.log(excellent_review_count)
             $('#excellent_score').append(excellent_score);
             }
 
@@ -114,6 +113,7 @@ function userInfo() {
             }
             let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(temperature / 25)]
             let is_active = response['is_active']
+            console.log(is_active)
             let id = response['id']
 
             let bad_user = `

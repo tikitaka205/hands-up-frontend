@@ -2,6 +2,7 @@
 const hostUrl = "http://backend.hands-up.co.kr"
 const backUrl = '43.200.179.49';
 const domain = '43.200.179.49'
+const token = localStorage.getItem('access')
 
 // 로컬용
 // const hostUrl = "http://127.0.0.1:8000"
@@ -113,6 +114,12 @@ function dp_menu() {
     }
 }
 
+if (token !== null) {
+    console.log('알람 연결')
+    var chatSocket = new WebSocket(
+        `ws://${domain}/ws/alram/${goodsId}/?token=${token}`
+    );
+}
 
 document.getElementById('nav-header').innerHTML = `
 <div class="humberger__menu__overlay" style="z-index: 995;"></div>

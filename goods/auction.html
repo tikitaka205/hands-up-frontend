@@ -122,6 +122,28 @@
             box-shadow: 0 4px 8px 1px;
             padding: 15px;
         }
+
+        /* 아래의 모든 코드는 영역::코드로 사용 */
+
+        #chat-wrap::-webkit-scrollbar {
+            width: 10px;
+            /* 스크롤바의 너비 */
+        }
+
+        #chat-wrap::-webkit-scrollbar-thumb {
+            height: 30%;
+            /* 스크롤바의 길이 */
+            background: #217af4;
+            /* 스크롤바의 색상 */
+
+            border-radius: 10px;
+        }
+
+        #chat-wrap::-webkit-scrollbar-track {
+            background: rgba(33, 122, 244, .1);
+            border-radius: 10px;
+            /*스크롤바 뒷 배경 색상*/
+        }
     </style>
 
 </head>
@@ -190,10 +212,11 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="p-3" style="height : 600px;overflow: scroll; background-color: white; border-radius: 5px;"
+                <div class="p-3"
+                    style="height : 600px;overflow-y: overlay; background-color: white; border-radius: 5px;"
                     id="chat-wrap">
                     <div class="" id="chat-log">
-                        <div id="chat" class="">
+                        <div id="chat" class="" style="resize: none;">
                         </div>
                     </div>
                 </div>
@@ -213,8 +236,8 @@
 
     </div>
     <script src="/static/js/base.js"></script>
-    <script src="/static/js/auction.js"></script>
     <script src="/static/js/main.js"></script>
+    <script src="/static/js/auction.js"></script>
 
 </body>
 

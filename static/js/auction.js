@@ -1,7 +1,7 @@
 const goodsId = url.searchParams.get('goods');
 const token = localStorage.getItem('access')
 var goods = JSON.parse(localStorage.getItem('goods', ''))
-const domain = '43.200.179.49'
+// const domain = '43.200.179.49'
 
 if (!goods) {
     goods = {}
@@ -362,21 +362,18 @@ chatSocket.onmessage = async function (e) {
             </div>
         `
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-        document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
+        if (document.getElementById('participants-count') != null)
+            document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
 
     } else if (responseType === 'out') {
-        document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
-
-
+        if (document.getElementById('participants-count') != null)
+            document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
     }
 
     // 하단 스크롤 고정
     if (isEnd === true) {
-        element.scrollTop = element.scrollHeight //- element.clientHeight
+        element.scrollTop = element.scrollHeight//- element.clientHeight
     }
-    const top = $('#chat-wrap').prop('scrollHeight');
-    $('#chat-wrap').scrollTop(top);
-
 };
 
 chatSocket.onclose = function (e) {

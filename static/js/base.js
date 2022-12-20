@@ -1,6 +1,14 @@
+// 서버용
+// const hostUrl = "http://backend.hands-up.co.kr"
+// const backUrl = '43.200.179.49';
+// const domain = '43.200.179.49'
+
+// 로컬용
 // const hostUrl = "http://43.200.179.49"
-const hostUrl = "http://backend.hands-up.co.kr"
-// const hostUrl = "http://127.0.0.1:8000"
+const hostUrl = "http://127.0.0.1:8000"
+const backUrl = '127.0.0.1:8000';
+const domain = '127.0.0.1:8000'
+
 const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
@@ -90,21 +98,21 @@ async function handleLogout() {
     return window.location.href = `/user/login.html`
 }
 
-function dp_menu(){
+function dp_menu() {
 
     let click = document.getElementById("dr_menu");
-            if(click.style.display === "none"){
-                click.style.display = "block";
-                click.style.textAlign = "center"
-                click.style.paddingTop = "10px";
-                click.style.height = "70px";
-                click.style.borderRadius ="10px";
-                click.style.backgroundColor='white';
- 
-            }else{
-                click.style.display = "none";
- 
-            }
+    if (click.style.display === "none") {
+        click.style.display = "block";
+        click.style.textAlign = "center"
+        click.style.paddingTop = "10px";
+        click.style.height = "70px";
+        click.style.borderRadius = "10px";
+        click.style.backgroundColor = 'white';
+
+    } else {
+        click.style.display = "none";
+
+    }
 }
 
 

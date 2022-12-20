@@ -163,8 +163,8 @@ function posthandle() {
         success: function (data) {
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
-        error: function (request, status, error) {
-            console.log(error)
+        error: function (error) {
+            alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
     })
 }

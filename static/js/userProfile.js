@@ -45,7 +45,6 @@ function userInfo() {
             <br>
             <div class="row" style="display:felx;" id="btn">
             </div>
-
             `
             let temperature_good_user=
             `
@@ -72,7 +71,7 @@ function userInfo() {
                 $('#btn').append(`
                 <button style="margin:5px; border: hidden; background-color : #c692ff; font-weight: bolder; border-radius : 10px; width:20vh; height:5vh; text-align:center;" onclick="review(${id})">내가 받은 후기</button>
                 `)}
-            if (profile_image) $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
+            $('#profile_image').attr("src", `${hostUrl}${profile_image}`);
             $('#username').text(`${username}`)
             
         }

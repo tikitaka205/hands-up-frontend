@@ -199,7 +199,7 @@ function post_delete_submit() {
 // 댓글 수정
 function comment_put_submit(free_comment_id){
   let content = prompt("내용을 입력하세요","댓글을 입력해주세요!")
-
+  
   formData = new FormData();
   formData.append("content", content)
 

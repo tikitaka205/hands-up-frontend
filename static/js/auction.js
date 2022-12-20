@@ -57,7 +57,6 @@ async function goodsInfoView() {
         },
     });
     // 사용자 정보 섹션
-    console.log(`${seller['profile_image']}`)
 
     var temp = `
         <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black; cursor:pointer;">
@@ -299,7 +298,7 @@ chatSocket.onmessage = async function (e) {
         var temp = `
             <div>
                 <div>
-                    <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
+                    <img width=20px; height=20px; src="/static/images/yummy.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']}</b>
                 </div>
                 <div style = "margin-left : 20px; width: 80%; font-size : 20px; border-radius : 8px; background-color : hotpink; padding : 5px; margin-bottom : 10px;">

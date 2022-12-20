@@ -10,9 +10,32 @@ let max_date = today.getDate() + 2
 let min_date = today.getDate()
 
 
-date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
-<input class="inputtime" id="starttime" type="time" id="appt" name="appt" required style="margin-bottom: 20px;">`
-$('#date-time').append(date_html)
+
+// let min_time= new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
+// console.log(min_time)
+
+
+// date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
+// <input class="inputtime" id="starttime" type="time" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
+// $('#date-time').append(date_html)
+
+// //if 오늘 날짜면 시간 지금 시간 이전으로 못돌아 가게 한다.
+// //할 수 있다면 시간도 20분 제약을 걸 수 있도록 해주면 좋다.
+// //if 선택 날짜가 오늘 날짜와 같으면 (그럼 선택 날짜 값을 가져와야 한다...)
+// //바로바로 안가져와지면 제출이 클릭 되었을때 체크..?
+
+// document.getElementById('start').onblur = function(){
+//     var val = this.value;
+//     if( new Date(val) instanceof Date && val ){
+//         if (val == new Date().get)
+//     }else{
+//         console.log('엘스값?')
+//     }
+// }
+
+
+
+
 
 // 가격에 콤마를 찍는 함수
 function getNumber(obj) {
@@ -34,9 +57,6 @@ function setComma(n) {
     }
     return n;
 }
-
-
-
 
 
 var fileArr = [];
@@ -170,3 +190,11 @@ function posthandle() {
         },
     })
 }
+
+
+//시작 가격 입력시 알림창
+function startPriceinput(){
+    alert("가격은 변경이 불가합니다. 신중하게 입력해주세요.")
+}
+
+

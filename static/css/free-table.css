@@ -88,8 +88,11 @@ body {
       
   }
   
-  .container1 td:first-child { border-radius: 60px; color: #000000; }
-  .container1 td:last-child { border-radius: 60px;  color:#020202;}
+  .container1 td:first-child { border-radius: 25px; color: #000000; }
+
+  .container1 td:last-child { border-radius: 25px;  color:#ec4197;}
+  
+  
   
   
   .container1 tr:hover {
@@ -102,10 +105,10 @@ body {
   }
   
   .container1 td>div:hover {
-    background-color: #e83850;
+    background-color: #2ced83;
     color: #000000;
     font-weight: bold; 
-    box-shadow: #f60808 -1px 1px, #f03333 -2px 2px, #ee5c5c -3px 3px, #ef9197 -4px 4px, #efb2b2 -5px 5px, #efd3d3 -6px 6px;
+    box-shadow: #22864c -1px 1px, #0b9a5a -2px 2px, #075523 -3px 3px, #0d0d03 -4px 4px, #050503 -5px 5px, #060604 -6px 6px;
     transform: translate3d(6px, -6px, 0);
     border-radius : 10px;
     overflow: auto;

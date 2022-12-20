@@ -5,7 +5,7 @@ window.onload = function () {
 }
 
 let user_id = url.searchParams.get('user_id')
-var token = localStorage.getItem('access')
+// var token = localStorage.getItem('access')
 console.log("페이로드 아이디",payload["user_id"])
 
 function review_list() {

@@ -5,7 +5,7 @@ window.onload = function () {
 
 
 
-var token = localStorage.getItem('access')
+// var token = localStorage.getItem('access')
 
 function review_list() {
     console.log('정보 불러오기 성공')

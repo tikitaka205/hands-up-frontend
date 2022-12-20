@@ -24,6 +24,7 @@ const CATEGORY = {
     '스포츠': 'sport',
     '반려동물용품': 'animal',
     '기타': 'etc',
+    '이벤트': 'event',
 }
 
 

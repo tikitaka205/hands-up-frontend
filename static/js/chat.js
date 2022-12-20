@@ -1,5 +1,4 @@
 const goodsId = url.searchParams.get('goods');
-const backUrl = '43.200.179.49';
 const token = localStorage.getItem('access');
 
 console.log(payload["username"])
@@ -13,7 +12,7 @@ select_chat_roome()
 
 if (goodsId != null) {
     const chatSocket = new WebSocket(
-        'ws://' + backUrl  +
+        'ws://' + backUrl +
         '/ws/chat/' + goodsId + '/?token=' + token);
 
     console.log(chatSocket)
@@ -82,7 +81,7 @@ if (goodsId != null) {
     chatMessageSend.onclick = function (e) {
         const messageInputDom = chatMessageInput;
         const message = messageInputDom.value;
-        if(message === ''){
+        if (message === '') {
             return
         }
         chatSocket.send(JSON.stringify({

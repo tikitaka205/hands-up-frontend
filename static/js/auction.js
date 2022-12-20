@@ -1,13 +1,13 @@
 const goodsId = url.searchParams.get('goods');
 const token = localStorage.getItem('access')
 var goods = JSON.parse(localStorage.getItem('goods', ''))
-const domain = '43.200.179.49'
+// const domain = '43.200.179.49'
 
-if (!goods){
+if (!goods) {
     goods = {}
 }
 
-if (Object.keys(goods).length > 9){
+if (Object.keys(goods).length > 9) {
     goods = {}
 }
 
@@ -20,8 +20,8 @@ async function goodsInfoView() {
     let nowPrice = !data['high_price'] ? sp : hp
 
     let ratingScore = data['seller']['rating_score']
-    if (ratingScore > 99){
-        ratingScore=99
+    if (ratingScore > 99) {
+        ratingScore = 99
     }
     let ratingColor = [['#686868', 'black'], ['#a0cfff', 'blue'], ['#ffe452', '#ff9623'], ['#ff6d92', '#e981ff']][parseInt(ratingScore / 25)]
     // 사진 섹션
@@ -123,15 +123,15 @@ async function goodsInfoApi() {
     response_json = await response.json()
     if (response.status == 200) {
 
-        if (!goods){
+        if (!goods) {
             localStorage.setItem('goods', JSON.stringify({}))
             goods = JSON.parse(localStorage.getItem('goods'))
         }
 
-        goods[goodsId] = 
-            {
-            "seller_id" : response_json['seller']['id'],
-            "buyer_id" : response_json['buyer']?.id
+        goods[goodsId] =
+        {
+            "seller_id": response_json['seller']['id'],
+            "buyer_id": response_json['buyer']?.id
         }
         localStorage.setItem('goods', JSON.stringify(goods))
 
@@ -156,7 +156,7 @@ async function goodsStatusView(data) {
         var sp = priceToString(data['start_price'])
         if (data['buyer'] !== null) {
             let buyer = data['buyer']
-            
+
             console.log(data)
             //사진으로 해야하는지 의문
             document.getElementById('high-price').innerHTML = `
@@ -240,11 +240,11 @@ async function startTimer(time) {
 goodsInfoView()
 
 
-if (token !== null){
+if (token !== null) {
     var chatSocket = new WebSocket(
         `ws://${domain}/ws/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
     );
-}else{
+} else {
     var chatSocket = new WebSocket(
         `ws://${domain}/ws/auction/${goodsId}/`
     );
@@ -313,14 +313,14 @@ chatSocket.onmessage = async function (e) {
     } else if (responseType === 'message') {
         var nowOner = goods[goodsId]['buyer_id']
         var seller = goods[goodsId]['seller_id']
-        if (seller === data['sender']){
+        if (seller === data['sender']) {
             var temp = `
             <div>
                 <div>
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']} (판매자)</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #ffcfcf; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #ffcfcf; padding : 5px; margin-bottom : 10px; word-break: break-all;">
                     ${data['message']}
                 </div>
             </div>
@@ -332,7 +332,7 @@ chatSocket.onmessage = async function (e) {
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']} </b> (현재 오너) <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #dfcfff; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #dfcfff; padding : 5px; margin-bottom : 10px; word-break: break-all;">
                     ${data['message']}
                 </div>
             </div>
@@ -344,7 +344,7 @@ chatSocket.onmessage = async function (e) {
                     <img width=20px; height=20px; src="/static/images/stady_bear_face.png" alt="">
                     <b style = "font-size : 20px">${data['sender_name']}</b> <span style="font-color : gray; font-size:small;">${data['time']}</span>
                 </div>
-                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
+                <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px; word-break: break-all;">
                     ${data['message']}
                 </div>
             </div>
@@ -353,7 +353,7 @@ chatSocket.onmessage = async function (e) {
 
         // beforeend afterbegin beforebegin afterend
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-    } else if( responseType === 'enter'){
+    } else if (responseType === 'enter') {
         var temp = `
             <div>
                 <div style = "margin-left : 20px; width: 80%; font-size : 18px; border-radius : 8px; background-color : #d7d7d7; padding : 5px; margin-bottom : 10px;">
@@ -362,19 +362,18 @@ chatSocket.onmessage = async function (e) {
             </div>
         `
         document.querySelector('#chat').insertAdjacentHTML('beforeend', temp)
-        document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
-        
-    } else if(responseType === 'out'){
-        document.getElementById('participants-count').innerText = '참여 인원 : '+data['participants_count']
+        if (document.getElementById('participants-count') != null)
+            document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
 
-
+    } else if (responseType === 'out') {
+        if (document.getElementById('participants-count') != null)
+            document.getElementById('participants-count').innerText = '참여 인원 : ' + data['participants_count']
     }
 
     // 하단 스크롤 고정
     if (isEnd === true) {
-        element.scrollTop = element.scrollHeight //- element.clientHeight
+        element.scrollTop = element.scrollHeight//- element.clientHeight
     }
-
 };
 
 chatSocket.onclose = function (e) {
@@ -395,11 +394,11 @@ function sendMessage() {
     if (message === '') {
         return
     }
-    if(!payload || !token){
-        if(!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')){
-            return    
+    if (!payload || !token) {
+        if (!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')) {
+            return
         }
-        window.location.href ='/user/login.html'
+        window.location.href = '/user/login.html'
         return
     }
     // console.log(goods, payload)
@@ -418,24 +417,24 @@ function sendMessage() {
 };
 
 function sendMoney() {
-    if(!confirm('정말 입찰 하시겠습니까?')){
-        return   
+    if (!confirm('정말 입찰 하시겠습니까?')) {
+        return
     }
     var messageInputDom = document.querySelector('#chat-money-input');
     var highPrice = document.getElementById('price').innerText;
     var message = messageInputDom.value;
     const reg1 = /^[0-9]+$/;
-    highPrice = highPrice.replace(/,/g,"");
+    highPrice = highPrice.replace(/,/g, "");
 
 
     if (message === '' || !reg1.test(highPrice) || !reg1.test(message)) {
         return alert('값을 바르게 입력해 주세요.')
     }
-    if(!payload || !token){
-        if(!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')){
-            return    
+    if (!payload || !token) {
+        if (!confirm('로그인 후 이용가능합니다. 로그인하러 갈까요?')) {
+            return
         }
-        window.location.href ='/user/login.html'
+        window.location.href = '/user/login.html'
         return
     }
 

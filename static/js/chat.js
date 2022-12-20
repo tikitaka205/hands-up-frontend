@@ -285,9 +285,9 @@ function review() {
     // window.location.href = `/review/seller.html?goods_id=${goodsId}`
 
     // if (user_id == seller_id) {
-    //     window.location.href = 'http://127.0.0.1:5501/review/seller.html'
+    //     window.location.href = 'http://127.0.0.1:5500/review/seller.html'
     // } else {
-    //     window.location.href = 'http://127.0.0.1:5501/review/buyer.html'
+    //     window.location.href = 'http://127.0.0.1:5500/review/buyer.html'
     // }
 }
 

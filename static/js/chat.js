@@ -186,7 +186,7 @@ function select_chat_roome() {
                         <div class=" col-9 p-0" style="background-color: #FFFFFF; border-radius: 10px 0 0 10px; cursor : pointer;" onclick="getChatRoom(${goods_id})" >
                             <div class="row m-0 p-0" >
                                 <div class="col-sm-3 p-2">
-                                    <img class="" src="${buyer_profile_img}" id="image2"
+                                    <img class="" src="${hostUrl}${buyer_profile_img}" id="image2"
                                         style="width:30px; border-radius:500px;">
                                 </div>
                                 <span class="col-sm-9 p-1" style="font-size: 20px; font-weight: bold;">

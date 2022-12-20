@@ -10,29 +10,44 @@ let max_date = today.getDate() + 2
 let min_date = today.getDate()
 
 
+let min_time= new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
+console.log(min_time)
 
-// let min_time= new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
-// console.log(min_time)
+console.log(min_date)
 
+date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
+<input class="inputtime" placeholder ="시간" id="starttime" type="text" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
+$('#date-time').append(date_html)
 
-// date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
-// <input class="inputtime" id="starttime" type="time" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
-// $('#date-time').append(date_html)
+$(document).ready(function(){
+    $('#starttime').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 20,
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+});
 
-// //if 오늘 날짜면 시간 지금 시간 이전으로 못돌아 가게 한다.
-// //할 수 있다면 시간도 20분 제약을 걸 수 있도록 해주면 좋다.
-// //if 선택 날짜가 오늘 날짜와 같으면 (그럼 선택 날짜 값을 가져와야 한다...)
-// //바로바로 안가져와지면 제출이 클릭 되었을때 체크..?
+//전송 버튼을 누르기 전에 실시간으로 하는거 해본다!! 꼭!!
 
 // document.getElementById('start').onblur = function(){
+    
 //     var val = this.value;
 //     if( new Date(val) instanceof Date && val ){
-//         if (val == new Date().get)
+//         const timeControl = document.querySelector('input[type="time"]').value
+//         console.log('timecontrol',timeControl)
+//         if(min_date == val.slice(8)){ //날짜가 같은지 확인
+//             const date = new Date();
+
+//             let time = date.toLocaleTimeString('ko-kr')
+//             console.log(time)
+//         }
 //     }else{
-//         console.log('엘스값?')
+//         //날짜가 다르면 현재 시간과 상관없이 시간 지정할 수 있다.
 //     }
 // }
-
 
 
 
@@ -121,11 +136,13 @@ function posthandle() {
     const title = document.getElementById('title').value
     let category = $("select[name=category]").val()
     const dateControl = document.querySelector('input[type="date"]').value
-    const timeControl = document.querySelector('input[type="time"]').value
+    // const timeControl = document.querySelector('input[type="time"]').value
+    const timeControl = document.getElementById('starttime').value
     const content = document.getElementById('content').value
     let predict_price = document.getElementById('predictPrice').value
     let start_price = document.getElementById('startPrice').value
 
+    console.log(timeControl, "새로 지정한 시간 밸류")
 
     predict_price = predict_price.replace(/,/g, "");
     start_price = start_price.replace(/,/g, "");
@@ -161,6 +178,26 @@ function posthandle() {
         fd.append("images", fileArr[i]);
     }
 
+
+    if (min_date ==dateControl.slice(8)){
+        let input_hour = timeControl.split(':')[0]
+        let input_minute = timeControl.split(':')[1]
+
+        let date = new Date();
+        let hours
+        hours = ('0' + date.getHours()).slice(-2);
+        let minutes = ('0' + date.getMinutes()).slice(-2);
+
+        if (input_hour - hours < 0){
+            alert('시간을 다시 선택하세요.')
+        }else if(input_hour == hours && input_minute - minutes < 0){
+            alert('시간을 다시 선택하세요.')
+        }
+
+    }  
+        
+    }
+
     fd.append('title', title)
     fd.append('content', content)
     fd.append('category', category)
@@ -189,7 +226,7 @@ function posthandle() {
             alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
     })
-}
+
 
 
 //시작 가격 입력시 알림창

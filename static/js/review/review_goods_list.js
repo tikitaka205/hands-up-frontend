@@ -102,7 +102,7 @@ observer.observe(listEnd);
 
 var nowPage = 1
 var category = ''
-const token = localStorage.getItem('access')
+// const token = localStorage.getItem('access')
 var goodsStatus = ''
 var isNull = ''
 var search = url.searchParams.get('search')

@@ -1,5 +1,4 @@
 const goodsId = url.searchParams.get('goods');
-const token = localStorage.getItem('access')
 var goods = JSON.parse(localStorage.getItem('goods', ''))
 
 if (!goods) {
@@ -240,7 +239,7 @@ goodsInfoView()
 
 if (token !== null) {
     var chatSocket = new WebSocket(
-        `ws://${domain}/ws/auction/${goodsId}/?token=${localStorage.getItem(['access'])}`
+        `ws://${domain}/ws/auction/${goodsId}/?token=${token}`
     );
 } else {
     var chatSocket = new WebSocket(

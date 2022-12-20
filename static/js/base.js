@@ -117,7 +117,7 @@ function dp_menu() {
 if (token !== null) {
     console.log('알람 연결')
     var chatSocket = new WebSocket(
-        `ws://${domain}/ws/alram/${goodsId}/?token=${token}`
+        `ws://${domain}/ws/alram/?token=${token}`
     );
 }
 

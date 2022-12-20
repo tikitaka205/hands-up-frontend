@@ -1,5 +1,5 @@
 const goodsId = url.searchParams.get('goods');
-const token = localStorage.getItem('access');
+// const token = localStorage.getItem('access');
 
 console.log(payload["username"])
 console.log("start_chat", "user_id: ", payload["user_id"]);

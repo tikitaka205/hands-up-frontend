@@ -2,14 +2,13 @@
 const hostUrl = "http://backend.hands-up.co.kr"
 const backUrl = '43.200.179.49';
 const domain = '43.200.179.49'
-const token = localStorage.getItem('access')
 
 // // 로컬용
 // const hostUrl = "http://127.0.0.1:8000"
 // const backUrl = '127.0.0.1:8000';
-// const domain = '43.200.179.49'
-// const token = localStorage.getItem('access')
+// const domain = '127.0.0.1:8000';
 
+const token = localStorage.getItem('access')
 const payload = JSON.parse(localStorage.getItem('payload', ''))
 const DATE = new Date()
 const url = new URL(`${window.location.href}`);
@@ -117,10 +116,9 @@ function dp_menu() {
     }
 }
 
-if (token !== null) {
-    console.log('알람 연결')
+if (token !== null && payload !== null) {
     var chatSocket = new WebSocket(
-        `ws://${domain}/ws/alram/?token=${token}`
+        `ws://${domain}/ws/alram/${payload['user_id']}/?token=${token}`
     );
 }
 

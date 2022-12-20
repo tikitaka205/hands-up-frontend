@@ -63,7 +63,7 @@ async function goodsInfoView() {
         <div class = "p-3 card mb-3" style= "background-color : white; border-radius : 10px; color : black; cursor:pointer;">
             <div class = "row" onclick="window.location.href='/review/index.html?user_id=${seller['id']}'">
                 <div class = "col-2">
-                    <img style="border-radius:50%;" src="${seller['profile_image']}" alt="img">
+                    <img style="border-radius:50%;" src="${hostUrl}${seller['profile_image']}" alt="img">
                 </div>
                 <div class = "col-4">
                     <b>${seller["username"]}</b>

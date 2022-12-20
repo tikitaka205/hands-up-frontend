@@ -4,7 +4,6 @@ const backUrl = '43.200.179.49';
 const domain = '43.200.179.49'
 
 // 로컬용
-// // const hostUrl = "http://43.200.179.49"
 // const hostUrl = "http://127.0.0.1:8000"
 // const backUrl = '127.0.0.1:8000';
 

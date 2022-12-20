@@ -161,6 +161,8 @@ function posthandle() {
         },
 
         success: function (data) {
+            console.log(data)
+
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
         error: function (error) {

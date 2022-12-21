@@ -101,8 +101,7 @@ function addFiles(e) {
                 alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
                 $(this).val('');
             } else {
-                // fileArr.push(element);
-                let test
+                fileArr.push(element);
                 var reader = new FileReader();
                 reader.onload = function (e) {
 
@@ -116,17 +115,8 @@ function addFiles(e) {
                         `
                     $('#image-wrap').append(temp)
                     index++;
-                    let images = new Image;
-                    images.onload = function () {
-                        test = getThumbImgFile(images, element)
-                    }
-                    images.src = reader.result
                 }
-                // element = getThumbImgFile(images, element)
-                // console.log("reader", reader)
-                // console.log("element", element)
                 reader.readAsDataURL(element);
-                fileArr.push(test);
             }
         }
     });
@@ -185,7 +175,6 @@ function posthandle() {
         return
     }
     for (var i = 0; i < fileArr.length; i++) {
-
         fd.append("images", fileArr[i]);
     }
 
@@ -206,39 +195,37 @@ function posthandle() {
         }
 
     }
+    fd.append('title', title)
+    fd.append('content', content)
+    fd.append('category', category)
+    fd.append('start_date', dateControl)
+    fd.append('start_time', timeControl)
+    fd.append('predict_price', predict_price)
+    fd.append('start_price', start_price)
+
+
+    $.ajax({
+        type: 'POST',
+        url: `${hostUrl}/goods/`,
+        processData: false,
+        contentType: false,
+        data: fd,
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+        },
+
+        success: function (data) {
+            console.log(data)
+
+            window.location.href = `/goods/auction.html?goods=${data['id']}`
+        },
+        error: function (error) {
+            console.log(error)
+            alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
+        },
+    });
 
 }
-
-fd.append('title', title)
-fd.append('content', content)
-fd.append('category', category)
-fd.append('start_date', dateControl)
-fd.append('start_time', timeControl)
-fd.append('predict_price', predict_price)
-fd.append('start_price', start_price)
-
-
-$.ajax({
-    type: 'POST',
-    url: `${hostUrl}/goods/`,
-    processData: false,
-    contentType: false,
-    data: fd,
-    headers: {
-        "Authorization": "Bearer " + localStorage.getItem("access"),
-    },
-
-    success: function (data) {
-        console.log(data)
-
-        window.location.href = `/goods/auction.html?goods=${data['id']}`
-    },
-    error: function (error) {
-        console.log(error)
-        alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
-    },
-})
-
 
 
 //시작 가격 입력시 알림창
@@ -247,38 +234,38 @@ function startPriceinput() {
 }
 
 
-function getThumbImgFile(image, file) {
-    const canvas = document.createElement("canvas");
-    const base_size = 1024000; //1MB (썸네일 작업 유무 기준 사이즈)
-    const comp_size = 102400;  //100KB (썸네일 작업 결과물 사이즈, 50~200KB 수준으로 압축됨)
-    let width = image.width;
-    let height = image.height;
-    const size = file.size;
+// function getThumbImgFile(image, file) {
+//     const canvas = document.createElement("canvas");
+//     const base_size = 1024000; //1MB (썸네일 작업 유무 기준 사이즈)
+//     const comp_size = 102400;  //100KB (썸네일 작업 결과물 사이즈, 50~200KB 수준으로 압축됨)
+//     let width = image.width;
+//     let height = image.height;
+//     const size = file.size;
 
-    if (size <= base_size) return file;
-    console.log(image)
-    const ratio = Math.ceil(Math.sqrt((size / comp_size), 2));
-    width = image.width / ratio;
-    height = image.height / ratio;
-    canvas.width = width;
-    canvas.height = height;
-    canvas.getContext("2d").drawImage(image, 0, 0, width, height);
-    return dataURItoBlob(canvas.toDataURL("image/png")); //dataURLtoBlob 부분은 이전 포스팅 참조
-}
+//     if (size <= base_size) return file;
+//     console.log(image)
+//     const ratio = Math.ceil(Math.sqrt((size / comp_size), 2));
+//     width = image.width / ratio;
+//     height = image.height / ratio;
+//     canvas.width = width;
+//     canvas.height = height;
+//     canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+//     return dataURItoBlob(canvas.toDataURL("image/png")); //dataURLtoBlob 부분은 이전 포스팅 참조
+// }
 
-function dataURItoBlob(dataURL) {
+// function dataURItoBlob(dataURL) {
 
-    var byteString = atob(dataURL.split(',')[1]);
-    var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
+//     var byteString = atob(dataURL.split(',')[1]);
+//     var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+//     var ab = new ArrayBuffer(byteString.length);
+//     var ia = new Uint8Array(ab);
+//     for (var i = 0; i < byteString.length; i++) {
+//         ia[i] = byteString.charCodeAt(i);
+//     }
 
-    //리사이징된 file 객체
-    // var tmpThumbFile = new Blob([ab], { type: mimeString });
-    var tmpThumbFile = new Blob([ab], { type: mimeString });
-    // console.log(tmpThumbFile)
-    return tmpThumbFile;
-}
+//     //리사이징된 file 객체
+//     // var tmpThumbFile = new Blob([ab], { type: mimeString });
+//     var tmpThumbFile = new Blob([ab], { type: mimeString });
+//     // console.log(tmpThumbFile)
+//     return tmpThumbFile;
+// }

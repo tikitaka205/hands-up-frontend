@@ -891,7 +891,13 @@ ol {
 -----------------------*/
 
 .featured {
-  padding-top: 20px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+
+.featured2 {
+  padding-top: 0px;
   padding-bottom: 40px;
 }
 

@@ -10,30 +10,30 @@ let max_date = today.getDate() + 2
 let min_date = today.getDate()
 
 
-let min_time= new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
+let min_time = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
 console.log(min_time)
 
 console.log(min_date)
 
 date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
-<input class="inputtime" placeholder ="시간" id="starttime" type="time" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
+<input class="inputtime" placeholder ="시간" id="starttime" type="text" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
 $('#date-time').append(date_html)
 
-// $(document).ready(function(){
-//     $('#starttime').timepicker({
-//         timeFormat: 'HH:mm',
-//         interval: 20,
-//         startTime: '00:00',
-//         dynamic: false,
-//         dropdown: true,
-//         scrollbar: true
-//     });
-// });
+$(document).ready(function () {
+    $('#starttime').timepicker({
+        timeFormat: 'HH:mm',
+        interval: 20,
+        startTime: '00:00',
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true
+    });
+});
 
 //전송 버튼을 누르기 전에 실시간으로 하는거 해본다!! 꼭!!
 
 // document.getElementById('start').onblur = function(){
-    
+
 //     var val = this.value;
 //     if( new Date(val) instanceof Date && val ){
 //         const timeControl = document.querySelector('input[type="time"]').value
@@ -81,7 +81,7 @@ function addFiles(e) {
     $('#swiper-wrapper').empty();
     var files = e.target.files;
     var filesArr = Array.prototype.slice.call(files);
-    if (fileArr.length > 6) {
+    if (fileArr.length + files.length > 6) {
         return alert('최대 6장 가능합니다') // 용량 등 유효성 검사 필요
     }
     var index = 0;
@@ -91,20 +91,20 @@ function addFiles(e) {
             return
         }
 
-// 업로드 이미지 파일크기제한
+        // 업로드 이미지 파일크기제한
         if (this.files && this.files[0]) {
-                
+
             var maxSize = 10 * 1024 * 1024;
             var fileSize = this.files[0].size;
 
-            if(fileSize > maxSize){
+            if (fileSize > maxSize) {
                 alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
                 $(this).val('');
-            }else{
+            } else {
                 fileArr.push(element);
                 var reader = new FileReader();
                 reader.onload = function (e) {
-        
+
                     var temp = `
                         <div class="p-3 col-4 m-0" id="img_id_${index}">
                             <div  style="position:relative">
@@ -136,8 +136,8 @@ function posthandle() {
     const title = document.getElementById('title').value
     let category = $("select[name=category]").val()
     const dateControl = document.querySelector('input[type="date"]').value
-    const timeControl = document.querySelector('input[type="time"]').value
-    // const timeControl = document.getElementById('starttime').value
+    // const timeControl = document.querySelector('input[type="time"]').value
+    const timeControl = document.getElementById('starttime').value
     const content = document.getElementById('content').value
     let predict_price = document.getElementById('predictPrice').value
     let start_price = document.getElementById('startPrice').value
@@ -146,8 +146,8 @@ function posthandle() {
 
     predict_price = predict_price.replace(/,/g, "");
     start_price = start_price.replace(/,/g, "");
+
     let fd = new FormData()
-   
 
     if (fileArr.length < 1) {
         alert('최소 하나 이상의 이미지를 포함해 주세요')
@@ -179,23 +179,22 @@ function posthandle() {
     }
 
 
-    // if (min_date ==dateControl.slice(8)){
-    //     let input_hour = timeControl.split(':')[0]
-    //     let input_minute = timeControl.split(':')[1]
+    if (min_date == dateControl.slice(8)) {
+        let input_hour = timeControl.split(':')[0]
+        let input_minute = timeControl.split(':')[1]
 
-    //     let date = new Date();
-    //     let hours
-    //     hours = ('0' + date.getHours()).slice(-2);
-    //     let minutes = ('0' + date.getMinutes()).slice(-2);
+        let date = new Date();
+        let hours
+        hours = ('0' + date.getHours()).slice(-2);
+        let minutes = ('0' + date.getMinutes()).slice(-2);
 
-    //     if (input_hour - hours < 0){
-    //         alert('시간을 다시 선택하세요.')
-    //     }else if(input_hour == hours && input_minute - minutes < 0){
-    //         alert('시간을 다시 선택하세요.')
-    //     }
+        if (input_hour - hours < 0) {
+            alert('시간을 다시 선택하세요.')
+        } else if (input_hour == hours && input_minute - minutes < 0) {
+            alert('시간을 다시 선택하세요.')
+        }
 
-    // }  
-
+    }
     fd.append('title', title)
     fd.append('content', content)
     fd.append('category', category)
@@ -221,15 +220,52 @@ function posthandle() {
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
         error: function (error) {
+            console.log(error)
             alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
-    })
+    });
 
 }
 
+
 //시작 가격 입력시 알림창
-function startPriceinput(){
+function startPriceinput() {
     alert("가격은 변경이 불가합니다. 신중하게 입력해주세요.")
 }
 
 
+// function getThumbImgFile(image, file) {
+//     const canvas = document.createElement("canvas");
+//     const base_size = 1024000; //1MB (썸네일 작업 유무 기준 사이즈)
+//     const comp_size = 102400;  //100KB (썸네일 작업 결과물 사이즈, 50~200KB 수준으로 압축됨)
+//     let width = image.width;
+//     let height = image.height;
+//     const size = file.size;
+
+//     if (size <= base_size) return file;
+//     console.log(image)
+//     const ratio = Math.ceil(Math.sqrt((size / comp_size), 2));
+//     width = image.width / ratio;
+//     height = image.height / ratio;
+//     canvas.width = width;
+//     canvas.height = height;
+//     canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+//     return dataURItoBlob(canvas.toDataURL("image/png")); //dataURLtoBlob 부분은 이전 포스팅 참조
+// }
+
+// function dataURItoBlob(dataURL) {
+
+//     var byteString = atob(dataURL.split(',')[1]);
+//     var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+//     var ab = new ArrayBuffer(byteString.length);
+//     var ia = new Uint8Array(ab);
+//     for (var i = 0; i < byteString.length; i++) {
+//         ia[i] = byteString.charCodeAt(i);
+//     }
+
+//     //리사이징된 file 객체
+//     // var tmpThumbFile = new Blob([ab], { type: mimeString });
+//     var tmpThumbFile = new Blob([ab], { type: mimeString });
+//     // console.log(tmpThumbFile)
+//     return tmpThumbFile;
+// }

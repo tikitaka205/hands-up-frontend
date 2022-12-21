@@ -5,8 +5,6 @@ window.onload = function () {
 }
 
 let user_id = url.searchParams.get('user_id')
-// var token = localStorage.getItem('access')
-console.log("페이로드 아이디",payload["user_id"])
 
 function review_list() {
     $.ajax({
@@ -19,7 +17,6 @@ function review_list() {
 
         url: `${hostUrl}/review/?user_id=${user_id}`,
         success: function (response) {
-            console.log('성공:', response);
             let bad_review_count = response['bad_review_count']
             let soso_review_count = response['soso_review_count']
             let good_review_count = response['good_review_count']

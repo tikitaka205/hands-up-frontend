@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>👋 핸즈업</title>
 
+    <!-- timepicker -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <!-- Google Font -->
     <link href="/static/css/css2" rel="stylesheet">
 
@@ -171,7 +173,7 @@
                     <!-- 시작가격 -->
                     <div class="mb-3">
                         <input id="startPrice" type="text" class="form-control" placeholder="시작가격"
-                            onchange="getNumber(this);" onkeyup="getNumber(this);">
+                            onchange="getNumber(this);" onkeyup="getNumber(this);" onclick="startPriceinput()">
                     </div>
                     <!-- 경매 날짜 -->
                     <div id="date-time">
@@ -210,6 +212,8 @@
 
     <!-- js 연결 -->
     <script type="text/javascript" src="/static/js/goodsPost.js"></script>
+    <!-- timepicker -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 

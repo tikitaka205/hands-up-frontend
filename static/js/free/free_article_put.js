@@ -33,7 +33,9 @@ function free_article_change_get(){
 
 function free_article_put() {
     let content = $("#free_article_content").val()
+    content = filterXSS(content);
     let title = $("#free_article_title").val()
+    title = filterXSS(title)
     let formData = new FormData();
 
     // formData.append("image", $("#image")[0].files[0]);

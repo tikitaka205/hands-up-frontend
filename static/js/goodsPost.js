@@ -46,7 +46,7 @@ function addFiles(e) {
     $('#swiper-wrapper').empty();
     var files = e.target.files;
     var filesArr = Array.prototype.slice.call(files);
-    if (fileArr.length > 6) {
+    if (fileArr.length + files.length > 6) {
         return alert('최대 6장 가능합니다') // 용량 등 유효성 검사 필요
     }
     var index = 0;
@@ -56,20 +56,21 @@ function addFiles(e) {
             return
         }
 
-// 업로드 이미지 파일크기제한
+        // 업로드 이미지 파일크기제한
         if (this.files && this.files[0]) {
-                
+
             var maxSize = 10 * 1024 * 1024;
             var fileSize = this.files[0].size;
 
-            if(fileSize > maxSize){
+            if (fileSize > maxSize) {
                 alert("첨부파일 사이즈는 10MB 이내로 등록 가능합니다.");
                 $(this).val('');
-            }else{
-                fileArr.push(element);
+            } else {
+                // fileArr.push(element);
+                let test
                 var reader = new FileReader();
                 reader.onload = function (e) {
-        
+
                     var temp = `
                         <div class="p-3 col-4 m-0" id="img_id_${index}">
                             <div  style="position:relative">
@@ -80,8 +81,17 @@ function addFiles(e) {
                         `
                     $('#image-wrap').append(temp)
                     index++;
+                    let images = new Image;
+                    images.onload = function () {
+                        test = getThumbImgFile(images, element)
+                    }
+                    images.src = reader.result
                 }
+                // element = getThumbImgFile(images, element)
+                console.log("reader", reader)
+                console.log("element", element)
                 reader.readAsDataURL(element);
+                fileArr.push(test);
             }
         }
     });
@@ -138,6 +148,7 @@ function posthandle() {
         return
     }
     for (var i = 0; i < fileArr.length; i++) {
+
         fd.append("images", fileArr[i]);
     }
 
@@ -166,7 +177,45 @@ function posthandle() {
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
         error: function (error) {
+            console.log(error)
             alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
     })
+}
+
+
+function getThumbImgFile(image, file) {
+    const canvas = document.createElement("canvas");
+    const base_size = 1024000; //1MB (썸네일 작업 유무 기준 사이즈)
+    const comp_size = 102400;  //100KB (썸네일 작업 결과물 사이즈, 50~200KB 수준으로 압축됨)
+    let width = image.width;
+    let height = image.height;
+    const size = file.size;
+
+    if (size <= base_size) return file;
+    console.log(image)
+    const ratio = Math.ceil(Math.sqrt((size / comp_size), 2));
+    width = image.width / ratio;
+    height = image.height / ratio;
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+    return dataURItoBlob(canvas.toDataURL("image/png")); //dataURLtoBlob 부분은 이전 포스팅 참조
+}
+
+function dataURItoBlob(dataURL) {
+
+    var byteString = atob(dataURL.split(',')[1]);
+    var mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    //리사이징된 file 객체
+    // var tmpThumbFile = new Blob([ab], { type: mimeString });
+    var tmpThumbFile = new Blob([ab], { type: mimeString });
+    console.log(tmpThumbFile)
+    return tmpThumbFile;
 }

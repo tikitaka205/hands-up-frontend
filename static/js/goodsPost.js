@@ -16,19 +16,19 @@ console.log(min_time)
 console.log(min_date)
 
 date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
-<input class="inputtime" placeholder ="시간" id="starttime" type="text" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
+<input class="inputtime" placeholder ="시간" id="starttime" type="time" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
 $('#date-time').append(date_html)
 
-$(document).ready(function(){
-    $('#starttime').timepicker({
-        timeFormat: 'HH:mm',
-        interval: 20,
-        startTime: '00:00',
-        dynamic: false,
-        dropdown: true,
-        scrollbar: true
-    });
-});
+// $(document).ready(function(){
+//     $('#starttime').timepicker({
+//         timeFormat: 'HH:mm',
+//         interval: 20,
+//         startTime: '00:00',
+//         dynamic: false,
+//         dropdown: true,
+//         scrollbar: true
+//     });
+// });
 
 //전송 버튼을 누르기 전에 실시간으로 하는거 해본다!! 꼭!!
 
@@ -136,8 +136,8 @@ function posthandle() {
     const title = document.getElementById('title').value
     let category = $("select[name=category]").val()
     const dateControl = document.querySelector('input[type="date"]').value
-    // const timeControl = document.querySelector('input[type="time"]').value
-    const timeControl = document.getElementById('starttime').value
+    const timeControl = document.querySelector('input[type="time"]').value
+    // const timeControl = document.getElementById('starttime').value
     const content = document.getElementById('content').value
     let predict_price = document.getElementById('predictPrice').value
     let start_price = document.getElementById('startPrice').value
@@ -146,8 +146,8 @@ function posthandle() {
 
     predict_price = predict_price.replace(/,/g, "");
     start_price = start_price.replace(/,/g, "");
-
     let fd = new FormData()
+   
 
     if (fileArr.length < 1) {
         alert('최소 하나 이상의 이미지를 포함해 주세요')
@@ -179,24 +179,22 @@ function posthandle() {
     }
 
 
-    if (min_date ==dateControl.slice(8)){
-        let input_hour = timeControl.split(':')[0]
-        let input_minute = timeControl.split(':')[1]
+    // if (min_date ==dateControl.slice(8)){
+    //     let input_hour = timeControl.split(':')[0]
+    //     let input_minute = timeControl.split(':')[1]
 
-        let date = new Date();
-        let hours
-        hours = ('0' + date.getHours()).slice(-2);
-        let minutes = ('0' + date.getMinutes()).slice(-2);
+    //     let date = new Date();
+    //     let hours
+    //     hours = ('0' + date.getHours()).slice(-2);
+    //     let minutes = ('0' + date.getMinutes()).slice(-2);
 
-        if (input_hour - hours < 0){
-            alert('시간을 다시 선택하세요.')
-        }else if(input_hour == hours && input_minute - minutes < 0){
-            alert('시간을 다시 선택하세요.')
-        }
+    //     if (input_hour - hours < 0){
+    //         alert('시간을 다시 선택하세요.')
+    //     }else if(input_hour == hours && input_minute - minutes < 0){
+    //         alert('시간을 다시 선택하세요.')
+    //     }
 
-    }  
-        
-    }
+    // }  
 
     fd.append('title', title)
     fd.append('content', content)
@@ -227,7 +225,7 @@ function posthandle() {
         },
     })
 
-
+}
 
 //시작 가격 입력시 알림창
 function startPriceinput(){

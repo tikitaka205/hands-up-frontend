@@ -1,9 +1,15 @@
 function free_article_create() {
 
-    let content = $("#content").val()
-    let title = $("#title").val()
-    let formData = new FormData();
+    let content 
+    content = $('#content').val()
+    content = filterXSS(content);
 
+    let title 
+    title = $("#title").val();
+    title = filterXSS(title)
+    alert(title)
+
+    let formData = new FormData();
     formData.append("content", content)
     formData.append("title", title)
     const formFile = $("#img")[0];
@@ -16,6 +22,7 @@ function free_article_create() {
         
         type: "POST",
         url: `${hostUrl}/board/free_articles/`,
+
         processData: false,
         contentType: false,
         data: formData,

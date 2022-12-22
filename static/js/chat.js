@@ -1,9 +1,9 @@
 const goodsId = url.searchParams.get('goods');
 
-console.log(payload["username"])
-console.log("start_chat", "user_id: ", payload["user_id"]);
+// console.log(payload["username"])
+// console.log("start_chat", "user_id: ", payload["user_id"]);
 
-console.log(goodsId)
+// console.log(goodsId)
 select_chat_roome()
 // window.onload = function () {
 //     $("time.timeago").timeago();
@@ -14,7 +14,7 @@ if (goodsId != null) {
         'ws://' + backUrl +
         '/ws/chat/' + goodsId + '/?token=' + token);
 
-    console.log(chatSocket)
+    // console.log(chatSocket)
 
     chatSocket.onopen = function (e) {
         get_chat_log()
@@ -29,7 +29,7 @@ if (goodsId != null) {
         let message = data['message'];
         let sender = data['sender_name']
         let sender_image = data['sender_image']
-        console.log("onmessage: ", data)
+        // console.log("onmessage: ", data)
         let temp_html
         if (sender == payload["username"]) {
             temp_html = `
@@ -61,7 +61,7 @@ if (goodsId != null) {
     };
 
     chatSocket.onclose = function (e) {
-        console.log(e)
+        // console.log(e)
         console.error('Chat socket closed unexpectedly');
     };
 
@@ -104,7 +104,7 @@ function get_chat_log() {
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            // console.log(response)
+            // // console.log(response)
             if (response['message'] != '입장') {
                 return false
             }
@@ -113,8 +113,8 @@ function get_chat_log() {
                 let message = response['data'][i]['content'];
                 let sender = response['data'][i]['author']['username'];
                 let profile_image = response['data'][i]['author']['profile_image'];
-                console.log(profile_image)
-                // console.log(message, sender)
+                // console.log(profile_image)
+                // // console.log(message, sender)
                 let temp_html
                 if (sender == payload["username"]) {
                     temp_html = `
@@ -159,7 +159,7 @@ function select_chat_roome() {
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            console.log("룸정보", response)
+            // console.log("룸정보", response)
             $("#chat-list").empty()
             for (let i = 0; i < response.length; i++) {
                 let buyer = response[i]['buyer']['username']
@@ -170,7 +170,7 @@ function select_chat_roome() {
                 let auction_image
                 let buyer_profile_img = response[i]['buyer']['profile_image']
                 let seller_profile_img = response[i]['seller']['profile_image']
-                console.log(created_at)
+                // console.log(created_at)
                 try {
                     if (response[i]['images']["image"]) {
                         auction_image = response[i]['images']["image"]
@@ -266,7 +266,7 @@ function review() {
         url: `${hostUrl}/goods/${goodsId}`,
         data: {},
         success: function (response) {
-            console.log("review get: ", response)
+            // console.log("review get: ", response)
             let user_id = payload['user_id']
             let seller_id = response['seller']['id']
             if (user_id == seller_id) {
@@ -280,7 +280,7 @@ function review() {
 
     // let user_id = payload['user_id']
     // let seller_id = localStorage.getItem('seller_id')
-    // console.log("여기")
+    // // console.log("여기")
     // window.location.href = `/review/seller.html?goods_id=${goodsId}`
 
     // if (user_id == seller_id) {
@@ -325,7 +325,7 @@ function wait_chat_message(trade_room_id) {
             "Authorization": "Bearer " + token,
         },
         success: function (response) {
-            console.log(response)
+            // console.log(response)
             // let count
             // for (let i = 0; i < response.length; i++) {
             //     if (response[i]["is_read"] === true) {
@@ -333,7 +333,7 @@ function wait_chat_message(trade_room_id) {
             //     }
             // }
             $(`#wait-msg-${trade_room_id}`).text(response.length)
-            console.log("count", response.length)
+            // console.log("count", response.length)
         },
     });
 }
@@ -347,7 +347,7 @@ function wait_chat_message(trade_room_id) {
 //             "Authorization": "Bearer " + token,
 //         },
 //         success: function (response) {
-//             console.log(response)
+//             // console.log(response)
 //             let seller = response["seller"]["username"]
 //             let buyer = response["buyer"]["username"]
 //             if (payload["username"] == buyer) {

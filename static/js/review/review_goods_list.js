@@ -1,5 +1,6 @@
-var data_auction_list = get_auction_list()
 var user_id = url.searchParams.get('user_id')
+var data_auction_list = get_auction_list()
+
 
 
 userInfo()
@@ -118,7 +119,7 @@ function get_auction_list() {
         data: {},
         async: false,
         success: function (response) {
-            // console.log(`${hostUrl}/goods/user/1/?page=${nowPage}&status=${goodsStatus}`)
+            // console.log(`${hostUrl}/goods/user/${user_id}/?page=${nowPage}&status=${goodsStatus}`)
             let auction_list = response
             for (let i = 0; i < auction_list.length; i++) {
 

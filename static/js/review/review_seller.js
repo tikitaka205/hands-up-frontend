@@ -248,7 +248,7 @@ function reviewCreate() {
     $.ajax({
 
         type: "POST",
-        url: `${hostUrl}/review/${goods_id}/`,
+        url: `${hostUrl}/review/?goods_id=${goods_id}`,
         processData: false,
         contentType: false,
         data: formData,

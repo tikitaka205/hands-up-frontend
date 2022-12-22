@@ -1,5 +1,5 @@
-var data_auction_list = get_auction_list()
 var user_id = url.searchParams.get('user_id')
+var data_auction_list = get_auction_list()
 
 
 

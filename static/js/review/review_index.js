@@ -33,7 +33,7 @@ function review_list() {
                         <div class="col-lg-4 col-md-6 col-sm-8">
                             <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" >
                                 <div class="toast-header">
-                                    <img src="${hostUrl}/media/media/default.jpeg/" id="image2" style="width:30px; border-radius:50%;">
+                                    <img src="${hostUrl}/media/default.jpeg/" id="image2" style="width:30px; border-radius:50%;">
                                     <strong class="me-auto" style="position:absolute; left: 50px;">익명</strong>
                                     <small class="text-muted" style="position:absolute; right: 20px;"><time class="timeago" datetime="${created_at}"></small>
                                 </div>

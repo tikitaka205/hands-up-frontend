@@ -132,7 +132,6 @@ function deleteImage(index) {
 
 function posthandle() {
 
-    console.log('post작성 실행')
     const title = document.getElementById('title').value
     let category = $("select[name=category]").val()
     const dateControl = document.querySelector('input[type="date"]').value
@@ -215,12 +214,10 @@ function posthandle() {
         },
 
         success: function (data) {
-            console.log(data)
 
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
         error: function (error) {
-            console.log(error)
             alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
     });

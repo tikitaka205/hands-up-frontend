@@ -141,7 +141,7 @@ function review(goodsId) {
         url: `${hostUrl}/goods/${goodsId}`,
         data: {},
         success: function (response) {
-            console.log("review get: ", response)
+            // console.log("review get: ", response)
             let user_id = payload['user_id']
             let seller_id = response['seller']['id']
             if (user_id == seller_id) {

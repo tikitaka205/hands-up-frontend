@@ -11,9 +11,9 @@ let min_date = today.getDate()
 
 
 let min_time = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[1].split('.')[0];
-console.log(min_time)
+// console.log(min_time)
 
-console.log(min_date)
+// console.log(min_date)
 
 date_html = `<input class="inputdate" type ="date" id ="start" min ="${year}-${month}-${min_date}" max="${year}-${month}-${max_date}"/>
 <input class="inputtime" placeholder ="시간" id="starttime" type="text" min="${min_time}" id="appt" name="appt" required style="margin-bottom: 20px;">`
@@ -37,12 +37,12 @@ $(document).ready(function () {
 //     var val = this.value;
 //     if( new Date(val) instanceof Date && val ){
 //         const timeControl = document.querySelector('input[type="time"]').value
-//         console.log('timecontrol',timeControl)
+//         // console.log('timecontrol',timeControl)
 //         if(min_date == val.slice(8)){ //날짜가 같은지 확인
 //             const date = new Date();
 
 //             let time = date.toLocaleTimeString('ko-kr')
-//             console.log(time)
+//             // console.log(time)
 //         }
 //     }else{
 //         //날짜가 다르면 현재 시간과 상관없이 시간 지정할 수 있다.
@@ -123,16 +123,16 @@ function addFiles(e) {
 }
 
 function deleteImage(index) {
-    console.log(fileArr)
+    // console.log(fileArr)
     fileArr.splice(index, 1);
     $(`#img_id_${index}`).remove();
-    console.log(fileArr)
+    // console.log(fileArr)
 }
 
 
 function posthandle() {
 
-    console.log('post작성 실행')
+    // console.log('post작성 실행')
     const title = document.getElementById('title').value
     let category = $("select[name=category]").val()
     const dateControl = document.querySelector('input[type="date"]').value
@@ -142,7 +142,7 @@ function posthandle() {
     let predict_price = document.getElementById('predictPrice').value
     let start_price = document.getElementById('startPrice').value
 
-    console.log(timeControl, "새로 지정한 시간 밸류")
+    // console.log(timeControl, "새로 지정한 시간 밸류")
 
     predict_price = predict_price.replace(/,/g, "");
     start_price = start_price.replace(/,/g, "");
@@ -215,12 +215,12 @@ function posthandle() {
         },
 
         success: function (data) {
-            console.log(data)
+            // console.log(data)
 
             window.location.href = `/goods/auction.html?goods=${data['id']}`
         },
         error: function (error) {
-            console.log(error)
+            // console.log(error)
             alert('사진 용량 크기를 확인해 주세요. 1장에 최대 5MB 입니다.')
         },
     });
@@ -243,7 +243,7 @@ function startPriceinput() {
 //     const size = file.size;
 
 //     if (size <= base_size) return file;
-//     console.log(image)
+//     // console.log(image)
 //     const ratio = Math.ceil(Math.sqrt((size / comp_size), 2));
 //     width = image.width / ratio;
 //     height = image.height / ratio;
@@ -266,6 +266,6 @@ function startPriceinput() {
 //     //리사이징된 file 객체
 //     // var tmpThumbFile = new Blob([ab], { type: mimeString });
 //     var tmpThumbFile = new Blob([ab], { type: mimeString });
-//     // console.log(tmpThumbFile)
+//     // // console.log(tmpThumbFile)
 //     return tmpThumbFile;
 // }

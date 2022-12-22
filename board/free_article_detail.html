@@ -32,7 +32,7 @@
 
     jQuery(function() {
       const FLAG = localStorage.getItem("access", '')
-    console.log(FLAG)
+    // console.log(FLAG)
     // if(!FLAG){
     //     alert("로그인이 필요합니다.");
     //     window.location.replace("/user/login.html")
@@ -59,35 +59,38 @@
   <div id="nav-header"></div>
 
   <main class="container" style="height: 900px; margin-top : 150px;">
-    
 
-        <!-- 제목 -->
-          <div class="thirteen">
-            <h1 id="title"> </h1>
-          </div>
-        
-        <!-- 작성자 -->
-        <div class="three">
-          <h1 id="user"> 작성자:  </h1>
-        </div>
-        <!-- line -->
-        <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">   
-        <!-- content -->
-        <div>
-            <p class='contents' style="text-align :left; font-size: 18px; margin-top: 0px; margin-bottom: 90px;" id="content"> </p>
-            <p class='image' style=" margin-top: 0px; margin-bottom: 35px; margin-left: 200px; margin-right: 200px;" id ="image"> </p>
-        </div>
-       
-        
-              <!-- 게시글 옵션 -->
-              <div class="mb-3" style="margin-top: 0px;">
-                <div style="margin-left: 88%;">
-                    <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="free_article_put()">수정</button>
-                    <button id="delete_submit" type="button" class="btn btn-outline-danger" onclick="post_delete_submit()" >삭제</button>
-                </div>
-              <!-- 구분선 -->
-              <hr style="margin-top: 10px; background-color: #00b395; height: 5px;">
-              <div id="test">
+
+    <!-- 제목 -->
+    <div class="thirteen">
+      <h1 id="title"> </h1>
+    </div>
+
+    <!-- 작성자 -->
+    <div class="three">
+      <h1 id="user"> 작성자: </h1>
+    </div>
+    <!-- line -->
+    <hr style="margin-top: 5px; background-color: #00b395; height: 5px;">
+    <!-- content -->
+    <div>
+      <p class='contents' style="text-align :left; font-size: 18px; margin-top: 0px; margin-bottom: 90px;" id="content">
+      </p>
+      <p class='image' style=" margin-top: 0px; margin-bottom: 35px; margin-left: 200px; margin-right: 200px;"
+        id="image"> </p>
+    </div>
+
+
+    <!-- 게시글 옵션 -->
+    <div class="mb-3" style="margin-top: 0px;">
+      <div style="margin-left: 88%;">
+        <button id="put_submit" type="button" class="btn btn-outline-danger" onclick="free_article_put()">수정</button>
+        <button id="delete_submit" type="button" class="btn btn-outline-danger"
+          onclick="post_delete_submit()">삭제</button>
+      </div>
+      <!-- 구분선 -->
+      <hr style="margin-top: 10px; background-color: #00b395; height: 5px;">
+      <div id="test">
 
 
         <!-- 댓글 리스트 -->
@@ -108,8 +111,9 @@
       <!-- 댓글입력 -->
       <form id="comment_content">
         <label for="exampleFormControlTextarea1" class="form-labe2"></label>
-        <textarea class="form-control" id="comment_content2" style = "background:url('/static/images/keyboard.png'); background-repeat: no-repeat; background-position-x:right; background-size:5.5rem; border-color: rgb(6, 0, 0); border: 2.5px solid rgb(36, 174, 105); " placeholder='댓글을 입력해주세요.' name='comment_content2' rows="3"
-          required></textarea>
+        <textarea class="form-control" id="comment_content2"
+          style="background:url('/static/images/keyboard.png'); background-repeat: no-repeat; background-position-x:right; background-size:5.5rem; border-color: rgb(6, 0, 0); border: 2.5px solid rgb(36, 174, 105); "
+          placeholder='댓글을 입력해주세요.' name='comment_content2' rows="3" required></textarea>
         <div>
           <button type="button" class="btn btn-outline-success"
             style="margin-left: 90%; margin-top: 20px; margin-bottom: 100px;" onclick="comment_submit()">등록하기</button>
